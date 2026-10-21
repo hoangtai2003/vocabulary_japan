@@ -48,7 +48,13 @@ export const routes: RouteObject[] = [
               { path: 'them', lazy: page(() => import('./pages/MorePage')) },
               {
                 element: <AdminRoute />,
-                children: [{ path: 'quan-tri', lazy: page(() => import('./pages/AdminPage')) }],
+                children: [
+                  {
+                    path: 'quan-tri',
+                    lazy: page(() => import('./pages/AdminPage')),
+                    handle: { wide: true } satisfies RouteHandle,
+                  },
+                ],
               },
             ],
           },

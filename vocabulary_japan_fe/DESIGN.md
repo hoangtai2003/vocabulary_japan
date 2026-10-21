@@ -233,3 +233,26 @@ Màu dữ liệu được chọn sau cùng và kiểm bằng `validate_palette.j
 | Ô heatmap không phản hồi khi rê chuột.                                                                                         | Ô đang trỏ có viền mực; tooltip hiện số lượt (đậm) rồi ngày.                                                                 |
 | Biểu đồ chỉ đọc được bằng mắt.                                                                                                 | Nút "Xem dạng bảng" (bảng số liệu đầy đủ); heatmap là lưới `role="grid"` có `aria-label` mỗi ô, di chuyển bằng phím mũi tên. |
 | Bốn ô chỉ số dễ thành hàng "KPI tile" kiểu SaaS.                                                                               | Lưới ô kẻ như bảng trong vở (viền `rule`, không bóng); số dùng Be Vietnam Pro, không dùng chữ serif.                         |
+
+## 13. Tự phê bình: Hồ sơ
+
+| Nhận xét                                                                                                        | Xử lý                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Cài đặt "lưu ngay" nhưng lựa chọn chỉ đổi sau 300–600 ms (chờ server), trông như bấm không ăn.                  | Lựa chọn hiện ngay (giá trị tạm), lỗi thì quay về giá trị server kèm toast lỗi. Giao diện sáng/tối áp tức thì.            |
+| Bấm liên tiếp hai lựa chọn: callback của `mutate` chỉ chạy cho lần gọi cuối, lỗi của lần trước bị nuốt.         | Dùng `mutateAsync` với try/catch riêng cho từng lần đổi.                                                                  |
+| Toast "Từ mai bạn học 20 từ" sai: mock chọn lại ngay các từ mới chưa học của hôm nay.                           | Đổi câu chữ cho đúng hành vi; ghi chú dưới nhóm lựa chọn: từ đã học vẫn giữ.                                              |
+| Ô "Gõ XÓA": bộ gõ tiếng Việt có thể sinh "Ó" dạng tổ hợp, so sánh chuỗi thẳng sẽ báo sai dù người dùng gõ đúng. | Chuẩn hóa NFC, bỏ khoảng trắng, không phân biệt hoa thường. Nút "Xóa vĩnh viễn" chỉ bật khi đã gõ đúng.                   |
+| Nút đặt lại dữ liệu mock nằm cạnh "Xóa tài khoản" dễ bấm nhầm, và kéo code mock vào bản build real.             | Đặt trong `<details>` đóng sẵn ở cuối trang, chỉ render khi chế độ mock, có hộp xác nhận; module mock import động.        |
+| Bốn khối cùng kiểu thẻ dễ thành "settings page" chung chung.                                                    | Giữ thẻ giấy viền kẻ ô, nhóm lựa chọn dùng ô đánh dấu son như ở Quiz; vùng nguy hiểm chỉ nhấn bằng chữ son, không nền đỏ. |
+
+## 14. Tự phê bình: Quản trị
+
+| Nhận xét                                                                                                 | Xử lý                                                                                                                |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Bảng rộng tối thiểu 760px nhưng cột nội dung chỉ 720px: desktop cũng phải cuộn ngang.                    | Route `/quan-tri` có `handle.wide` (cột 1120px). Màn hình hẹp: bảng cuộn ngang trong khung riêng, trang không cuộn.  |
+| Cột "Chữ" sắp theo kanji: từ chỉ có kana dồn lên đầu, kanji xếp theo mã Unicode, vô nghĩa với người đọc. | Sắp theo cách đọc (kana): ra thứ tự gojūon.                                                                          |
+| Đổi bộ lọc khi đang ở trang 5 có thể ra trang trống.                                                     | Trang gắn với khóa bộ lọc: đổi từ khóa, bộ lọc hay sắp xếp thì tự về trang 1 (không dùng setState trong effect).     |
+| Xóa từ cuối cùng của trang cuối để lại trang trống.                                                      | Sau khi xóa, nếu đó là dòng cuối của trang thì lùi một trang.                                                        |
+| Nghĩa là mảng, form cần nhập nhiều nghĩa mà không thêm/xóa ô động.                                       | Một ô nhiều dòng, mỗi dòng một nghĩa; `wordFormSchema` tách dòng rồi kiểm tra bằng đúng luật `meanings_vi` của Word. |
+| Bảng xem trước import chỉ đọc được bằng màu đỏ.                                                          | Dòng lỗi có nền son nhạt, vạch son bên trái và thông báo chữ theo từng trường; dòng hợp lệ có dấu ✓ và chữ "Hợp lệ". |
+| Chọn file khác khi dry run trước chưa xong có thể hiện kết quả của file cũ.                              | Bỏ kết quả của lần kiểm tra không còn ứng với file đang chọn.                                                        |

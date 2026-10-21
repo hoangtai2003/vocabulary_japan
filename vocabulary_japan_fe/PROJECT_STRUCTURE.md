@@ -44,18 +44,22 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     ├── components/
     │   ├── ui/                ✅ 3  Button, buttonStyles, Input, field, PasswordInput, Select, Textarea, Modal (+ test),
     │   │                            Toast, Skeleton, EmptyState, ErrorState, ProgressBar (hàng ô), GenkoMark, Seal, Card,
-    │   │                            Spinner, FullPageLoader — không biết gì về API
+    │   │                            Spinner, FullPageLoader, OptionGroup (GĐ4) — không biết gì về API
     │   ├── study/             ✅ 4  FlashCard (+ test), StudySession, GradeButtons, SessionSummary, StudySkeleton
-    │   ├── quiz/              ✅ 4  QuizSetup, OptionGroup, QuizQuestion (+ test), QuizResult, QuizSkeleton
+    │   ├── quiz/              ✅ 4  QuizSetup, QuizQuestion (+ test), QuizResult, QuizSkeleton
     │   ├── words/             ✅ 4  WordCard, WordDetail (panel + nội dung), WordFilters, NoteEditor,
     │   │                            FavoriteButton, StatusLabel, WordsSkeleton
     │   ├── progress/          ✅ 4  StatGrid, WeeklyChart (Recharts + bảng), StudyHeatmap (lưới CSS),
     │   │                            ChartCard, chartColors (màu đã kiểm bằng validator dataviz)
     │   ├── today/             ✅ 4  DailyProgress, DueCard, TodayWordList, TodaySkeleton
+    │   ├── profile/           ✅ 4  ProfileSection, DisplayNameForm, StudySettingsForm (lưu ngay + toast),
+    │   │                            PasswordForm, DataSection, DeleteAccountModal (mật khẩu + gõ XÓA),
+    │   │                            MockTools (nút ẩn đặt lại dữ liệu mock)
+    │   ├── admin/             ✅ 4  AdminWordTable (sắp xếp theo cột, aria-sort), Pagination, AdminTableSkeleton,
+    │   │                            WordFormModal (wordFormSchema), DeleteWordModal, ImportModal (dry run → xem trước)
     │   ├── auth/              ✅ 3  AuthGate, ProtectedRoute, GuestRoute (chuyển về ?next=), AdminRoute,
     │   │                            ThemeSync, AuthLayout, FormAlert, SampleAccounts
-    │   └── layout/            ✅ 3  AppLayout, Sidebar, BottomNav, navItems, DueBadge, Brand, PageHeader, RouteError,
-    │                                PagePlaceholder (tạm, bỏ ở GĐ4)
+    │   └── layout/            ✅ 3  AppLayout, Sidebar, BottomNav, navItems, DueBadge, Brand, PageHeader, RouteError
     ├── context/
     │   ├── authContext.ts     ✅ 2  Kiểu và React context của phiên đăng nhập
     │   └── AuthProvider.tsx   ✅ 2  Gọi /auth/me một lần, login/register/logout, xử lý 401
@@ -83,14 +87,15 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   │                            quiz, stats, me, admin, index
     │   └── data/              ✅ 2  words.json (99 N5, 26 N4), topics.json (7 chủ đề), words.test.ts
     ├── pages/             ✅ 3–4  Một file mỗi route. Xong: Forbidden, NotFound, More, Login, Register,
-    │                                Today, Learn, Review, Quiz, Words, Progress
-    │                                (đều có test). Còn placeholder: Profile, Admin
+    │                                Today, Learn, Review, Quiz, Words, Progress, Profile, Admin
+    │                                (đều có test)
     ├── stores/
     │   ├── themeStore.ts      ✅ 3  light/dark/system, đồng bộ localStorage và class .dark
     │   ├── toastStore.ts      ✅ 3
     │   └── sessionStore.ts (+ test) ✅ 4  Hàng đợi phiên học, thẻ quay lại, đã lật, furigana
     ├── schemas/
-    │   ├── word.ts            ✅ 2  Schema Word không có id (form Quản trị, mock, import), kiểm tra khớp kiểu
+    │   ├── word.ts            ✅ 2  Schema Word không có id (mock, import) + wordFormSchema (form Quản trị,
+    │   │                            nghĩa mỗi dòng một), kiểm tra khớp kiểu
     │   ├── auth.ts            ✅ 2  Đăng nhập, đăng ký (form + request)
     │   ├── account.ts         ✅ 2  Cài đặt, hồ sơ, đổi mật khẩu, ghi chú, xóa tài khoản
     │   └── fieldErrors.ts     ✅ 2  Lỗi zod → fields của API
@@ -119,5 +124,5 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     └── test/
         ├── setup.ts           ✅ 2  jest-dom, vòng đời MSW node, xóa localStorage sau mỗi test
         ├── fixtures.ts        ✅ 2  makeWord cho test
-        └── renderApp.tsx      ✅ 3  Render cả app (router thật + MSW node) cho test
+        └── renderApp.tsx      ✅ 3  Render cả app (router thật + MSW node + Toaster) cho test
 ```

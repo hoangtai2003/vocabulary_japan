@@ -3,7 +3,7 @@ import { FormAlert } from '@/components/auth/FormAlert';
 import { Button } from '@/components/ui/Button';
 import type { QuizCount, QuizMode, QuizStartRequest } from '@/types/api';
 import { JLPT_LEVELS, type JlptLevel } from '@/types/word';
-import { OptionGroup } from './OptionGroup';
+import { OptionGroup } from '@/components/ui/OptionGroup';
 
 interface QuizSetupProps {
   value: QuizStartRequest;

@@ -4,7 +4,7 @@ import { Brand } from './Brand';
 import { BottomNav } from './BottomNav';
 import { Sidebar } from './Sidebar';
 
-/** handle của route: `wide` cho trang cần cột rộng (danh sách + panel chi tiết). */
+/** handle của route: `wide` cho trang cần cột rộng (danh sách + panel chi tiết, bảng quản trị). */
 export interface RouteHandle {
   wide?: boolean;
 }

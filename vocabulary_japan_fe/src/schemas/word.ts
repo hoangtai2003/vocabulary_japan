@@ -44,9 +44,28 @@ export const wordInputSchema = z.object({
   example_vi: requiredText('nghĩa câu ví dụ', 300),
 });
 
-export type WordFormValues = z.input<typeof wordInputSchema>;
+/**
+ * Form thêm/sửa từ ở trang Quản trị. Khác wordInputSchema duy nhất ở cách nhập nghĩa: một ô
+ * nhiều dòng, mỗi dòng một nghĩa (dòng trống bị bỏ), rồi kiểm tra bằng đúng luật meanings_vi
+ * của wordInputSchema. Đầu ra vẫn là WordInput.
+ */
+export const wordFormSchema = wordInputSchema.extend({
+  meanings_vi: z
+    .string()
+    .transform((value) =>
+      value
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean),
+    )
+    .pipe(wordInputSchema.shape.meanings_vi),
+});
+
+export type WordFormValues = z.input<typeof wordFormSchema>;
 
 // Bảo đảm schema luôn khớp kiểu WordInput: nếu kiểu Word đổi mà schema chưa đổi, typecheck báo lỗi.
 type Exact<A, B> = [A] extends [B] ? ([B] extends [A] ? true : false) : false;
 const _schemaMatchesWordInput: Exact<z.output<typeof wordInputSchema>, WordInput> = true;
 void _schemaMatchesWordInput;
+const _formMatchesWordInput: Exact<z.output<typeof wordFormSchema>, WordInput> = true;
+void _formMatchesWordInput;
