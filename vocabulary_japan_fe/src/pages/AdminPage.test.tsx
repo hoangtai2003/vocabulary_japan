@@ -11,7 +11,7 @@ async function openAdmin() {
   const user = userEvent.setup();
   const utils = renderApp('/quan-tri', { as: SAMPLE_ADMIN_ID });
   await screen.findByRole('heading', { name: 'Quản trị', level: 1 });
-  await screen.findByText('1–20 trong 125 từ');
+  await screen.findByText('1–20 trong 416 từ');
   return { user, ...utils };
 }
 
@@ -33,30 +33,30 @@ describe('AdminPage', () => {
     expect(within(bodyRows()[0]!).getAllByRole('cell')[0]).toHaveTextContent('w001');
 
     await user.click(screen.getByRole('button', { name: 'Sau' }));
-    expect(await screen.findByText('21–40 trong 125 từ')).toBeInTheDocument();
+    expect(await screen.findByText('21–40 trong 416 từ')).toBeInTheDocument();
 
     const idHeader = screen.getByRole('columnheader', { name: /ID/ });
     expect(idHeader).toHaveAttribute('aria-sort', 'ascending');
     await user.click(within(idHeader).getByRole('button'));
     expect(idHeader).toHaveAttribute('aria-sort', 'descending');
     // Đổi sắp xếp thì về trang 1.
-    expect(await screen.findByText('1–20 trong 125 từ')).toBeInTheDocument();
+    expect(await screen.findByText('1–20 trong 416 từ')).toBeInTheDocument();
     await waitFor(() =>
-      expect(within(bodyRows()[0]!).getAllByRole('cell')[0]).toHaveTextContent('w125'),
+      expect(within(bodyRows()[0]!).getAllByRole('cell')[0]).toHaveTextContent('w416'),
     );
   });
 
   it('tìm kiếm và lọc theo cấp độ', async () => {
     const { user } = await openAdmin();
     await user.selectOptions(screen.getByRole('combobox', { name: 'Cấp độ' }), 'N4');
-    expect(await screen.findByText('1–20 trong 26 từ')).toBeInTheDocument();
+    expect(await screen.findByText('1–20 trong 317 từ')).toBeInTheDocument();
 
     await user.type(screen.getByRole('searchbox', { name: 'Tìm từ' }), 'khong co tu nay');
     expect(
       await screen.findByRole('heading', { name: 'Không có từ nào khớp' }),
     ).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Xóa bộ lọc' }));
-    expect(await screen.findByText('1–20 trong 125 từ')).toBeInTheDocument();
+    expect(await screen.findByText('1–20 trong 416 từ')).toBeInTheDocument();
   });
 
   it('thêm từ: lỗi theo trường từ schema, hợp lệ thì lưu và đóng modal', async () => {
@@ -85,7 +85,7 @@ describe('AdminPage', () => {
 
     expect(await screen.findByText('Đã thêm ぺん.')).toBeInTheDocument();
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    expect(await screen.findByText('1–20 trong 126 từ')).toBeInTheDocument();
+    expect(await screen.findByText('1–20 trong 417 từ')).toBeInTheDocument();
   });
 
   it('sửa từ mở modal điền sẵn dữ liệu', async () => {
@@ -105,7 +105,7 @@ describe('AdminPage', () => {
     await user.click(within(bodyRows()[0]!).getByRole('button', { name: /^Xóa / }));
     const dialog = screen.getByRole('dialog', { name: 'Xóa từ này?' });
     await user.click(within(dialog).getByRole('button', { name: 'Xóa từ' }));
-    expect(await screen.findByText('1–20 trong 124 từ')).toBeInTheDocument();
+    expect(await screen.findByText('1–20 trong 415 từ')).toBeInTheDocument();
     expect(within(bodyRows()[0]!).getAllByRole('cell')[0]).toHaveTextContent('w002');
   });
 
@@ -137,7 +137,7 @@ describe('AdminPage', () => {
 
     await user.click(within(dialog).getByRole('button', { name: 'Nhập 1 từ' }));
     expect(await screen.findByText('Đã nhập 1 từ, bỏ qua 1 dòng lỗi.')).toBeInTheDocument();
-    expect(await screen.findByText('1–20 trong 126 từ')).toBeInTheDocument();
+    expect(await screen.findByText('1–20 trong 417 từ')).toBeInTheDocument();
   });
 
   it('xuất CSV tải file về', async () => {

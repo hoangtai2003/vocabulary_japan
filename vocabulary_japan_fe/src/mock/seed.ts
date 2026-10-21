@@ -9,7 +9,7 @@ import topicsData from './data/topics.json';
 import wordsData from './data/words.json';
 import type { MockDb, MockReviewLog, MockUserRecord } from './types';
 
-export const DB_VERSION = 1;
+export const DB_VERSION = 4;
 
 /** SHA-256 của "123456", mật khẩu của hai tài khoản mẫu. */
 const SAMPLE_PASSWORD_HASH = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';

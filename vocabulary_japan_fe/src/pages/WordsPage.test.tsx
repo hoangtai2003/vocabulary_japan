@@ -20,7 +20,7 @@ describe('WordsPage', () => {
 
   it('hiện trang đầu 20 từ, bấm "Tải thêm từ" để tải tiếp', async () => {
     const { user } = await openWords();
-    expect(await screen.findByText('125 từ')).toBeInTheDocument();
+    expect(await screen.findByText('416 từ')).toBeInTheDocument();
     expect(rows()).toHaveLength(20);
 
     await user.click(screen.getByRole('button', { name: 'Tải thêm từ' }));
@@ -29,7 +29,7 @@ describe('WordsPage', () => {
 
   it('tìm kiếm không dấu sau 300 ms, ghi lên URL', async () => {
     const { user, router } = await openWords();
-    await screen.findByText('125 từ');
+    await screen.findByText('416 từ');
     await user.type(screen.getByRole('searchbox', { name: 'Tìm từ' }), 'truong hoc');
 
     await waitFor(() =>
@@ -41,13 +41,13 @@ describe('WordsPage', () => {
 
   it('đọc bộ lọc từ URL: cấp độ và chỉ yêu thích', async () => {
     await openWords('/tu-vung?level=N4');
-    expect(await screen.findByText('26 từ')).toBeInTheDocument();
+    expect(await screen.findByText('317 từ')).toBeInTheDocument();
     expect(screen.getByRole('combobox', { name: 'Cấp độ' })).toHaveValue('N4');
   });
 
   it('lọc chỉ yêu thích bằng nút bật/tắt', async () => {
     const { user, router } = await openWords();
-    await screen.findByText('125 từ');
+    await screen.findByText('416 từ');
     await user.click(screen.getByRole('button', { name: 'Chỉ yêu thích' }));
     expect(router.state.location.search).toContain('fav=1');
     expect(await screen.findByText('4 từ')).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe('WordsPage', () => {
 
   it('yêu thích cập nhật ngay (optimistic)', async () => {
     const { user } = await openWords('/tu-vung?level=N4');
-    await screen.findByText('26 từ');
+    await screen.findByText('317 từ');
     const star = within(rows()[0]!).getByRole('button', { name: /^Yêu thích/ });
     expect(star).toHaveAttribute('aria-pressed', 'false');
     await user.click(star);
@@ -72,7 +72,7 @@ describe('WordsPage', () => {
       await screen.findByRole('heading', { name: 'Không có từ nào khớp' }),
     ).toBeInTheDocument();
     await user.click(screen.getAllByRole('button', { name: 'Xóa bộ lọc' })[0]!);
-    expect(await screen.findByText('125 từ')).toBeInTheDocument();
+    expect(await screen.findByText('416 từ')).toBeInTheDocument();
     expect(screen.getByRole('searchbox', { name: 'Tìm từ' })).toHaveValue('');
   });
 
@@ -132,6 +132,6 @@ describe('WordsPage', () => {
     expect(await screen.findByText('Chưa tải được danh sách từ')).toBeInTheDocument();
     fail = false;
     await user.click(screen.getByRole('button', { name: 'Thử lại' }));
-    expect(await screen.findByText('125 từ')).toBeInTheDocument();
+    expect(await screen.findByText('416 từ')).toBeInTheDocument();
   });
 });

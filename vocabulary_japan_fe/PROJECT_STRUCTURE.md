@@ -85,7 +85,7 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── handlers.test.ts   ✅ 2  Test tích hợp: module API → client → MSW node
     │   ├── handlers/          ✅ 2  http (độ trễ, ?mockError=1, lỗi chuẩn), shared, auth, words, reviews,
     │   │                            quiz, stats, me, admin, index
-    │   └── data/              ✅ 2  words.json (99 N5, 26 N4), topics.json (7 chủ đề), words.test.ts
+    │   └── data/              ✅ 2  words.json (99 N5, 317 N4), topics.json (15 chủ đề), words.test.ts
     ├── pages/             ✅ 3–4  Một file mỗi route. Xong: Forbidden, NotFound, More, Login, Register,
     │                                Today, Learn, Review, Quiz, Words, Progress, Profile, Admin
     │                                (đều có test)
