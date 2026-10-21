@@ -202,3 +202,14 @@ Hai điểm sửa sau khi kiểm tra tương phản:
 | Sau khi chọn, đáp án bị khóa; nếu focus nằm trên nút đáp án thì Enter có thể bấm nhầm. | Chọn xong, focus chuyển sang nút "Tiếp". Đáp án dùng `aria-disabled` (vẫn đọc được), bấm không có tác dụng. |
 | Kết quả chỉ là con số.                                                                 | Đóng dấu theo thang điểm trường Nhật: 優 (≥ 90%), 良 (≥ 70%), 可 (≥ 50%). Dưới 50% không đóng dấu.          |
 | Ô chọn cấu hình dễ trông như radio mặc định.                                           | Ô có viền, ô đang chọn viền mực và ô vuông son nhỏ. Radio thật vẫn nằm bên dưới, dùng được phím mũi tên.    |
+
+## 11. Tự phê bình: Từ vựng
+
+| Nhận xét                                                                                      | Xử lý                                                                                                    |
+| --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Cột 720px không đủ cho danh sách + panel chi tiết.                                            | Route có `handle.wide`: AppLayout nới cột lên 1120px chỉ cho trang này.                                  |
+| Panel bên phải ở 768–1023px làm danh sách quá hẹp.                                            | Panel chỉ từ 1024px. Hẹp hơn dùng drawer trượt từ đáy (Modal `placement="sheet"`, giữ focus, Esc đóng).  |
+| Ô chọn bị cắt chữ ("Mọi trạng th", "Mọi chủ ¢") khi cột danh sách hẹp lại vì có panel.        | Lựa chọn mặc định là tên bộ lọc ("Cấp độ", "Chủ đề", "Trạng thái"). Từ 1024px bộ lọc xếp 2 cột × 2 hàng. |
+| "Xóa bộ lọc" không xóa ô tìm kiếm (URL cập nhật trong transition, ô tìm kiếm đọc lại `q` cũ). | Trang giữ nội dung ô tìm kiếm; "Xóa bộ lọc" đặt lại ngay trong event handler.                            |
+| Trạng thái học chỉ là chữ, khó quét nhanh khi lướt danh sách.                                 | Ô vuông nhỏ tô đậm dần: viền rỗng (chưa học) → xám → mực → rêu (đã thuộc).                               |
+| Từ đang mở trong panel khó nhận ra trong danh sách.                                           | Dòng đang mở có vạch son 2px bên trái và nền nhạt, `aria-current`.                                       |

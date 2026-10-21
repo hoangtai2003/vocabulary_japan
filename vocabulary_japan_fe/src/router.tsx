@@ -3,7 +3,7 @@ import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { AdminRoute } from './components/auth/AdminRoute';
 import { GuestRoute } from './components/auth/GuestRoute';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
-import { AppLayout } from './components/layout/AppLayout';
+import { AppLayout, type RouteHandle } from './components/layout/AppLayout';
 import { RouteError } from './components/layout/RouteError';
 import { FullPageLoader } from './components/ui/FullPageLoader';
 
@@ -38,7 +38,11 @@ export const routes: RouteObject[] = [
               { path: 'hoc', lazy: page(() => import('./pages/LearnPage')) },
               { path: 'on-tap', lazy: page(() => import('./pages/ReviewPage')) },
               { path: 'quiz', lazy: page(() => import('./pages/QuizPage')) },
-              { path: 'tu-vung', lazy: page(() => import('./pages/WordsPage')) },
+              {
+                path: 'tu-vung',
+                lazy: page(() => import('./pages/WordsPage')),
+                handle: { wide: true } satisfies RouteHandle,
+              },
               { path: 'tien-do', lazy: page(() => import('./pages/ProgressPage')) },
               { path: 'ho-so', lazy: page(() => import('./pages/ProfilePage')) },
               { path: 'them', lazy: page(() => import('./pages/MorePage')) },

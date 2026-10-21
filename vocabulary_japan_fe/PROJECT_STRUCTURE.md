@@ -47,7 +47,8 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   │                            Spinner, FullPageLoader — không biết gì về API
     │   ├── study/             ✅ 4  FlashCard (+ test), StudySession, GradeButtons, SessionSummary, StudySkeleton
     │   ├── quiz/              ✅ 4  QuizSetup, OptionGroup, QuizQuestion (+ test), QuizResult, QuizSkeleton
-    │   ├── words/                4  WordCard, WordDetail, WordFilters
+    │   ├── words/             ✅ 4  WordCard, WordDetail (panel + nội dung), WordFilters, NoteEditor,
+    │   │                            FavoriteButton, StatusLabel, WordsSkeleton
     │   ├── today/             ✅ 4  DailyProgress, DueCard, TodayWordList, TodaySkeleton
     │   ├── auth/              ✅ 3  AuthGate, ProtectedRoute, GuestRoute (chuyển về ?next=), AdminRoute,
     │   │                            ThemeSync, AuthLayout, FormAlert, SampleAccounts
@@ -65,7 +66,8 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── useDocumentTitle.ts ✅ 3  Tiêu đề tab theo trang
     │   ├── useMediaQuery.ts   ✅ 3
     │   ├── useLogout.ts       ✅ 3  Đăng xuất rồi về /dang-nhap
-    │   └── useLeaveGuard.ts   ✅ 4  Hỏi xác nhận khi rời trang (useBlocker + beforeunload)
+    │   ├── useLeaveGuard.ts   ✅ 4  Hỏi xác nhận khi rời trang (useBlocker + beforeunload)
+    │   └── useWordFilters.ts  ✅ 4  Bộ lọc trang Từ vựng trên URL (?q=&level=&topic=&status=&fav=1&tu=)
     ├── mock/
     │   ├── browser.ts         ✅ 2  setupWorker
     │   ├── server.ts          ✅ 2  setupServer cho test (MSW node)
@@ -79,8 +81,8 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   │                            quiz, stats, me, admin, index
     │   └── data/              ✅ 2  words.json (99 N5, 26 N4), topics.json (7 chủ đề), words.test.ts
     ├── pages/             ✅ 3–4  Một file mỗi route. Xong: Forbidden, NotFound, More, Login, Register,
-    │                                Today, Learn, Review, Quiz (đều có test). Còn placeholder:
-    │                                Words, Progress, Profile, Admin
+    │                                Today, Learn, Review, Quiz, Words (đều có test).
+    │                                Còn placeholder: Progress, Profile, Admin
     ├── stores/
     │   ├── themeStore.ts      ✅ 3  light/dark/system, đồng bộ localStorage và class .dark
     │   ├── toastStore.ts      ✅ 3

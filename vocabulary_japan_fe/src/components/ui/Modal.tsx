@@ -14,6 +14,10 @@ export interface ModalProps {
   size?: 'sm' | 'md' | 'lg';
   /** Không cho đóng bằng Esc hoặc bấm nền (khi đang gửi). */
   dismissible?: boolean;
+  /** center: hộp giữa màn hình (điện thoại: trượt từ đáy). sheet: luôn là drawer trượt từ đáy. */
+  placement?: 'center' | 'sheet';
+  /** Ngôn ngữ của tiêu đề, ví dụ "ja" khi tiêu đề là một từ tiếng Nhật. */
+  titleLang?: string;
 }
 
 const FOCUSABLE =
@@ -34,6 +38,8 @@ export function Modal({
   footer,
   size = 'md',
   dismissible = true,
+  placement = 'center',
+  titleLang,
 }: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -87,7 +93,10 @@ export function Modal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4"
+      className={cn(
+        'fixed inset-0 z-50 flex items-end justify-center p-0',
+        placement === 'center' && 'sm:items-center sm:p-4',
+      )}
       onKeyDown={onKeyDown}
     >
       <div
@@ -104,13 +113,15 @@ export function Modal({
         tabIndex={-1}
         className={cn(
           'relative flex max-h-[90dvh] w-full animate-page-in flex-col border border-rule bg-surface outline-none',
-          'rounded-t-[var(--radius-card)] sm:rounded-[var(--radius-card)]',
+          placement === 'center'
+            ? 'rounded-t-[var(--radius-card)] sm:rounded-[var(--radius-card)]'
+            : 'max-h-[85dvh] rounded-t-[var(--radius-card)] border-b-0',
           sizes[size],
         )}
       >
         <div className="flex items-start justify-between gap-4 border-b border-rule px-5 py-4">
           <div>
-            <h2 id={titleId} className="text-xl">
+            <h2 id={titleId} lang={titleLang} className="text-xl">
               {title}
             </h2>
             {description && (

@@ -7,7 +7,7 @@ import { QuizQuestion } from './QuizQuestion';
 
 const question: QuizQuestionData = {
   id: 'q1',
-  word_id: 'w054',
+  word_id: 'w055',
   prompt: '学校',
   prompt_sub: 'がっこう · gakkou',
   options: [

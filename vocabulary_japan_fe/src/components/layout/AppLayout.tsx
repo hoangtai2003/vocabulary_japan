@@ -1,16 +1,24 @@
-import { Outlet, useLocation, useNavigation } from 'react-router-dom';
+import { Outlet, useLocation, useMatches, useNavigation } from 'react-router-dom';
+import { cn } from '@/utils/cn';
 import { Brand } from './Brand';
 import { BottomNav } from './BottomNav';
 import { Sidebar } from './Sidebar';
 
+/** handle của route: `wide` cho trang cần cột rộng (danh sách + panel chi tiết). */
+export interface RouteHandle {
+  wide?: boolean;
+}
+
 /**
  * Khung trang sau khi đăng nhập: sidebar (≥ 768px) hoặc thanh dưới (điện thoại).
- * Nội dung rộng tối đa 720px; mỗi lần đổi trang thì mờ dần nhẹ (tắt khi giảm chuyển động).
+ * Nội dung rộng tối đa 720px (trang có handle.wide: 1120px); mỗi lần đổi trang thì mờ dần
+ * nhẹ (tắt khi giảm chuyển động).
  */
 export function AppLayout() {
   const location = useLocation();
   const navigation = useNavigation();
   const loadingPage = navigation.state === 'loading';
+  const wide = useMatches().some((match) => (match.handle as RouteHandle | undefined)?.wide);
 
   return (
     <div className="min-h-dvh md:flex">
@@ -42,7 +50,10 @@ export function AppLayout() {
         >
           <div
             key={location.pathname}
-            className="mx-auto max-w-[720px] animate-page-in px-4 pt-6 md:px-8 md:pt-10"
+            className={cn(
+              'mx-auto animate-page-in px-4 pt-6 md:px-8 md:pt-10',
+              wide ? 'max-w-[1120px]' : 'max-w-[720px]',
+            )}
           >
             <Outlet />
           </div>

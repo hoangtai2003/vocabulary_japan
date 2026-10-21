@@ -2,6 +2,7 @@ import { keepPreviousData, useInfiniteQuery, useQuery } from '@tanstack/react-qu
 import { queryKeys } from '@/api/queryKeys';
 import { wordsApi } from '@/api/wordsApi';
 import type { WordsQuery } from '@/types/api';
+import type { WordWithState } from '@/types/word';
 
 export const WORDS_PAGE_SIZE = 20;
 
@@ -36,4 +37,10 @@ export function useTopics() {
     queryFn: ({ signal }) => wordsApi.topics(signal),
     staleTime: Infinity,
   });
+}
+
+/** Chi tiết một từ; dùng bản trong danh sách để hiện ngay trong lúc tải bản mới nhất. */
+export function useWordDetail(wordId: string, fromList: WordWithState | undefined) {
+  const query = useWord(wordId);
+  return { ...query, word: query.data ?? fromList };
 }
