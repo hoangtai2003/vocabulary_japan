@@ -213,3 +213,23 @@ Hai điểm sửa sau khi kiểm tra tương phản:
 | "Xóa bộ lọc" không xóa ô tìm kiếm (URL cập nhật trong transition, ô tìm kiếm đọc lại `q` cũ). | Trang giữ nội dung ô tìm kiếm; "Xóa bộ lọc" đặt lại ngay trong event handler.                            |
 | Trạng thái học chỉ là chữ, khó quét nhanh khi lướt danh sách.                                 | Ô vuông nhỏ tô đậm dần: viền rỗng (chưa học) → xám → mực → rêu (đã thuộc).                               |
 | Từ đang mở trong panel khó nhận ra trong danh sách.                                           | Dòng đang mở có vạch son 2px bên trái và nền nhạt, `aria-current`.                                       |
+
+## 12. Tự phê bình: Tiến độ (theo skill dataviz)
+
+Màu dữ liệu được chọn sau cùng và kiểm bằng `validate_palette.js`, không chọn bằng mắt.
+
+| Vai trò                          | Sáng                                    | Tối                                     | Kết quả validator                                          |
+| -------------------------------- | --------------------------------------- | --------------------------------------- | ---------------------------------------------------------- |
+| Cột "Từ mới" (slot 1)            | son `#C2362B`                           | `#E0574A`                               | Qua cả 5 kiểm tra; CVD ΔE 17.8 (sáng) / 19.5 (tối)         |
+| Cột "Lượt ôn" (slot 2)           | chàm 藍 `#3464A0`                       | `#5890CD`                               | (cùng lượt kiểm với slot 1)                                |
+| Heatmap (ordinal, 4 bậc, 1 tông) | `#EA998C` `#DA6D5F` `#C13D31` `#901F17` | `#96372D` `#C4493C` `#E26C5E` `#F4A296` | Lightness đơn điệu, ΔL ≥ 0.06, bậc nhạt nhất 2.1:1 / 2.4:1 |
+
+| Nhận xét                                                                                                                       | Xử lý                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| Ý đầu tiên là son + mực cho hai series; validator FAIL: mực gần đen bị đọc như xám (chroma 0.01).                              | Đổi sang chàm 藍 (mực xanh truyền thống), tăng chroma trong OKLCH tới mức nhỏ nhất qua kiểm tra (0.11).                      |
+| Rêu không dùng làm series vì đã mang nghĩa trạng thái (đúng / đã thuộc).                                                       | Giữ rêu cho trạng thái; series dùng son + chàm.                                                                              |
+| Bậc nhạt nhất của heatmap ban đầu chỉ 1.5:1 với nền — ô "ít" gần như biến mất.                                                 | Dịch cả thang về phía đậm; bậc nhạt nhất ≥ 2:1.                                                                              |
+| Nhãn trực tiếp ở tuần mới nhất không hiện: Recharts 3 truyền toạ độ qua `viewBox`, và `index` đếm theo cột được vẽ (bỏ cột 0). | Đọc `viewBox`; tính vị trí cột mới nhất trong các cột khác 0. Test kiểm nhãn khớp hàng cuối bảng số liệu.                    |
+| Ô heatmap không phản hồi khi rê chuột.                                                                                         | Ô đang trỏ có viền mực; tooltip hiện số lượt (đậm) rồi ngày.                                                                 |
+| Biểu đồ chỉ đọc được bằng mắt.                                                                                                 | Nút "Xem dạng bảng" (bảng số liệu đầy đủ); heatmap là lưới `role="grid"` có `aria-label` mỗi ô, di chuyển bằng phím mũi tên. |
+| Bốn ô chỉ số dễ thành hàng "KPI tile" kiểu SaaS.                                                                               | Lưới ô kẻ như bảng trong vở (viền `rule`, không bóng); số dùng Be Vietnam Pro, không dùng chữ serif.                         |

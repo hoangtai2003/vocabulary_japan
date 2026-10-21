@@ -49,6 +49,8 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── quiz/              ✅ 4  QuizSetup, OptionGroup, QuizQuestion (+ test), QuizResult, QuizSkeleton
     │   ├── words/             ✅ 4  WordCard, WordDetail (panel + nội dung), WordFilters, NoteEditor,
     │   │                            FavoriteButton, StatusLabel, WordsSkeleton
+    │   ├── progress/          ✅ 4  StatGrid, WeeklyChart (Recharts + bảng), StudyHeatmap (lưới CSS),
+    │   │                            ChartCard, chartColors (màu đã kiểm bằng validator dataviz)
     │   ├── today/             ✅ 4  DailyProgress, DueCard, TodayWordList, TodaySkeleton
     │   ├── auth/              ✅ 3  AuthGate, ProtectedRoute, GuestRoute (chuyển về ?next=), AdminRoute,
     │   │                            ThemeSync, AuthLayout, FormAlert, SampleAccounts
@@ -81,8 +83,8 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   │                            quiz, stats, me, admin, index
     │   └── data/              ✅ 2  words.json (99 N5, 26 N4), topics.json (7 chủ đề), words.test.ts
     ├── pages/             ✅ 3–4  Một file mỗi route. Xong: Forbidden, NotFound, More, Login, Register,
-    │                                Today, Learn, Review, Quiz, Words (đều có test).
-    │                                Còn placeholder: Progress, Profile, Admin
+    │                                Today, Learn, Review, Quiz, Words, Progress
+    │                                (đều có test). Còn placeholder: Profile, Admin
     ├── stores/
     │   ├── themeStore.ts      ✅ 3  light/dark/system, đồng bộ localStorage và class .dark
     │   ├── toastStore.ts      ✅ 3
@@ -110,7 +112,8 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── wordCsv.ts         ✅ 2  CSV từ vựng: cột, file mẫu, đọc/ghi
     │   ├── download.ts        ✅ 2  Tải Blob/JSON về máy
     │   ├── cn.ts              ✅ 3  Nối className
-    │   ├── format.ts          ✅ 4  Định dạng ngày tiếng Việt
+    │   ├── format.ts (+ test) ✅ 4  Định dạng ngày tiếng Việt, ngày ôn tiếp theo
+    │   ├── heatmap.ts (+ test) ✅ 4  Lưới heatmap 27 tuần × 7 ngày, chia mức theo số lượt
     │   ├── formErrors.ts      ✅ 4  Gắn lỗi API (fields) vào react-hook-form
     │   └── safeNext.ts (+ test) ✅ 3  Chỉ chấp nhận ?next= nội bộ
     └── test/
