@@ -1,6 +1,15 @@
 # Caddy cho Sổ luyện chữ: một domain phục vụ cả frontend (file tĩnh) và API (/api → container api).
 # SITE_ADDRESS lấy từ .env: là tên miền thì Caddy tự lấy và gia hạn chứng chỉ Let's Encrypt,
-# chuyển HTTP → HTTPS; là ":80" thì chạy HTTP thường (chỉ để thử bằng IP).
+# chuyển HTTP → HTTPS; là ":80" thì chạy HTTP thường (chạy sau proxy khác, hoặc thử bằng IP).
+
+{
+	servers {
+		# Khi đứng sau một Caddy/Nginx khác trên cùng server (compose.behind-proxy.yml), giữ
+		# X-Forwarded-For mà proxy đó gửi, để API thấy IP thật của người dùng thay vì IP của proxy.
+		# Chỉ tin địa chỉ nội bộ: client ngoài Internet không giả được header này.
+		trusted_proxies static private_ranges
+	}
+}
 
 (security_headers) {
 	header {

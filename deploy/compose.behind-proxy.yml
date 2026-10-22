@@ -1,0 +1,18 @@
+# Dùng khi server đã có một reverse proxy khác (Caddy/Nginx của dự án khác) giữ cổng 80/443.
+# Bật bằng dòng sau trong .env (không cần gõ -f mỗi lần):
+#   COMPOSE_FILE=docker-compose.yml:deploy/compose.behind-proxy.yml
+# Khi đó web không mở cổng ra ngoài mà tham gia mạng web-proxy dùng chung; proxy kia chuyển
+# tên miền của app tới jpvocab-web:80 và lo HTTPS. Hướng dẫn: DEPLOY.md, mục "Server đã có proxy".
+
+services:
+  web:
+    ports: !reset []
+    networks:
+      default:
+      web-proxy:
+        aliases:
+          - jpvocab-web
+
+networks:
+  web-proxy:
+    external: true

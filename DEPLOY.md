@@ -19,6 +19,9 @@ Chỉ container `web` mở cổng ra ngoài. `api` và `db` chỉ nằm trong m�
 | `vocabulary_japan_fe/Dockerfile` | image web: build frontend, phục vụ bằng Caddy |
 | `deploy/Caddyfile` | Caddy: HTTPS, file tĩnh, SPA fallback, proxy `/api`, nén, cache |
 | `deploy/deploy.sh` | deploy bản mới |
+| `deploy/compose.behind-proxy.yml` | chạy sau proxy của dự án khác đang giữ cổng 80/443 (mục "Server đã có proxy") |
+
+> **Server đã có dự án khác giữ cổng 80/443** (`docker ps` thấy một container mở `0.0.0.0:80->80`)? Làm mục 1, 2 như bình thường, rồi làm theo mục "Server đã có proxy" ở cuối thay cho mục 3, 4.
 
 Server: Ubuntu 22.04 hoặc 24.04, **nên có từ 2 GB RAM** (bước build frontend tốn RAM; với 1 GB, xem mục "Khắc phục sự cố"). Thay `ten-mien-cua-ban.vn` bằng tên miền thật. Các lệnh chạy bằng tài khoản có `sudo`.
 
@@ -152,6 +155,69 @@ Script dừng ngay nếu một bước lỗi:
 1. Kéo code mới (`git pull --ff-only`).
 2. `docker compose up -d --build --wait`: build image mới, chạy migration, thay container. Container cũ vẫn chạy trong lúc build, nên trang chỉ gián đoạn vài giây khi đổi container.
 3. Xóa image cũ không còn dùng.
+
+## Server đã có proxy
+
+Khi server đã có một Caddy (hoặc Nginx) của dự án khác giữ cổng 80/443, jpvocab không mở cổng nữa. Proxy có sẵn nhận cả hai tên miền, lo HTTPS, và chuyển tên miền của jpvocab sang container `web` của jpvocab qua một mạng Docker dùng chung tên `web-proxy`:
+
+```
+Internet → Caddy của dự án khác (:80/:443, HTTPS cho mọi tên miền)
+             ├─ shop.vn        → dự án khác (như cũ)
+             └─ tu-vung.shop.vn → jpvocab-web:80 (mạng web-proxy) → api → db
+```
+
+Mỗi app cần một tên miền riêng, ví dụ một tên miền phụ `tu-vung.ten-mien-cua-ban.vn`. Tạo bản ghi **A** cho nó trỏ về IP server.
+
+**1. Tạo mạng dùng chung** (một lần):
+
+```bash
+docker network create web-proxy
+```
+
+**2. `.env` của jpvocab** (làm như mục 3, nhưng `SITE_ADDRESS` là `:80` vì HTTPS do proxy kia lo):
+
+```
+SITE_ADDRESS=:80
+PUBLIC_URL=https://tu-vung.ten-mien-cua-ban.vn
+POSTGRES_PASSWORD=<openssl rand -hex 24>
+APP_TIMEZONE=Asia/Ho_Chi_Minh
+COMPOSE_FILE=docker-compose.yml:deploy/compose.behind-proxy.yml
+```
+
+Dòng `COMPOSE_FILE` để mọi lệnh `docker compose` (kể cả `deploy.sh`) tự dùng thêm `compose.behind-proxy.yml`, không cần gõ `-f`.
+
+**3. Chạy jpvocab** (như mục 4, 5):
+
+```bash
+docker compose up -d --build --wait
+docker compose ps        # web không còn cột cổng 0.0.0.0:80
+```
+
+**4. Nối proxy của dự án kia vào mạng `web-proxy`** và thêm tên miền của jpvocab. Trong `docker-compose.yml` của dự án kia, ở service chạy Caddy (giữ nguyên các network nó đang có, nếu có):
+
+```yaml
+services:
+  frontend:            # service đang giữ cổng 80/443
+    networks:
+      - default
+      - web-proxy
+
+networks:
+  web-proxy:
+    external: true
+```
+
+Thêm vào Caddyfile của dự án kia:
+
+```
+tu-vung.ten-mien-cua-ban.vn {
+	reverse_proxy jpvocab-web:80
+}
+```
+
+Rồi áp dụng trong thư mục dự án kia: `docker compose up -d` (thêm `--build` nếu Caddyfile được chép vào image chứ không gắn bằng volume). Caddy tự xin chứng chỉ cho tên miền mới; xem bằng `docker compose logs -f <service>`.
+
+Proxy kia là **Nginx**: thêm một khối `server` cho tên miền mới với `proxy_pass http://jpvocab-web:80;` và các header `Host`, `X-Forwarded-For`, `X-Forwarded-Proto`, rồi lấy chứng chỉ theo cách dự án đó đang làm.
 
 ## Khắc phục sự cố
 
