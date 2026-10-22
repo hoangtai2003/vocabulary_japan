@@ -6,6 +6,9 @@ import { pinoHttp } from 'pino-http';
 import { env } from './config/env.ts';
 import { logger } from './logger.ts';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
+import { originCheck } from './middleware/originCheck.ts';
+import { createRateLimiters } from './middleware/rateLimit.ts';
+import { createAuthRouter } from './modules/auth/routes.ts';
 import { healthRouter } from './modules/health/routes.ts';
 
 /**
@@ -21,11 +24,16 @@ export function createApp(): Express {
   app.use(helmet());
   app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
   app.use(pinoHttp({ logger, quietReqLogger: true }));
+  // Giới hạn body JSON 1 MB (prompt mục 6.3).
   app.use(express.json({ limit: '1mb' }));
   app.use(cookieParser());
 
+  const limiters = createRateLimiters();
   const apiRouter = express.Router();
+  apiRouter.use(limiters.api);
+  apiRouter.use(originCheck);
   apiRouter.use(healthRouter);
+  apiRouter.use(createAuthRouter(limiters.auth));
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config';
+import { TEST_DATABASE_URL } from './tests/helpers/testDbUrl.ts';
 
 export default defineConfig({
   test: {
@@ -8,12 +9,14 @@ export default defineConfig({
     env: {
       NODE_ENV: 'test',
       // Test chỉ dùng DB test (cổng 5433), không bao giờ đụng DB dev.
-      DATABASE_URL:
-        process.env.DATABASE_URL_TEST ?? 'postgresql://jpvocab:jpvocab@localhost:5433/jpvocab_test',
+      DATABASE_URL: TEST_DATABASE_URL,
       LOG_LEVEL: 'silent',
       CORS_ORIGIN: 'http://localhost:5173',
     },
     // Máy dev ít RAM: giới hạn số worker giống frontend.
     maxWorkers: 2,
+    // Các file test API dùng chung một DB test và xóa dữ liệu giữa các test: chạy lần lượt từng file.
+    fileParallelism: false,
+    globalSetup: ['tests/helpers/globalSetup.ts'],
   },
 });
