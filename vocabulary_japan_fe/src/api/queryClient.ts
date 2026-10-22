@@ -21,3 +21,17 @@ export function createQueryClient(): QueryClient {
     },
   });
 }
+
+/**
+ * Xóa dữ liệu người dùng phía client khi đăng xuất, phiên hết hạn hoặc xóa tài khoản.
+ *
+ * Không dùng queryClient.clear(): lệnh đó xóa hẳn query auth/me, trong khi useQuery của
+ * AuthProvider vẫn bám vào query cũ, nên setQueryData sau đó tạo query mới mà AuthProvider không
+ * thấy — giao diện vẫn giữ người dùng cũ. Ở đây: hủy request đang chạy, xóa mọi query khác,
+ * giữ query auth/me và đặt nó về null để AuthProvider chuyển sang "chưa đăng nhập".
+ */
+export function clearUserData(queryClient: QueryClient): void {
+  void queryClient.cancelQueries();
+  queryClient.removeQueries({ predicate: (query) => query.queryKey[0] !== 'auth' });
+  queryClient.setQueryData(['auth', 'me'], null);
+}

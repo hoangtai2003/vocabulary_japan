@@ -1,11 +1,12 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useCallback, useEffect, useMemo, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { authApi } from '@/api/authApi';
 import { isApiError, setUnauthorizedHandler } from '@/api/client';
 import { queryKeys } from '@/api/queryKeys';
 import type { LoginRequest, RegisterRequest } from '@/types/api';
 import type { User } from '@/types/user';
 import { AuthContext, type AuthContextValue, type AuthStatus } from './authContext';
+import { clearUserData } from '@/api/queryClient';
 
 /** /auth/me trả 401 nghĩa là chưa đăng nhập: không phải lỗi, trả về null. */
 async function fetchCurrentUser(signal: AbortSignal): Promise<User | null> {
@@ -34,16 +35,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // thấy user = null sẽ chuyển về /dang-nhap?next=<trang hiện tại>.
   useEffect(
     () =>
-      setUnauthorizedHandler(() => {
-        queryClient.removeQueries({ predicate: (query) => query.queryKey[0] !== 'auth' });
-        queryClient.setQueryData<User | null>(queryKeys.auth.me, null);
-      }),
+      setUnauthorizedHandler(() => clearUserData(queryClient)),
     [queryClient],
   );
+
+  const [signedOutOnPurpose, setSignedOutOnPurpose] = useState(false);
+  const markSignedOutOnPurpose = useCallback(() => setSignedOutOnPurpose(true), []);
 
   const login = useCallback(
     async (body: LoginRequest) => {
       const { user } = await authApi.login(body);
+      setSignedOutOnPurpose(false);
       queryClient.setQueryData<User | null>(queryKeys.auth.me, user);
       return user;
     },
@@ -53,6 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = useCallback(
     async (body: RegisterRequest) => {
       const { user } = await authApi.register(body);
+      setSignedOutOnPurpose(false);
       queryClient.setQueryData<User | null>(queryKeys.auth.me, user);
       return user;
     },
@@ -63,9 +66,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await authApi.logout();
     } finally {
-      // Kể cả khi gọi API lỗi, phía client vẫn đăng xuất.
-      queryClient.clear();
-      queryClient.setQueryData<User | null>(queryKeys.auth.me, null);
+      // Kể cả khi gọi API lỗi, phía client vẫn đăng xuất. Đánh dấu trước khi xóa dữ liệu, để
+      // ProtectedRoute thấy cả hai thay đổi trong cùng một lần render.
+      setSignedOutOnPurpose(true);
+      clearUserData(queryClient);
     }
   }, [queryClient]);
 
@@ -85,8 +89,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       login,
       register,
       logout,
+      signedOutOnPurpose,
+      markSignedOutOnPurpose,
     }),
-    [user, status, error, refetch, login, register, logout],
+    [user, status, error, refetch, login, register, logout, signedOutOnPurpose, markSignedOutOnPurpose],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

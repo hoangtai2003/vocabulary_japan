@@ -18,6 +18,14 @@ export interface AuthContextValue {
   register: (body: RegisterRequest) => Promise<User>;
   /** Gọi /auth/logout và xóa toàn bộ cache. Điều hướng về /dang-nhap do nơi gọi đảm nhận. */
   logout: () => Promise<void>;
+  /**
+   * true sau khi người dùng chủ động đăng xuất (hoặc xóa tài khoản): ProtectedRoute về
+   * /dang-nhap không kèm ?next=, để người đăng nhập sau không bị đưa vào trang của người trước.
+   * false khi phiên hết hạn (401) — lúc đó ?next= giúp quay lại đúng trang đang xem.
+   */
+  signedOutOnPurpose: boolean;
+  /** Đánh dấu đăng xuất chủ động từ nơi khác (ví dụ xóa tài khoản). */
+  markSignedOutOnPurpose: () => void;
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null);

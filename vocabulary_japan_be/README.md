@@ -1,0 +1,98 @@
+# Sổ luyện chữ — Backend
+
+REST API cho app học từ vựng tiếng Nhật (JLPT N5–N4). Node.js 24 + Express 5 + TypeScript + PostgreSQL (Prisma 7).
+
+Hợp đồng API (nguồn sự thật cho cả frontend và backend): [`../vocabulary_japan_fe/API_CONTRACT.md`](../vocabulary_japan_fe/API_CONTRACT.md).
+Cấu trúc thư mục và mô tả từng file: [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md).
+
+## Chạy trên máy
+
+Cần Node.js ≥ 22 và Docker.
+
+```bash
+cp .env.example .env          # dùng được ngay cho máy dev
+docker compose up -d          # PostgreSQL dev (cổng 5432) và test (cổng 5433)
+npm install                   # cài gói, tự sinh Prisma Client
+npm run db:migrate            # tạo bảng
+npm run db:seed               # từ vựng + tài khoản mẫu + lịch sử mẫu
+npm run dev                   # http://localhost:4000/api/health → {"ok":true}
+```
+
+## Tài khoản mẫu
+
+Tạo bởi `npm run db:seed` (chỉ khi `NODE_ENV` khác `production`):
+
+| Email | Mật khẩu | Vai trò | Dữ liệu có sẵn |
+|---|---|---|---|
+| `user@example.com` | `123456` | user | 25 từ N5 đã học, 8 từ cần ôn hôm nay, 20/30 ngày gần nhất có học, streak 4 |
+| `admin@example.com` | `123456` | admin | chưa học từ nào |
+
+Lịch sử mẫu tính theo ngày chạy seed. Mỗi lần chạy `npm run db:seed`, lịch sử của `user@example.com` được tạo lại cho đúng hôm nay; tiến độ bạn tự học bằng tài khoản này sẽ mất. Cài đặt (số từ mỗi ngày, cấp độ…) của tài khoản đã có thì giữ nguyên.
+
+## Lệnh
+
+| Lệnh | Việc |
+|---|---|
+| `npm run dev` | chạy API, tự khởi động lại khi sửa code |
+| `npm run build` / `npm start` | build ra `dist/` / chạy bản build |
+| `npm run typecheck` | kiểm tra kiểu TypeScript |
+| `npm test` | toàn bộ test (domain + API trên DB test cổng 5433) |
+| `npm run db:migrate` | tạo migration mới từ `prisma/schema.prisma` và áp dụng (dev) |
+| `npm run db:deploy` | áp dụng migration có sẵn (production) |
+| `npm run db:seed` | thêm từ vựng còn thiếu; ngoài production thêm tài khoản và lịch sử mẫu |
+| `npm run db:reset` | xóa sạch DB dev rồi migrate và seed lại |
+| `npm run create-admin -- --email … --password … [--name …]` | tạo hoặc nâng quyền admin (dùng cho production) |
+
+Test chỉ chạy trên DB test (cổng 5433) và từ chối chạy nếu `DATABASE_URL_TEST` trỏ vào DB khác, vì test xóa sạch dữ liệu giữa các lần chạy.
+
+## Biến môi trường
+
+Xem chú thích đầy đủ trong `.env.example`. Server kiểm tra mọi biến lúc khởi động; sai thì in rõ biến nào sai rồi dừng.
+
+| Biến | Mặc định | Ghi chú |
+|---|---|---|
+| `DATABASE_URL` | (bắt buộc) | PostgreSQL |
+| `DATABASE_URL_TEST` | `…@localhost:5433/jpvocab_test` | chỉ dùng khi chạy test |
+| `PORT` | `4000` | |
+| `HOST` | mọi địa chỉ | production: `127.0.0.1` (chỉ Nginx gọi được) |
+| `CORS_ORIGIN` | (bắt buộc) | origin của frontend, ví dụ `http://localhost:5173`; cũng dùng để kiểm tra Origin chống CSRF |
+| `SESSION_TTL_DAYS` | `30` | thời hạn phiên đăng nhập |
+| `COOKIE_SECURE` | `false` | `true` khi chạy HTTPS; bắt buộc ở production |
+| `COOKIE_SAME_SITE` | `lax` | `none` chỉ khi frontend và API khác domain (cần `COOKIE_SECURE=true`) |
+| `APP_TIMEZONE` | `Asia/Ho_Chi_Minh` | múi giờ tính "hôm nay", tuần, streak |
+| `LOG_LEVEL` | `info` | |
+| `TRUST_PROXY` | `loopback` | chỉ tin header X-Forwarded-* từ proxy trên cùng máy |
+
+## Kết nối với frontend
+
+Frontend ở thư mục bên cạnh (`../vocabulary_japan_fe`) đã có sẵn proxy `/api` → `http://localhost:4000` trong `vite.config.ts`. Trình duyệt thấy frontend và API cùng một origin, nên cookie hoạt động và không cần CORS.
+
+```bash
+# Cửa sổ 1: backend
+npm run dev
+
+# Cửa sổ 2: frontend ở chế độ real
+cd ../vocabulary_japan_fe
+VITE_API_MODE=real npm run dev      # http://localhost:5173
+```
+
+Đăng nhập bằng `user@example.com` / `123456` (ở chế độ real, hộp tài khoản mẫu trên trang đăng nhập không hiện).
+
+Lưu ý:
+- Frontend phải chạy đúng cổng 5173, trùng `CORS_ORIGIN`. Cổng khác thì mọi thao tác lưu bị 403 do kiểm tra Origin. `vite.config.ts` đã bật `strictPort`, nên cổng 5173 bận thì Vite báo lỗi thay vì tự đổi cổng.
+- Chạy frontend ở cổng khác: đặt `CORS_ORIGIN` của backend theo cổng đó, ví dụ `CORS_ORIGIN=http://localhost:5175 npm run dev`.
+
+## Thêm từ vựng
+
+**Trang Quản trị** (đăng nhập bằng tài khoản admin, mở `/quan-tri`): thêm, sửa, xóa từ trực tiếp trong DB. Từ mới tìm được ngay.
+
+**Dữ liệu gốc** (`prisma/seed-data/words.json`, `topics.json`): bộ từ chung với mock của frontend (`../vocabulary_japan_fe/src/mock/data/`). Khi thêm từ vào dữ liệu gốc:
+1. Sửa file trong frontend (`src/mock/data/words.json`), rồi chạy `npm test` ở frontend để kiểm tra dữ liệu hợp lệ.
+2. Chép sang backend: `cp ../vocabulary_japan_fe/src/mock/data/*.json prisma/seed-data/`.
+3. `npm run db:seed`. Seed chỉ **thêm** từ còn thiếu (theo id), không ghi đè từ đã có, nên không mất chỉnh sửa đã làm ở trang Quản trị. Muốn áp dụng lại toàn bộ dữ liệu gốc trên máy dev thì dùng `npm run db:reset`.
+
+## Deploy
+
+Hướng dẫn từng bước lên server Ubuntu (Nginx, systemd, HTTPS, sao lưu): [`DEPLOY.md`](DEPLOY.md). File cấu hình nằm trong `deploy/`.
+
+Deploy bản mới sau lần cài đầu tiên: `bash deploy/deploy.sh` trên server.

@@ -14,12 +14,11 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
 ├── .env.example               ✅ 1  VITE_API_MODE, VITE_API_URL
 ├── API_CONTRACT.md            ✅ 2  Bản sao mục 4 + phụ lục chi tiết đã chốt, đầu vào cho backend
 ├── DESIGN.md                ✅ 3  Plan thiết kế: token, font, wireframe, tự phê bình
-├── README.md                     5  Cách chạy, tài khoản mẫu, chuyển API thật, reset mock
-├── vercel.json                   5  Rewrite mọi đường dẫn về /index.html
+├── README.md                  ✅ 5  Cách chạy, tài khoản mẫu, chuyển API thật, reset mock, biến môi trường,
+│                                lệnh build và thư mục đầu ra dist/ (deploy theo ../vocabulary_japan_be/DEPLOY.md)
 ├── public/
 │   ├── mockServiceWorker.js   ✅ 1  Worker MSW (sinh bằng `msw init`)
-│   ├── favicon.svg            ✅ 2  Con dấu son 字
-│   └── _redirects                5  Netlify: /* /index.html 200
+│   └── favicon.svg            ✅ 2  Con dấu son 字
 └── src/
     ├── main.tsx               ✅ 2  Điểm vào, khởi động MSW khi VITE_API_MODE=mock rồi mới render
     ├── App.tsx                ✅ 2  QueryClientProvider + AuthProvider; GĐ3 thêm RouterProvider
@@ -118,5 +117,6 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     └── test/
         ├── setup.ts           ✅ 2  jest-dom, vòng đời MSW node, xóa localStorage sau mỗi test
         ├── fixtures.ts        ✅ 2  makeWord cho test
+        ├── logout.test.tsx    ✅ 6  Đăng xuất về /dang-nhap không kèm next; đăng nhập lại vào Hôm nay
         └── renderApp.tsx      ✅ 3  Render cả app (router thật + MSW node + Toaster) cho test
 ```

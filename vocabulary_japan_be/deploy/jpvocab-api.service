@@ -1,0 +1,35 @@
+# systemd service cho API. Cài: sudo cp deploy/jpvocab-api.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now jpvocab-api
+# Log: journalctl -u jpvocab-api -f
+[Unit]
+Description=So luyen chu - API (Node.js)
+After=network-online.target postgresql.service
+Wants=network-online.target postgresql.service
+
+[Service]
+Type=simple
+User=jpvocab
+Group=jpvocab
+WorkingDirectory=/home/jpvocab/app/vocabulary_japan_be
+EnvironmentFile=/etc/jpvocab/api.env
+ExecStart=/usr/bin/node dist/server.js
+# Tự khởi động lại khi lỗi; SIGTERM để server tắt êm (chờ request đang chạy, đóng Prisma).
+Restart=on-failure
+RestartSec=3
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+# Giới hạn quyền: tiến trình chỉ đọc mã nguồn, không ghi được hệ thống file.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

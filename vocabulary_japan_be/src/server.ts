@@ -7,9 +7,10 @@ import { deleteExpiredQuizzes } from './modules/quiz/service.ts';
 
 const app = createApp();
 
-const server = app.listen(env.PORT, () => {
-  logger.info(`API đang chạy ở http://localhost:${env.PORT} (${env.NODE_ENV})`);
-});
+const onListen = () => {
+  logger.info(`API đang chạy ở http://${env.HOST ?? 'localhost'}:${env.PORT} (${env.NODE_ENV})`);
+};
+const server = env.HOST ? app.listen(env.PORT, env.HOST, onListen) : app.listen(env.PORT, onListen);
 
 /**
  * Dọn phiên đăng nhập và bài quiz hết hạn lúc khởi động và mỗi 24 giờ (prompt mục 6.1, 3.2).
