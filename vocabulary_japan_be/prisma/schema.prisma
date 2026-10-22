@@ -1,0 +1,172 @@
+// Schema theo prompt backend, mục 4. Bảng và cột trong PostgreSQL dùng snake_case (@@map/@map)
+// để truy vấn SQL thô (thống kê GROUP BY local_date) dễ đọc; model và field trong code là camelCase.
+// THÊM: mọi thời điểm dùng timestamptz (@db.Timestamptz) thay vì timestamp không múi giờ mặc định
+// của Prisma, để SQL thô đổi sang APP_TIMEZONE (AT TIME ZONE) đúng chiều, không hiểu nhầm UTC.
+// Những chỗ thêm so với bản gốc đều có chú thích "THÊM:" kèm lý do.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  user
+  admin
+}
+
+enum JlptLevel {
+  N5
+  N4
+  N3
+}
+
+enum WordStatus {
+  new
+  learning
+  review
+  mastered
+}
+
+enum Theme {
+  light
+  dark
+  system
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique // lưu dạng chữ thường
+  passwordHash  String         @map("password_hash")
+  displayName   String         @map("display_name")
+  role          Role           @default(user)
+  dailyGoal     Int            @default(10) @map("daily_goal") // 5 | 10 | 20, kiểm tra bằng zod
+  level         JlptLevel      @default(N5)
+  theme         Theme          @default(system)
+  createdAt     DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  sessions      Session[]
+  userWords     UserWord[]
+  reviewLogs    ReviewLog[]
+  dailyNewWords DailyNewWord[]
+  quizSessions  QuizSession[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id // SHA-256 (hex) của token ngẫu nhiên 32 byte; token gốc chỉ nằm trong cookie
+  userId    String   @map("user_id")
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  // THÊM: job dọn session hết hạn (khởi động + mỗi 24 giờ) lọc theo expires_at.
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+model Topic {
+  id     String @id // giữ đúng id của dữ liệu frontend (t01, t02, ...) để hai bên dùng chung một bộ
+  nameVi String @map("name_vi")
+  words  Word[]
+
+  @@map("topics")
+}
+
+model Word {
+  id            String      @id @default(uuid()) // từ seed giữ id frontend (w001...); từ admin tạo mới dùng uuid
+  kanji         String?
+  kana          String
+  romaji        String
+  meaningsVi    String[]    @map("meanings_vi")
+  type          String // giá trị theo WordType trong hợp đồng
+  level         JlptLevel
+  topicId       String      @map("topic_id")
+  exampleJp     String      @map("example_jp")
+  exampleKana   String      @map("example_kana")
+  exampleRomaji String      @map("example_romaji")
+  exampleVi     String      @map("example_vi")
+  searchText    String      @map("search_text") // kanji, kana, romaji, nghĩa đã bỏ dấu, viết thường (mục 3.2)
+  createdAt     DateTime    @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt     DateTime    @updatedAt @map("updated_at") @db.Timestamptz(3)
+  topic         Topic       @relation(fields: [topicId], references: [id])
+  userWords     UserWord[]
+  reviewLogs    ReviewLog[]
+
+  @@unique([kana, kanji, level])
+  @@index([level, topicId])
+  @@map("words")
+}
+
+model UserWord {
+  userId         String     @map("user_id")
+  wordId         String     @map("word_id")
+  isFavorite     Boolean    @default(false) @map("is_favorite")
+  note           String     @default("")
+  status         WordStatus @default(new)
+  ease           Float      @default(2.5)
+  intervalDays   Int        @default(0) @map("interval_days")
+  repetitions    Int        @default(0)
+  dueAt          DateTime?  @map("due_at") @db.Timestamptz(3)
+  lastReviewedAt DateTime?  @map("last_reviewed_at") @db.Timestamptz(3)
+  firstLearnedAt DateTime?  @map("first_learned_at") @db.Timestamptz(3) // lần chấm đầu tiên, dùng cho thống kê từ mới
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  word           Word       @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  @@id([userId, wordId])
+  @@index([userId, dueAt])
+  // THÊM: admin xóa một từ thì xóa cascade theo word_id; khóa chính (user_id, word_id) không
+  // dùng được cho điều kiện chỉ có word_id, thiếu index này PostgreSQL phải quét cả bảng.
+  @@index([wordId])
+  @@map("user_words")
+}
+
+model ReviewLog {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  wordId     String   @map("word_id")
+  quality    Int
+  isNew      Boolean  @map("is_new") // true nếu đây là lần chấm đầu tiên
+  reviewedAt DateTime @default(now()) @map("reviewed_at") @db.Timestamptz(3)
+  localDate  String   @map("local_date") // YYYY-MM-DD theo APP_TIMEZONE
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  word       Word     @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  @@index([userId, localDate])
+  // THÊM: cùng lý do như user_words: xóa cascade theo word_id.
+  @@index([wordId])
+  @@map("review_logs")
+}
+
+model DailyNewWord {
+  userId    String   @map("user_id")
+  localDate String   @map("local_date")
+  wordIds   String[] @map("word_ids")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, localDate])
+  @@map("daily_new_words")
+}
+
+model QuizSession {
+  id          String    @id @default(uuid())
+  userId      String    @map("user_id")
+  mode        String
+  level       JlptLevel
+  questions   Json // câu hỏi kèm đáp án đúng
+  submittedAt DateTime? @map("submitted_at") @db.Timestamptz(3)
+  expiresAt   DateTime  @map("expires_at") @db.Timestamptz(3)
+  // THÊM: thời điểm tạo, để log/điều tra và sắp xếp; không lộ ra API.
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // THÊM: tìm quiz theo người dùng khi nộp bài, và dọn quiz hết hạn (2 giờ) theo expires_at.
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("quiz_sessions")
+}

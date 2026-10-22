@@ -4,28 +4,34 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 
 ```
 .
-├── package.json               ✅ 1  Phiên bản cố định; script dev/build/start/typecheck/test (db:*, create-admin thêm ở GĐ 2, 5)
-├── tsconfig.json              ✅ 1  TS strict, NodeNext, import ghi đuôi .ts (tự đổi sang .js khi build)
+├── package.json               ✅ 2  Phiên bản cố định; dev/build/start/typecheck/test, db:generate/migrate/deploy/seed/reset,
+│                                   create-admin, postinstall (prisma generate)
+├── tsconfig.json              ✅ 2  TS strict, NodeNext, import ghi đuôi .ts (tự đổi sang .js khi build); typecheck cả prisma/
 ├── tsconfig.build.json        ✅ 1  Chỉ build src/ ra dist/
 ├── vitest.config.ts           ✅ 1  Môi trường node, biến env cho test
 ├── docker-compose.yml         ✅ 1  PostgreSQL 17: dev cổng 5432 (có volume), test cổng 5433 (tmpfs)
 ├── .env.example               ✅ 1  Mọi biến môi trường, có chú thích
-├── .gitignore                 ✅ 1
+├── prisma.config.ts           ✅ 2  Cấu hình Prisma 7: schema, migrations, lệnh seed, DATABASE_URL (nạp .env bằng Node)
+├── .gitignore                 ✅ 2  + src/generated
 ├── README.md                     6  Cách chạy, biến môi trường, tài khoản mẫu, kết nối frontend, deploy
 ├── DEPLOY.md                     6  Hướng dẫn từng bước lên Ubuntu (Nginx, systemd, HTTPS, sao lưu)
 ├── deploy/                       6  jpvocab-api.service, nginx-jpvocab.conf, deploy.sh, backup.sh
 ├── prisma/
-│   ├── schema.prisma             2  Schema theo prompt mục 4 (@@map snake_case)
-│   ├── migrations/               2  prisma migrate
-│   ├── seed.ts                   2  Upsert chủ đề + từ; tài khoản và lịch sử mẫu khi NODE_ENV ≠ production
-│   └── seed-data/                2  words.json, topics.json chép từ frontend (src/mock/data/)
+│   ├── schema.prisma          ✅ 2  Schema theo prompt mục 4; bảng/cột snake_case; timestamptz; 5 index thêm (có lý do)
+│   ├── migrations/            ✅ 2  …_init
+│   ├── seed.ts                ✅ 2  Chủ đề + từ (chỉ thêm cái thiếu); khi ≠ production: 2 tài khoản mẫu + lịch sử mẫu
+│   │                                tính lại theo hôm nay (mô phỏng bằng SRS, giống mock frontend)
+│   └── seed-data/             ✅ 2  words.json (416 từ), topics.json (15 chủ đề) chép từ frontend
 ├── src/
 │   ├── app.ts                 ✅ 1  Tạo Express app: helmet, CORS, pino-http, JSON 1 MB, cookie, router /api, 404, error handler
-│   ├── server.ts              ✅ 1  listen PORT, tắt êm khi SIGINT/SIGTERM
+│   ├── server.ts              ✅ 2  listen PORT, tắt êm khi SIGINT/SIGTERM (đóng kết nối Prisma)
+│   ├── scripts/create-admin.ts ✅ 2  npm run create-admin -- --email … --password … [--name …]
 │   ├── logger.ts              ✅ 1  pino; ẩn cookie, mật khẩu, token khỏi log
 │   ├── config/env.ts          ✅ 1  Đọc .env (process.loadEnvFile), validate bằng zod, sai thì dừng ngay
-│   ├── db/prisma.ts              2  Một PrismaClient dùng chung
-│   ├── domain/                   3  srs, streak, quiz, dates (theo APP_TIMEZONE), normalize — hàm thuần chép từ frontend
+│   ├── db/prisma.ts           ✅ 2  Một PrismaClient dùng chung (driver adapter @prisma/adapter-pg)
+│   ├── generated/prisma/      ✅ 2  Prisma Client sinh tự động (prisma generate), không commit
+│   ├── domain/                2–3  Hàm thuần chép từ frontend, tính theo APP_TIMEZONE. GĐ2 (seed cần): dates, srs,
+│   │                                normalize (+ buildSearchText), random. GĐ3: streak, quiz, chọn từ mới trong ngày
 │   ├── middleware/
 │   │   ├── errorHandler.ts    ✅ 1  404 JSON + error handler duy nhất (ApiError, ZodError, body hỏng/quá lớn, 500)
 │   │   ├── requireAuth.ts        4  Đọc cookie sid, tìm session còn hạn, gắn req.user
@@ -45,10 +51,11 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   └── utils/
 │       ├── ApiError.ts        ✅ 1  ApiError(status, code, message, fields?) + hàm tạo nhanh
 │       ├── zodFields.ts       ✅ 1  Lỗi zod → fields { tên_trường: thông_báo }
+│       ├── password.ts        ✅ 2  argon2id hash/verify, chuẩn hóa email, giới hạn 6–128 ký tự
 │       └── pagination.ts         5
 └── tests/
     ├── api/app.test.ts        ✅ 1  health, 404 JSON, body hỏng/quá lớn, CORS, helmet
     ├── api/                      4–6 auth, phân quyền, cách ly dữ liệu, today, reviews, quiz, hợp đồng
-    ├── domain/                   3  Test chép từ frontend + múi giờ quanh nửa đêm
+    ├── domain/                ✅ 2  srs (chép từ frontend), dates (nửa đêm, giờ mùa hè), normalize; GĐ3: streak, quiz
     └── helpers/                  4  Tạo app + DB test, reset giữa các test, đăng nhập nhanh
 ```

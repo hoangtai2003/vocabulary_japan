@@ -1,0 +1,62 @@
+[
+  {
+    "id": "t01",
+    "name_vi": "Gia đình"
+  },
+  {
+    "id": "t02",
+    "name_vi": "Thời gian"
+  },
+  {
+    "id": "t03",
+    "name_vi": "Đồ ăn và đồ uống"
+  },
+  {
+    "id": "t04",
+    "name_vi": "Trường học"
+  },
+  {
+    "id": "t05",
+    "name_vi": "Đi lại và nơi chốn"
+  },
+  {
+    "id": "t06",
+    "name_vi": "Động từ thường ngày"
+  },
+  {
+    "id": "t07",
+    "name_vi": "Đồ vật quanh ta"
+  },
+  {
+    "id": "t08",
+    "name_vi": "Công việc và công ty"
+  },
+  {
+    "id": "t09",
+    "name_vi": "Sức khỏe và cơ thể"
+  },
+  {
+    "id": "t10",
+    "name_vi": "Thời tiết và thiên nhiên"
+  },
+  {
+    "id": "t11",
+    "name_vi": "Cảm xúc và tính cách"
+  },
+  {
+    "id": "t12",
+    "name_vi": "Mua sắm và tiền bạc"
+  },
+  {
+    "id": "t13",
+    "name_vi": "Nhà cửa và sinh hoạt"
+  },
+  {
+    "id": "t14",
+    "name_vi": "Sở thích và giao tiếp"
+  },
+  {
+    "id": "t15",
+    "name_vi": "Xã hội và tin tức"
+  }
+]

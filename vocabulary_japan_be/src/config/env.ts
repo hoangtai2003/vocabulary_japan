@@ -13,7 +13,7 @@ const envSchema = z
   .object({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     PORT: z.coerce.number().int().min(1).max(65535).default(4000),
-    DATABASE_URL: z.string().url().optional(),
+    DATABASE_URL: z.string().url({ error: 'Phải là URL PostgreSQL, ví dụ postgresql://user:pass@localhost:5432/db' }),
     CORS_ORIGIN: z.string().url({ error: 'Phải là URL, ví dụ http://localhost:5173' }),
     SESSION_TTL_DAYS: z.coerce.number().int().min(1).max(365).default(30),
     COOKIE_SECURE: booleanString.default(false),

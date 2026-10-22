@@ -1,5 +1,6 @@
 import { createApp } from './app.ts';
 import { env } from './config/env.ts';
+import { prisma } from './db/prisma.ts';
 import { logger } from './logger.ts';
 
 const app = createApp();
@@ -15,11 +16,13 @@ const server = app.listen(env.PORT, () => {
 function shutdown(signal: string) {
   logger.info(`Nhận ${signal}, đang tắt server…`);
   server.close((error) => {
-    if (error) {
-      logger.error({ err: error }, 'Lỗi khi tắt server');
-      process.exit(1);
-    }
-    process.exit(0);
+    void prisma.$disconnect().finally(() => {
+      if (error) {
+        logger.error({ err: error }, 'Lỗi khi tắt server');
+        process.exit(1);
+      }
+      process.exit(0);
+    });
   });
   setTimeout(() => {
     logger.warn('Tắt server quá lâu, thoát cưỡng bức');

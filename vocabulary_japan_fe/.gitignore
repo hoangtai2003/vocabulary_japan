@@ -6,3 +6,8 @@ coverage
 .env.*
 !.env.example
 .vite
+
+# Test files (không đưa lên git)
+*.test.ts
+*.test.tsx
+src/test/
