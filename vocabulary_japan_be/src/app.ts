@@ -9,6 +9,7 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
 import { originCheck } from './middleware/originCheck.ts';
 import { createRateLimiters } from './middleware/rateLimit.ts';
 import { createAuthRouter } from './modules/auth/routes.ts';
+import { wordsRouter } from './modules/words/routes.ts';
 import { healthRouter } from './modules/health/routes.ts';
 
 /**
@@ -34,6 +35,7 @@ export function createApp(): Express {
   apiRouter.use(originCheck);
   apiRouter.use(healthRouter);
   apiRouter.use(createAuthRouter(limiters.auth));
+  apiRouter.use(wordsRouter);
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);

@@ -144,10 +144,14 @@ model ReviewLog {
 }
 
 model DailyNewWord {
-  userId    String   @map("user_id")
-  localDate String   @map("local_date")
-  wordIds   String[] @map("word_ids")
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String    @map("user_id")
+  localDate String    @map("local_date")
+  wordIds   String[]  @map("word_ids")
+  // THÊM: mục tiêu và cấp độ đã dùng khi chốt danh sách. Người dùng đổi một trong hai giữa ngày
+  // thì danh sách được tính lại (giữ các từ đã học hôm nay), đúng API_CONTRACT.md phụ lục C.
+  goal      Int
+  level     JlptLevel
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, localDate])
   @@map("daily_new_words")

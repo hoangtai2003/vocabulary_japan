@@ -9,37 +9,14 @@
  *   (src/mock/seed.ts): ~25 từ N5 đã học, 20/30 ngày có học, streak hiện tại 4. Lịch sử tính
  *   tương đối theo ngày chạy seed, nên mỗi lần chạy sẽ xóa và tạo lại lịch sử của riêng tài khoản này.
  */
-import { readFileSync } from 'node:fs';
 import { env } from '../src/config/env.ts';
 import { addDays, addMinutes, endOfDay, startOfDay, toDateKey } from '../src/domain/dates.ts';
-import { buildSearchText } from '../src/domain/normalize.ts';
 import { createRng, type Rng } from '../src/domain/random.ts';
 import { applyGrade, DEFAULT_SRS_STATE, type Quality, type SrsState } from '../src/domain/srs.ts';
 import { prisma } from '../src/db/prisma.ts';
-import type { JlptLevel } from '../src/generated/prisma/client.ts';
+import type { Word } from '../src/domain/types.ts';
 import { hashPassword } from '../src/utils/password.ts';
-
-interface SeedTopic {
-  id: string;
-  name_vi: string;
-}
-
-interface SeedWord {
-  id: string;
-  kanji: string | null;
-  kana: string;
-  romaji: string;
-  meanings_vi: string[];
-  type: string;
-  level: JlptLevel;
-  topic_id: string;
-  example_jp: string;
-  example_kana: string;
-  example_romaji: string;
-  example_vi: string;
-}
-
-const readJson = <T>(file: string): T => JSON.parse(readFileSync(new URL(`./seed-data/${file}`, import.meta.url), 'utf8')) as T;
+import { seedVocabulary } from './vocabulary.ts';
 
 const SAMPLE_PASSWORD = '123456';
 const TZ = env.APP_TIMEZONE;
@@ -80,7 +57,7 @@ interface SimLog {
  * đến hạn (quá hạn lâu nhất trước), rồi học 1–2 từ mới theo thứ tự chủ đề; thẻ chấm Quên
  * được chấm lại ngay trong phiên với mức Được, như phiên học thật.
  */
-function simulateHistory(words: SeedWord[], now: Date) {
+function simulateHistory(words: Word[], now: Date) {
   const rng = createRng(20261021);
   const states = new Map<string, SimState>();
   const logs: SimLog[] = [];
@@ -136,37 +113,13 @@ function simulateHistory(words: SeedWord[], now: Date) {
 
 // ---------- Các bước seed ----------
 
-async function seedVocabulary() {
-  const topics = readJson<SeedTopic[]>('topics.json');
-  const words = readJson<SeedWord[]>('words.json');
-
-  const topicResult = await prisma.topic.createMany({
-    data: topics.map((t) => ({ id: t.id, nameVi: t.name_vi })),
-    skipDuplicates: true,
-  });
-  const wordResult = await prisma.word.createMany({
-    data: words.map((w) => ({
-      id: w.id,
-      kanji: w.kanji,
-      kana: w.kana,
-      romaji: w.romaji,
-      meaningsVi: w.meanings_vi,
-      type: w.type,
-      level: w.level,
-      topicId: w.topic_id,
-      exampleJp: w.example_jp,
-      exampleKana: w.example_kana,
-      exampleRomaji: w.example_romaji,
-      exampleVi: w.example_vi,
-      searchText: buildSearchText(w),
-    })),
-    skipDuplicates: true,
-  });
-  console.log(`Chủ đề: thêm ${topicResult.count}/${topics.length}. Từ vựng: thêm ${wordResult.count}/${words.length}.`);
+async function seedTopicsAndWords() {
+  const { topics, words, addedTopics, addedWords } = await seedVocabulary(prisma);
+  console.log(`Chủ đề: thêm ${addedTopics}/${topics.length}. Từ vựng: thêm ${addedWords}/${words.length}.`);
   return words;
 }
 
-async function seedSampleAccounts(words: SeedWord[]) {
+async function seedSampleAccounts(words: Word[]) {
   const now = new Date();
   const passwordHash = await hashPassword(SAMPLE_PASSWORD);
 
@@ -243,7 +196,7 @@ async function seedSampleAccounts(words: SeedWord[]) {
 }
 
 async function main() {
-  const words = await seedVocabulary();
+  const words = await seedTopicsAndWords();
   if (env.NODE_ENV === 'production') {
     console.log('NODE_ENV=production: bỏ qua tài khoản và lịch sử mẫu. Tạo admin bằng npm run create-admin.');
     return;
