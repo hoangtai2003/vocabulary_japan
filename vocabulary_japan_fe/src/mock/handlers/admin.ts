@@ -1,10 +1,8 @@
 import { zodFieldErrors } from '@/schemas/fieldErrors';
 import { wordInputSchema } from '@/schemas/word';
-import type { AdminSortField, ImportRowError } from '@/types/api';
+import type { AdminSortField } from '@/types/api';
 import { JLPT_LEVELS, type Word, type WordInput } from '@/types/word';
-import { toDateKey } from '@/utils/dates';
 import { wordMatchesQuery } from '@/utils/normalize';
-import { parseWordsCsv, wordsToCsv } from '@/utils/wordCsv';
 import { readDb, updateDb } from '../db';
 import type { MockDb } from '../types';
 import {
@@ -35,10 +33,6 @@ function nextWordId(db: MockDb): string {
   return `w${String(max + 1).padStart(3, '0')}`;
 }
 
-function wordKey(word: Pick<Word, 'kanji' | 'kana'>): string {
-  return `${word.kanji ?? ''}|${word.kana}`;
-}
-
 /** Validate body tạo/sửa từ bằng schema dùng chung, kiểm tra chủ đề tồn tại. */
 function parseWordInput(db: MockDb, body: unknown): WordInput {
   const parsed = wordInputSchema.safeParse(body);
@@ -47,72 +41,6 @@ function parseWordInput(db: MockDb, body: unknown): WordInput {
     throw errors.validation({ topic_id: 'Chủ đề không tồn tại' });
   }
   return parsed.data;
-}
-
-/**
- * Kiểm tra dữ liệu import. Số dòng `row` bắt đầu từ 1 = dòng dữ liệu đầu tiên (CSV: không
- * tính dòng tiêu đề; JSON: phần tử đầu tiên của mảng). Lỗi cấu trúc file có row = 0.
- */
-function validateImport(db: MockDb, format: 'csv' | 'json', content: string) {
-  const errorsList: ImportRowError[] = [];
-  let rawRows: unknown[];
-
-  if (format === 'csv') {
-    const { rows, headerError } = parseWordsCsv(content);
-    if (headerError)
-      return { valid: [], errors: [{ row: 0, field: 'content', message: headerError }] };
-    rawRows = rows;
-  } else {
-    try {
-      const parsed: unknown = JSON.parse(content);
-      if (!Array.isArray(parsed)) throw new Error('not array');
-      rawRows = parsed;
-    } catch {
-      return {
-        valid: [],
-        errors: [{ row: 0, field: 'content', message: 'File JSON phải là một mảng các từ' }],
-      };
-    }
-  }
-
-  if (rawRows.length === 0) {
-    return {
-      valid: [],
-      errors: [{ row: 0, field: 'content', message: 'File không có dòng dữ liệu nào' }],
-    };
-  }
-
-  const topicIds = new Set(db.topics.map((t) => t.id));
-  const seen = new Set(db.words.map(wordKey));
-  const valid: WordInput[] = [];
-
-  rawRows.forEach((raw, index) => {
-    const row = index + 1;
-    const parsed = wordInputSchema.safeParse(raw);
-    if (!parsed.success) {
-      for (const [field, message] of Object.entries(zodFieldErrors(parsed.error))) {
-        errorsList.push({ row, field, message });
-      }
-      return;
-    }
-    if (!topicIds.has(parsed.data.topic_id)) {
-      errorsList.push({
-        row,
-        field: 'topic_id',
-        message: `Chủ đề "${parsed.data.topic_id}" không tồn tại`,
-      });
-      return;
-    }
-    const key = wordKey(parsed.data);
-    if (seen.has(key)) {
-      errorsList.push({ row, field: 'kana', message: 'Từ này đã có trong dữ liệu' });
-      return;
-    }
-    seen.add(key);
-    valid.push(parsed.data);
-  });
-
-  return { valid, errors: errorsList };
 }
 
 export const adminHandlers = [
@@ -192,61 +120,6 @@ export const adminHandlers = [
           daily.word_ids = daily.word_ids.filter((w) => w !== id);
       });
       return noContent();
-    }),
-  ),
-
-  http.post(
-    api('/admin/words/import'),
-    handle(async ({ request }) => {
-      const body = await readJson(request);
-      const fields: Record<string, string> = {};
-      if (body.format !== 'csv' && body.format !== 'json')
-        fields.format = 'Định dạng là csv hoặc json';
-      if (typeof body.content !== 'string') fields.content = 'Thiếu nội dung file';
-      if (typeof body.dry_run !== 'boolean') fields.dry_run = 'dry_run phải là true hoặc false';
-      if (Object.keys(fields).length > 0) throw errors.validation(fields);
-
-      const result = updateDb((db) => {
-        requireAdmin(db);
-        const { valid, errors: rowErrors } = validateImport(
-          db,
-          body.format as 'csv' | 'json',
-          body.content as string,
-        );
-        // Nhập thật: chỉ ghi các dòng hợp lệ, bỏ qua dòng lỗi (giao diện đã cho xem trước).
-        if (!body.dry_run) {
-          for (const input of valid) db.words.push({ id: nextWordId(db), ...input });
-        }
-        return {
-          valid_count: valid.length,
-          created_count: body.dry_run ? 0 : valid.length,
-          errors: rowErrors,
-        };
-      });
-      return HttpResponse.json(result);
-    }),
-  ),
-
-  http.get(
-    api('/admin/words/export'),
-    handle(({ request }) => {
-      const db = readDb();
-      requireAdmin(db);
-      const format = new URL(request.url).searchParams.get('format');
-      if (format !== 'csv' && format !== 'json')
-        throw errors.validation({ format: 'Định dạng là csv hoặc json' });
-
-      const filename = `tu-vung-${toDateKey(new Date())}.${format}`;
-      const headers = { 'Content-Disposition': `attachment; filename="${filename}"` };
-      if (format === 'json') {
-        return new HttpResponse(JSON.stringify(db.words, null, 2), {
-          headers: { ...headers, 'Content-Type': 'application/json; charset=utf-8' },
-        });
-      }
-      // BOM giúp Excel nhận đúng UTF-8.
-      return new HttpResponse(`\uFEFF${wordsToCsv(db.words)}`, {
-        headers: { ...headers, 'Content-Type': 'text/csv; charset=utf-8' },
-      });
     }),
   ),
 ];

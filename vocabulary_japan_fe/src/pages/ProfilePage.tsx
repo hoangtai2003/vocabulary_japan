@@ -12,7 +12,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 const joinedFormat = new Intl.DateTimeFormat('vi-VN', { month: 'long', year: 'numeric' });
 
 /**
- * Hồ sơ: tên hiển thị, cài đặt học, mật khẩu, xuất/xóa dữ liệu.
+ * Hồ sơ: tên hiển thị, cài đặt học, mật khẩu, xóa tài khoản.
  * Dữ liệu là người dùng hiện tại, đã tải xong trước khi vào trang (ProtectedRoute), nên trang
  * không có trạng thái tải/lỗi riêng; mỗi thao tác tự báo lỗi tại chỗ.
  */

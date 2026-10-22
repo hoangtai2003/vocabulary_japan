@@ -8,7 +8,6 @@ import { reviewApi } from '@/api/reviewApi';
 import { statsApi } from '@/api/statsApi';
 import { wordsApi } from '@/api/wordsApi';
 import { addDays, endOfDay, startOfDay, toDateKey } from '@/utils/dates';
-import { sampleWordsCsv } from '@/utils/wordCsv';
 
 const login = (email = 'user@example.com', password = '123456') =>
   authApi.login({ email, password });
@@ -222,12 +221,8 @@ describe('mock: tài khoản', () => {
     await login('user@example.com', '654321');
   });
 
-  it('xuất dữ liệu và xóa tài khoản', async () => {
+  it('xóa tài khoản', async () => {
     await login();
-    const data = await meApi.exportData();
-    expect(data.words).toHaveLength(25);
-    expect(data.reviews.length).toBeGreaterThan(25);
-
     await meApi.deleteAccount({ password: '123456' });
     await expectApiError(login(), 401, 'INVALID_CREDENTIALS');
   });
@@ -239,7 +234,7 @@ describe('mock: quản trị', () => {
     await expectApiError(adminApi.listWords({}), 403, 'FORBIDDEN');
   });
 
-  it('CRUD, sắp xếp và import có dry run', async () => {
+  it('CRUD và sắp xếp', async () => {
     await login('admin@example.com');
     const sorted = await adminApi.listWords({ sort: 'romaji', order: 'asc', page_size: 5 });
     expect(sorted.items.map((w) => w.romaji)).toEqual(
@@ -272,20 +267,5 @@ describe('mock: quản trị', () => {
     await adminApi.deleteWord(created.id);
     await expectApiError(adminApi.deleteWord(created.id), 404, 'NOT_FOUND');
 
-    // File mẫu chứa 学校 đã có sẵn → báo trùng; thêm một dòng hợp lệ và một dòng lỗi.
-    const csv = `${sampleWordsCsv()}犬,いぬ,inu,con chó,noun,N5,t07,犬がいます。,いぬがいます。,inu ga imasu.,Có con chó.\r\n,ねこ,neko,,noun,N9,t07,a,b,c,d\r\n`;
-    const dry = await adminApi.importWords({ format: 'csv', content: csv, dry_run: true });
-    expect(dry.valid_count).toBe(1);
-    expect(dry.created_count).toBe(0);
-    expect(dry.errors.map((e) => `${e.row}:${e.field}`)).toEqual(
-      expect.arrayContaining(['1:kana', '3:meanings_vi', '3:level']),
-    );
-    const real = await adminApi.importWords({ format: 'csv', content: csv, dry_run: false });
-    expect(real.created_count).toBe(1);
-    expect((await adminApi.listWords({ q: 'いぬ' })).total).toBe(1);
-
-    const exported = await adminApi.exportWords('csv');
-    expect(exported.filename).toMatch(/^tu-vung-\d{4}-\d{2}-\d{2}\.csv$/);
-    expect(await exported.blob.text()).toContain('id,kanji,kana');
   });
 });

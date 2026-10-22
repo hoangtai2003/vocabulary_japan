@@ -2,10 +2,6 @@ import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderApp, SAMPLE_ADMIN_ID, SAMPLE_USER_ID } from '@/test/renderApp';
-import { downloadBlob } from '@/utils/download';
-import { sampleWordsCsv } from '@/utils/wordCsv';
-
-vi.mock('@/utils/download', () => ({ downloadJson: vi.fn(), downloadBlob: vi.fn() }));
 
 async function openAdmin() {
   const user = userEvent.setup();
@@ -107,44 +103,5 @@ describe('AdminPage', () => {
     await user.click(within(dialog).getByRole('button', { name: 'Xóa từ' }));
     expect(await screen.findByText('1–20 trong 415 từ')).toBeInTheDocument();
     expect(within(bodyRows()[0]!).getAllByRole('cell')[0]).toHaveTextContent('w002');
-  });
-
-  it('nhập CSV: dry run xem trước, dòng lỗi tô đỏ, bấm Nhập mới ghi', async () => {
-    const { user } = await openAdmin();
-    await user.click(screen.getByRole('button', { name: 'Nhập file' }));
-    const dialog = screen.getByRole('dialog', { name: 'Nhập từ từ file' });
-
-    await user.click(within(dialog).getByRole('button', { name: 'Tải file CSV mẫu' }));
-    expect(downloadBlob).toHaveBeenCalledWith(expect.any(Blob), 'tu-vung-mau.csv');
-
-    const valid = sampleWordsCsv()
-      .trim()
-      .split('\r\n')[1]!
-      .replace('学校', '鉛筆削り')
-      .replace('がっこう', 'えんぴつけずり');
-    const invalid = 'x,abc,abc,,noun,N9,t01,a,b,c,d';
-    const content = [sampleWordsCsv().split('\r\n')[0], valid, invalid].join('\n');
-    const file = new File([content], 'tu-moi.csv', { type: 'text/csv' });
-    await user.upload(within(dialog).getByLabelText('Chọn file'), file);
-
-    expect(await within(dialog).findByText('1 dòng hợp lệ')).toBeInTheDocument();
-    const preview = within(dialog).getByRole('table', { name: 'Xem trước dữ liệu nhập' });
-    const rows = within(preview).getAllByRole('row').slice(1);
-    expect(rows).toHaveLength(2);
-    expect(rows[0]).toHaveTextContent('Hợp lệ');
-    expect(rows[1]).toHaveClass('bg-son-wash/60');
-    expect(rows[1]).toHaveTextContent('Cách đọc chỉ gồm hiragana hoặc katakana');
-
-    await user.click(within(dialog).getByRole('button', { name: 'Nhập 1 từ' }));
-    expect(await screen.findByText('Đã nhập 1 từ, bỏ qua 1 dòng lỗi.')).toBeInTheDocument();
-    expect(await screen.findByText('1–20 trong 417 từ')).toBeInTheDocument();
-  });
-
-  it('xuất CSV tải file về', async () => {
-    const { user } = await openAdmin();
-    await user.click(screen.getByRole('button', { name: 'Xuất CSV' }));
-    expect(await screen.findByText('Đã xuất file CSV.')).toBeInTheDocument();
-    expect(downloadBlob).toHaveBeenCalledTimes(1);
-    expect(vi.mocked(downloadBlob).mock.calls[0]![1]).toMatch(/\.csv$/);
   });
 });

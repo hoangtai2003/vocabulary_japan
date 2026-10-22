@@ -5,9 +5,8 @@ import {
   settingsUpdateSchema,
 } from '@/schemas/account';
 import { zodFieldErrors } from '@/schemas/fieldErrors';
-import type { ExportData } from '@/types/api';
 import { sha256Hex } from '../crypto';
-import { clearSession, readDb, updateDb } from '../db';
+import { clearSession, updateDb } from '../db';
 import {
   api,
   errors,
@@ -19,7 +18,6 @@ import {
   readJson,
   requireUser,
 } from './http';
-import { userStates } from './shared';
 
 /**
  * Sai mật khẩu hiện tại trả 400 VALIDATION_ERROR kèm fields, không trả 401, vì 401 ở các
@@ -73,29 +71,6 @@ export const meHandlers = [
         current.password_hash = newHash;
       });
       return noContent();
-    }),
-  ),
-
-  http.get(
-    api('/me/export'),
-    handle(() => {
-      const db = readDb();
-      const user = requireUser(db);
-      const byId = new Map(db.words.map((w) => [w.id, w]));
-      const data: ExportData = {
-        exported_at: new Date().toISOString(),
-        user: publicUser(user),
-        words: Object.entries(userStates(db, user.id)).map(([wordId, state]) => ({
-          word_id: wordId,
-          kanji: byId.get(wordId)?.kanji ?? null,
-          kana: byId.get(wordId)?.kana ?? '',
-          ...state,
-        })),
-        reviews: db.reviews
-          .filter((r) => r.user_id === user.id)
-          .map(({ user_id: _u, ...rest }) => rest),
-      };
-      return HttpResponse.json(data);
     }),
   ),
 

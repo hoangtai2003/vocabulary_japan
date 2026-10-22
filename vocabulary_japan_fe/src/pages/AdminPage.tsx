@@ -1,9 +1,8 @@
-import { Download, Plus, Search, Upload } from 'lucide-react';
+import { Plus, Search } from 'lucide-react';
 import { useState } from 'react';
 import { AdminTableSkeleton } from '@/components/admin/AdminTableSkeleton';
 import { AdminWordTable, type SortState } from '@/components/admin/AdminWordTable';
 import { DeleteWordModal } from '@/components/admin/DeleteWordModal';
-import { ImportModal } from '@/components/admin/ImportModal';
 import { Pagination } from '@/components/admin/Pagination';
 import { WordFormModal } from '@/components/admin/WordFormModal';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -12,20 +11,17 @@ import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { controlClasses } from '@/components/ui/field';
 import { Select } from '@/components/ui/Select';
-import { useAdminWords, useExportWords } from '@/hooks/queries/useAdminWords';
+import { useAdminWords } from '@/hooks/queries/useAdminWords';
 import { useTopics } from '@/hooks/queries/useWords';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import { toast } from '@/stores/toastStore';
-import type { ImportFormat } from '@/types/api';
 import { JLPT_LEVELS, type JlptLevel, type Word } from '@/types/word';
 import { cn } from '@/utils/cn';
 
 const PAGE_SIZE = 20;
 
-/** Modal đang mở: thêm/sửa (word null = thêm), xóa, nhập file. */
-type Dialog =
-  { kind: 'form'; word: Word | null } | { kind: 'delete'; word: Word } | { kind: 'import' } | null;
+/** Modal đang mở: thêm/sửa (word null = thêm), xóa. */
+type Dialog = { kind: 'form'; word: Word | null } | { kind: 'delete'; word: Word } | null;
 
 export default function AdminPage() {
   useDocumentTitle('Quản trị');
@@ -51,7 +47,6 @@ export default function AdminPage() {
     page,
     page_size: PAGE_SIZE,
   });
-  const exportWords = useExportWords();
 
   const data = words.data;
 
@@ -61,13 +56,6 @@ export default function AdminPage() {
     setLevel('');
     setTopic('');
   };
-
-  const onExport = (format: ImportFormat) =>
-    exportWords.mutate(format, {
-      onSuccess: () => toast.success(`Đã xuất file ${format.toUpperCase()}.`),
-      onError: () => toast.error('Chưa xuất được file. Thử lại nhé.'),
-    });
-  const exporting = exportWords.isPending ? exportWords.variables : null;
 
   const topicList = topics.data ?? [];
 
@@ -98,15 +86,8 @@ export default function AdminPage() {
       <EmptyState
         mark="空"
         title="Kho từ đang trống"
-        description="Thêm từ đầu tiên, hoặc nhập cả danh sách từ file CSV."
-        action={
-          <div className="flex flex-wrap justify-center gap-2">
-            <Button onClick={() => setDialog({ kind: 'form', word: null })}>Thêm từ</Button>
-            <Button variant="secondary" onClick={() => setDialog({ kind: 'import' })}>
-              Nhập file
-            </Button>
-          </div>
-        }
+        description="Thêm từ đầu tiên để người học có từ mới mỗi ngày."
+        action={<Button onClick={() => setDialog({ kind: 'form', word: null })}>Thêm từ</Button>}
       />
     );
   } else {
@@ -140,33 +121,14 @@ export default function AdminPage() {
         title="Quản trị"
         description="Kho từ chung cho mọi người học. Sửa ở đây là ai cũng thấy."
         actions={
-          <div className="flex flex-wrap gap-2">
-            <Button variant="secondary" size="sm" onClick={() => setDialog({ kind: 'import' })}>
-              <Upload aria-hidden="true" className="size-4" />
-              Nhập file
-            </Button>
-            {(['csv', 'json'] as const).map((format) => (
-              <Button
-                key={format}
-                variant="secondary"
-                size="sm"
-                onClick={() => onExport(format)}
-                loading={exporting === format}
-                disabled={exporting !== null}
-              >
-                {exporting !== format && <Download aria-hidden="true" className="size-4" />}
-                Xuất {format.toUpperCase()}
-              </Button>
-            ))}
-            <Button
-              size="sm"
-              onClick={() => setDialog({ kind: 'form', word: null })}
-              disabled={!topics.data}
-            >
-              <Plus aria-hidden="true" className="size-4" />
-              Thêm từ
-            </Button>
-          </div>
+          <Button
+            size="sm"
+            onClick={() => setDialog({ kind: 'form', word: null })}
+            disabled={!topics.data}
+          >
+            <Plus aria-hidden="true" className="size-4" />
+            Thêm từ
+          </Button>
         }
       />
 
@@ -229,7 +191,6 @@ export default function AdminPage() {
           }}
         />
       )}
-      {dialog?.kind === 'import' && <ImportModal onClose={() => setDialog(null)} />}
     </>
   );
 }

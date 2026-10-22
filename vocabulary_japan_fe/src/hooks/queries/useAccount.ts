@@ -3,8 +3,6 @@ import { meApi } from '@/api/meApi';
 import { queryKeys } from '@/api/queryKeys';
 import type { SettingsUpdate, UserResponse } from '@/types/api';
 import type { User } from '@/types/user';
-import { toDateKey } from '@/utils/dates';
-import { downloadJson } from '@/utils/download';
 
 /** PUT /me/settings. Đổi mục tiêu/cấp độ thì tải lại từ hôm nay và thống kê. */
 export function useUpdateSettings() {
@@ -33,17 +31,6 @@ export function useUpdateProfile() {
 /** PUT /me/password */
 export function useChangePassword() {
   return useMutation({ mutationFn: meApi.changePassword });
-}
-
-/** GET /me/export rồi tải về file JSON. */
-export function useExportData() {
-  return useMutation({
-    mutationFn: async () => {
-      const data = await meApi.exportData();
-      downloadJson(data, `jpvocab-du-lieu-${toDateKey(new Date())}.json`);
-      return data;
-    },
-  });
 }
 
 /** DELETE /me. Thành công thì xóa toàn bộ cache, người dùng thành chưa đăng nhập. */

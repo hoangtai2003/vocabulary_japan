@@ -1,5 +1,5 @@
 import type { User, UserSettings } from './user';
-import type { JlptLevel, Topic, UserWordState, Word, WordStatus, WordWithState } from './word';
+import type { JlptLevel, Topic, Word, WordStatus, WordWithState } from './word';
 
 // ---------- Chung ----------
 
@@ -207,13 +207,6 @@ export interface ReviewLogEntry {
   was_new: boolean;
 }
 
-export interface ExportData {
-  exported_at: string;
-  user: User;
-  words: (UserWordState & { word_id: string; kanji: string | null; kana: string })[];
-  reviews: ReviewLogEntry[];
-}
-
 // ---------- Quản trị ----------
 
 export type AdminSortField = 'id' | 'kanji' | 'kana' | 'romaji' | 'level' | 'type' | 'topic_id';
@@ -230,22 +223,3 @@ export interface AdminWordsQuery {
   order?: SortOrder;
 }
 
-export type ImportFormat = 'csv' | 'json';
-
-export interface ImportRequest {
-  format: ImportFormat;
-  content: string;
-  dry_run: boolean;
-}
-
-export interface ImportRowError {
-  row: number;
-  field: string;
-  message: string;
-}
-
-export interface ImportResult {
-  valid_count: number;
-  created_count: number;
-  errors: ImportRowError[];
-}

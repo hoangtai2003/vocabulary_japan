@@ -5,14 +5,11 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
 ```
 .
 ├── index.html                 ✅ 1  HTML gốc, script áp .dark trước khi React render, tải Google Fonts (GĐ3)
-├── package.json               ✅ 1  Phiên bản cố định, script dev/build/preview/lint/format/test/typecheck
+├── package.json               ✅ 1  Phiên bản cố định, script dev/build/preview/test/typecheck
 ├── vite.config.ts             ✅ 1  Vite + React + Tailwind v4, alias @ → src, cấu hình Vitest (jsdom)
 ├── tsconfig.json              ✅ 1  Gốc, tham chiếu app + node
 ├── tsconfig.app.json          ✅ 1  TS strict cho src/
 ├── tsconfig.node.json         ✅ 1  TS cho file cấu hình
-├── eslint.config.js           ✅ 1  ESLint flat config: typescript-eslint, react-hooks, react-refresh, prettier
-├── .prettierrc.json           ✅ 1  Quy tắc định dạng
-├── .prettierignore            ✅ 1
 ├── .gitignore                 ✅ 1
 ├── .env.example               ✅ 1  VITE_API_MODE, VITE_API_URL
 ├── API_CONTRACT.md            ✅ 2  Bản sao mục 4 + phụ lục chi tiết đã chốt, đầu vào cho backend
@@ -53,10 +50,10 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   │                            ChartCard, chartColors (màu đã kiểm bằng validator dataviz)
     │   ├── today/             ✅ 4  DailyProgress, DueCard, TodayWordList, TodaySkeleton
     │   ├── profile/           ✅ 4  ProfileSection, DisplayNameForm, StudySettingsForm (lưu ngay + toast),
-    │   │                            PasswordForm, DataSection, DeleteAccountModal (mật khẩu + gõ XÓA),
+    │   │                            PasswordForm, DataSection (xóa tài khoản), DeleteAccountModal (mật khẩu + gõ XÓA),
     │   │                            MockTools (nút ẩn đặt lại dữ liệu mock)
     │   ├── admin/             ✅ 4  AdminWordTable (sắp xếp theo cột, aria-sort), Pagination, AdminTableSkeleton,
-    │   │                            WordFormModal (wordFormSchema), DeleteWordModal, ImportModal (dry run → xem trước)
+    │   │                            WordFormModal (wordFormSchema), DeleteWordModal (xuất/nhập file: tạm hoãn)
     │   ├── auth/              ✅ 3  AuthGate, ProtectedRoute, GuestRoute (chuyển về ?next=), AdminRoute,
     │   │                            ThemeSync, AuthLayout, FormAlert, SampleAccounts
     │   └── layout/            ✅ 3  AppLayout, Sidebar, BottomNav, navItems, DueBadge, Brand, PageHeader, RouteError
@@ -113,9 +110,6 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── today.ts (+ test)  ✅ 2  Chọn từ mới trong ngày
     │   ├── normalize.ts (+ test) ✅ 2  Bỏ dấu tiếng Việt khi tìm kiếm
     │   ├── random.ts          ✅ 2  PRNG có seed, xáo trộn
-    │   ├── csv.ts (+ test)    ✅ 2  Đọc/ghi CSV (RFC 4180)
-    │   ├── wordCsv.ts         ✅ 2  CSV từ vựng: cột, file mẫu, đọc/ghi
-    │   ├── download.ts        ✅ 2  Tải Blob/JSON về máy
     │   ├── cn.ts              ✅ 3  Nối className
     │   ├── format.ts (+ test) ✅ 4  Định dạng ngày tiếng Việt, ngày ôn tiếp theo
     │   ├── heatmap.ts (+ test) ✅ 4  Lưới heatmap 27 tuần × 7 ngày, chia mức theo số lượt

@@ -144,32 +144,10 @@ async function request<T>(path: string, options?: RequestOptions): Promise<T> {
   return (text ? JSON.parse(text) : undefined) as T;
 }
 
-export interface DownloadedFile {
-  blob: Blob;
-  filename: string;
-}
-
-function filenameFrom(response: Response, fallback: string): string {
-  const header = response.headers.get('Content-Disposition') ?? '';
-  const encoded = /filename\*=UTF-8''([^;]+)/i.exec(header);
-  if (encoded?.[1]) return decodeURIComponent(encoded[1]);
-  const plain = /filename="?([^";]+)"?/i.exec(header);
-  return plain?.[1] ?? fallback;
-}
-
 export const apiClient = {
   get: <T>(path: string, query?: QueryParams, signal?: AbortSignal) =>
     request<T>(path, { method: 'GET', query, signal }),
   post: <T>(path: string, body?: unknown) => request<T>(path, { method: 'POST', body }),
   put: <T>(path: string, body?: unknown) => request<T>(path, { method: 'PUT', body }),
   delete: <T>(path: string, body?: unknown) => request<T>(path, { method: 'DELETE', body }),
-  /** Tải file (export): trả về Blob và tên file lấy từ Content-Disposition. */
-  download: async (
-    path: string,
-    query: QueryParams | undefined,
-    fallbackName: string,
-  ): Promise<DownloadedFile> => {
-    const response = await send(path, { method: 'GET', query });
-    return { blob: await response.blob(), filename: filenameFrom(response, fallbackName) };
-  },
 };

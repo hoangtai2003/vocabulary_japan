@@ -112,7 +112,7 @@ interface QuizResult {
 | PUT    | `/me/settings` | `Partial<UserSettings>`              | `{ user: User }`                              |
 | PUT    | `/me/profile`  | `{ display_name }`                   | `{ user: User }`                              |
 | PUT    | `/me/password` | `{ current_password, new_password }` | 204                                           |
-| GET    | `/me/export`   |                                      | JSON gồm user, trạng thái từng từ, lịch sử ôn |
+| GET    | `/me/export` ⏸ |                                      | JSON gồm user, trạng thái từng từ, lịch sử ôn |
 | DELETE | `/me`          | `{ password }`                       | 204                                           |
 
 ### Quản trị (chỉ `role: admin`, ngược lại 403)
@@ -123,10 +123,12 @@ interface QuizResult {
 | POST   | `/admin/words`        | `Word` không có id                                               | 201 `Word`                                                          |
 | PUT    | `/admin/words/:id`    | `Word` không có id                                               | `Word`                                                              |
 | DELETE | `/admin/words/:id`    |                                                                  | 204                                                                 |
-| POST   | `/admin/words/import` | `{ format: 'csv' \| 'json', content: string, dry_run: boolean }` | `{ valid_count, created_count, errors: [{ row, field, message }] }` |
-| GET    | `/admin/words/export` | `format=csv\|json`                                               | File tải về                                                         |
+| POST   | `/admin/words/import` ⏸ | `{ format: 'csv' \| 'json', content: string, dry_run: boolean }` | `{ valid_count, created_count, errors: [{ row, field, message }] }` |
+| GET    | `/admin/words/export` ⏸ | `format=csv\|json`                                               | File tải về                                                         |
 
 Import với `dry_run: true` chỉ kiểm tra, không ghi. Giao diện gọi dry run trước để xem trước, rồi mới gọi thật.
+
+> ⏸ **Tạm hoãn (22/10/2026):** ba endpoint xuất/nhập (`/me/export`, `/admin/words/import`, `/admin/words/export`) đã được gỡ khỏi frontend và mock. Giữ đặc tả ở đây (kèm phụ lục G, H) để làm lại sau; backend chưa cần làm.
 
 ---
 
@@ -191,7 +193,7 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
   - Chỉ trả những ngày có `count > 0`. `count` là tổng số lượt chấm trong ngày.
 - `today.new_learned` đếm số từ khác nhau, không đếm số lượt.
 
-### G. Xuất dữ liệu
+### G. Xuất dữ liệu ⏸ (tạm hoãn)
 
 `GET /me/export` trả về:
 
@@ -204,7 +206,7 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
 }
 ```
 
-### H. Import và export từ vựng
+### H. Import và export từ vựng ⏸ (tạm hoãn)
 
 - CSV dùng UTF-8, dòng đầu là tên cột.
 - Các cột: `kanji, kana, romaji, meanings_vi, type, level, topic_id, example_jp, example_kana, example_romaji, example_vi`.

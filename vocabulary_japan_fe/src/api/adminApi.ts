@@ -1,12 +1,6 @@
-import type {
-  AdminWordsQuery,
-  ImportFormat,
-  ImportRequest,
-  ImportResult,
-  Paginated,
-} from '@/types/api';
+import type { AdminWordsQuery, Paginated } from '@/types/api';
 import type { Word, WordInput } from '@/types/word';
-import { apiClient, type DownloadedFile } from './client';
+import { apiClient } from './client';
 
 export const adminApi = {
   listWords: (query: AdminWordsQuery, signal?: AbortSignal) =>
@@ -30,9 +24,4 @@ export const adminApi = {
     apiClient.put<Word>(`/admin/words/${encodeURIComponent(id)}`, body),
 
   deleteWord: (id: string) => apiClient.delete<void>(`/admin/words/${encodeURIComponent(id)}`),
-
-  importWords: (body: ImportRequest) => apiClient.post<ImportResult>('/admin/words/import', body),
-
-  exportWords: (format: ImportFormat): Promise<DownloadedFile> =>
-    apiClient.download('/admin/words/export', { format }, `tu-vung.${format}`),
 };

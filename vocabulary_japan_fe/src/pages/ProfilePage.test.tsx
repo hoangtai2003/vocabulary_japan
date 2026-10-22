@@ -2,9 +2,6 @@ import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderApp, SAMPLE_USER_ID } from '@/test/renderApp';
-import { downloadJson } from '@/utils/download';
-
-vi.mock('@/utils/download', () => ({ downloadJson: vi.fn(), downloadBlob: vi.fn() }));
 
 async function openProfile() {
   const user = userEvent.setup();
@@ -81,17 +78,6 @@ describe('ProfilePage', () => {
     await user.click(submit);
     expect(await screen.findByText(/Đã đổi mật khẩu/)).toBeInTheDocument();
     expect(current).toHaveValue('');
-  });
-
-  it('xuất dữ liệu tải file JSON từ /me/export', async () => {
-    const { user } = await openProfile();
-    await user.click(screen.getByRole('button', { name: 'Tải file JSON' }));
-    expect(await screen.findByText('Đã tải file dữ liệu về máy.')).toBeInTheDocument();
-    expect(downloadJson).toHaveBeenCalledTimes(1);
-    const [data, filename] = vi.mocked(downloadJson).mock.calls[0]!;
-    expect(filename).toMatch(/^jpvocab-du-lieu-\d{4}-\d{2}-\d{2}\.json$/);
-    expect(data).toMatchObject({ user: { email: 'user@example.com' } });
-    expect((data as { words: unknown[] }).words.length).toBeGreaterThan(0);
   });
 
   it('xóa tài khoản: cần gõ XÓA và đúng mật khẩu, thành công thì về trang đăng nhập', async () => {
