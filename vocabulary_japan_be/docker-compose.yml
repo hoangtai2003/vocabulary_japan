@@ -1,0 +1,39 @@
+# PostgreSQL cho phát triển (cổng 5432) và cho test (cổng 5433).
+# DB test không lưu ra đĩa (tmpfs): dữ liệu mất khi dừng container, chạy test luôn sạch.
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jpvocab
+      POSTGRES_PASSWORD: jpvocab
+      POSTGRES_DB: jpvocab
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U jpvocab -d jpvocab']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  db-test:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jpvocab
+      POSTGRES_PASSWORD: jpvocab
+      POSTGRES_DB: jpvocab_test
+    ports:
+      - '127.0.0.1:5433:5432'
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U jpvocab -d jpvocab_test']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  db-data:

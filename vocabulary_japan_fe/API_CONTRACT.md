@@ -45,6 +45,14 @@ Các chi tiết đã chốt khi làm frontend nằm ở **Phụ lục** cuối f
 
 Mọi đường dẫn có tiền tố `/api`. Thành công trả 200 trừ khi ghi khác. Danh sách phân trang luôn có dạng `{ items, page, page_size, total }`.
 
+### Hệ thống
+
+| Method | Đường dẫn | Body / Query | Trả về          |
+| ------ | --------- | ------------ | --------------- |
+| GET    | `/health` |              | `{ ok: true }`  |
+
+Không cần đăng nhập. Dùng để kiểm tra server khi deploy (thêm theo prompt backend, mục 3.1).
+
 ### Xác thực
 
 | Method | Đường dẫn        | Body / Query                        | Trả về                    |
@@ -143,6 +151,7 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
    - `sort` ∈ `id | kanji | kana | romaji | level | type | topic_id`, mặc định `id`.
    - `order` ∈ `asc | desc`, mặc định `asc`.
    - Giá trị không hợp lệ thì dùng mặc định.
+3. **`GET /health`** trả `{ ok: true }`, không cần đăng nhập. Thêm theo prompt backend (mục 3.1) để kiểm tra khi deploy. Frontend không gọi endpoint này.
 
 ### B. Quy ước chung
 
