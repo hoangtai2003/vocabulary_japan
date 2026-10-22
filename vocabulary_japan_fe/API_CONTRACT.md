@@ -190,6 +190,10 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
   - `vi_jp`: `"<kanji>（<kana>）"`, hoặc chỉ kana nếu từ không có kanji.
 - Cấp độ có ít hơn 4 từ thì trả 400, với `fields.level`. Cấp độ có ít từ hơn `count` thì quiz có ít câu hơn.
 - `POST /quiz/submit`: câu không có trong `answers` được tính là sai, với `chosen_text = ""`. Quiz của người khác hoặc không tồn tại thì trả 404.
+- Bộ câu hỏi lưu ở server và hết hạn sau 2 giờ kể từ `POST /quiz/start`. Server chấm lại bằng bộ câu đã lưu, không tin kết quả client tự tính.
+- Mỗi bài chỉ nộp được một lần (theo prompt backend, mục 3.2). Lỗi đều là 400 `VALIDATION_ERROR` ở trường `quiz_id`:
+  - Bài đã nộp: `"Bài quiz này đã được nộp. Làm bài mới nhé."`
+  - Bài hết hạn: `"Bài quiz đã hết hạn. Làm bài mới nhé."`
 
 ### F. Thống kê
 

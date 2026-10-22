@@ -3,6 +3,7 @@ import { env } from './config/env.ts';
 import { prisma } from './db/prisma.ts';
 import { logger } from './logger.ts';
 import { deleteExpiredSessions } from './modules/auth/sessions.ts';
+import { deleteExpiredQuizzes } from './modules/quiz/service.ts';
 
 const app = createApp();
 
@@ -10,13 +11,17 @@ const server = app.listen(env.PORT, () => {
   logger.info(`API đang chạy ở http://localhost:${env.PORT} (${env.NODE_ENV})`);
 });
 
-/** Dọn phiên hết hạn lúc khởi động và mỗi 24 giờ (prompt mục 6.1). Lỗi chỉ ghi log, không làm sập server. */
+/**
+ * Dọn phiên đăng nhập và bài quiz hết hạn lúc khởi động và mỗi 24 giờ (prompt mục 6.1, 3.2).
+ * Lỗi chỉ ghi log, không làm sập server.
+ */
 async function cleanupSessions() {
   try {
-    const count = await deleteExpiredSessions();
-    if (count > 0) logger.info(`Đã dọn ${count} phiên đăng nhập hết hạn`);
+    const sessions = await deleteExpiredSessions();
+    const quizzes = await deleteExpiredQuizzes();
+    if (sessions + quizzes > 0) logger.info(`Đã dọn ${sessions} phiên đăng nhập và ${quizzes} bài quiz hết hạn`);
   } catch (error) {
-    logger.error({ err: error }, 'Dọn phiên hết hạn thất bại');
+    logger.error({ err: error }, 'Dọn dữ liệu hết hạn thất bại');
   }
 }
 void cleanupSessions();

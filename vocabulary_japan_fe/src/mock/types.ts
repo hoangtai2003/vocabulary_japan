@@ -23,6 +23,8 @@ export interface MockQuiz {
   user_id: string;
   created_at: string;
   questions: QuizQuestion[];
+  /** Thời điểm nộp; đã nộp thì không nộp lại được (API_CONTRACT.md phụ lục E). */
+  submitted_at?: string | null;
 }
 
 export interface MockDb {

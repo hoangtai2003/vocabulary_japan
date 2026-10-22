@@ -24,7 +24,7 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   └── seed-data/             ✅ 2  words.json (416 từ), topics.json (15 chủ đề) chép từ frontend
 ├── src/
 │   ├── app.ts                 ✅ 1  Tạo Express app: helmet, CORS, pino-http, JSON 1 MB, cookie, router /api, 404, error handler
-│   ├── server.ts              ✅ 4  listen PORT, dọn phiên hết hạn (lúc khởi động + mỗi 24 giờ), tắt êm (đóng Prisma)
+│   ├── server.ts              ✅ 5  listen PORT, dọn phiên + quiz hết hạn (lúc khởi động + mỗi 24 giờ), tắt êm
 │   ├── scripts/create-admin.ts ✅ 2  npm run create-admin -- --email … --password … [--name …]
 │   ├── logger.ts              ✅ 1  pino; ẩn cookie, mật khẩu, token khỏi log
 │   ├── config/env.ts          ✅ 1  Đọc .env (process.loadEnvFile), validate bằng zod, sai thì dừng ngay
@@ -46,7 +46,8 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   │   │                            tìm ILIKE trên search_text, phân trang), /words/:id, /topics, favorite, note
 │   │   ├── reviews/           ✅ 5  /reviews/due (+ next_due_at), POST /reviews/:wordId: SRS + user_words + review_logs
 │   │   │                            trong một transaction, khóa dòng (FOR UPDATE) chống chấm song song
-│   │   ├── quiz/                 5  /quiz/start, /quiz/submit
+│   │   ├── quiz/              ✅ 5  /quiz/start (lưu đề vào quiz_sessions, hết hạn 2 giờ), /quiz/submit (server tự chấm,
+│   │   │                            mỗi bài nộp một lần: UPDATE … WHERE submitted_at IS NULL)
 │   │   ├── stats/                5  overview, weekly, calendar (GROUP BY local_date)
 │   │   ├── me/                   5  settings, profile, password, DELETE /me
 │   │   └── admin/                5  CRUD từ vựng (+ sort/order)
@@ -64,7 +65,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
     │                                cách ly A/B, /words/today (chốt ngày, đổi mục tiêu/cấp độ, từ bị xóa)
     ├── api/reviews.test.ts    ✅ 5  mốc cuối ngày giờ VN, thứ tự, limit, next_due_at, lần chấm đầu/sau, Quên,
     │                                dữ liệu sai, 10 request chấm song song, cách ly A/B
-    ├── api/                      5–6  quiz, stats, me, admin, kiểm tra hợp đồng
+    ├── api/quiz.test.ts       ✅ 5  đề đúng quy tắc, ưu tiên từ đã học, lỗi theo trường, chấm trên server, câu bỏ trống,
+    │                                nộp lại / nộp song song / hết hạn / quiz của người khác, không đổi SRS, dọn hết hạn
+    ├── api/                      5–6  stats, me, admin, kiểm tra hợp đồng
     ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
     └── helpers/               ✅ 4  fixtures (makeWord), globalSetup (chặn DB không phải test + migrate), db (reset),
                                      api (agent có Origin + cookie, đăng ký nhanh), testDbUrl

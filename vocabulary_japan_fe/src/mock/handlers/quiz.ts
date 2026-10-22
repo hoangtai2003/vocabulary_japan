@@ -10,6 +10,8 @@ const MODES: QuizMode[] = ['jp_vi', 'vi_jp'];
 const COUNTS: QuizCount[] = [10, 20, 30];
 /** Giữ tối đa chừng này quiz trong localStorage, xóa quiz cũ nhất. */
 const MAX_STORED_QUIZZES = 20;
+/** Bài quiz hết hạn sau 2 giờ (giống backend). */
+const QUIZ_TTL_MS = 2 * 60 * 60 * 1000;
 
 export const quizHandlers = [
   http.post(
@@ -67,6 +69,21 @@ export const quizHandlers = [
       const user = requireUser(db);
       const quiz = db.quizzes[body.quiz_id];
       if (!quiz || quiz.user_id !== user.id) throw errors.notFound('Không tìm thấy bài quiz');
+      // Giống backend: bài hết hạn sau 2 giờ, và mỗi bài chỉ nộp được một lần.
+      if (Date.now() - new Date(quiz.created_at).getTime() >= QUIZ_TTL_MS) {
+        throw errors.validation({ quiz_id: 'Bài quiz đã hết hạn. Làm bài mới nhé.' }, 'Bài quiz đã hết hạn');
+      }
+      if (quiz.submitted_at) {
+        throw errors.validation(
+          { quiz_id: 'Bài quiz này đã được nộp. Làm bài mới nhé.' },
+          'Bài quiz đã được nộp',
+        );
+      }
+      const quizId = body.quiz_id;
+      updateDb((current) => {
+        const stored = current.quizzes[quizId];
+        if (stored) stored.submitted_at = new Date().toISOString();
+      });
 
       const answers = (body.answers as unknown[]).filter(
         (a): a is QuizAnswer =>
