@@ -9,6 +9,7 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
 import { originCheck } from './middleware/originCheck.ts';
 import { createRateLimiters } from './middleware/rateLimit.ts';
 import { createAuthRouter } from './modules/auth/routes.ts';
+import { meRouter } from './modules/me/routes.ts';
 import { quizRouter } from './modules/quiz/routes.ts';
 import { reviewsRouter } from './modules/reviews/routes.ts';
 import { statsRouter } from './modules/stats/routes.ts';
@@ -42,6 +43,7 @@ export function createApp(): Express {
   apiRouter.use(reviewsRouter);
   apiRouter.use(quizRouter);
   apiRouter.use(statsRouter);
+  apiRouter.use(meRouter);
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);

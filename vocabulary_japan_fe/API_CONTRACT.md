@@ -136,7 +136,7 @@ interface QuizResult {
 
 Import với `dry_run: true` chỉ kiểm tra, không ghi. Giao diện gọi dry run trước để xem trước, rồi mới gọi thật.
 
-> ⏸ **Tạm hoãn (22/10/2026):** ba endpoint xuất/nhập (`/me/export`, `/admin/words/import`, `/admin/words/export`) đã được gỡ khỏi frontend và mock. Giữ đặc tả ở đây (kèm phụ lục G, H) để làm lại sau; backend chưa cần làm.
+> ⏸ **Tạm hoãn (22/10/2026):** ba endpoint xuất/nhập (`/me/export`, `/admin/words/import`, `/admin/words/export`) đã được gỡ khỏi frontend và mock. Prompt backend cũng đã bỏ `/me/export`, nên backend không cài đặt ba endpoint này. Giữ đặc tả ở đây (kèm phụ lục G, H) để làm lại sau.
 
 ---
 

@@ -50,7 +50,8 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   │   │                            mỗi bài nộp một lần: UPDATE … WHERE submitted_at IS NULL)
 │   │   ├── stats/             ✅ 5  overview, weekly (tuần từ thứ Hai), calendar (≤ 366 ngày): count/groupBy theo
 │   │   │                            local_date, is_new trong PostgreSQL; streak từ DISTINCT local_date
-│   │   ├── me/                   5  settings, profile, password, DELETE /me
+│   │   ├── me/                ✅ 5  settings (strict), profile, password (xóa phiên khác, giữ phiên hiện tại), DELETE /me
+│   │   │                            (cascade, xóa cookie). /me/export đã bỏ theo prompt backend
 │   │   └── admin/                5  CRUD từ vựng (+ sort/order)
 │   ├── serializers/           4–5  user.ts (GĐ4), word.ts (từ + trạng thái người dùng, chủ đề)
 │   ├── types/express.d.ts     ✅ 4  Bổ sung req.user, req.sessionId cho Express
@@ -70,7 +71,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
     │                                nộp lại / nộp song song / hết hạn / quiz của người khác, không đổi SRS, dọn hết hạn
     ├── api/stats.test.ts      ✅ 5  chỉ số khi chưa học, streak (hôm nay chưa học, bị ngắt, dài nhất), hôm nay,
     │                                tuần (thứ Hai, tuần trống), lịch (tính cả hai đầu, 366 ngày, ngày không có thật)
-    ├── api/                      5–6  me, admin, kiểm tra hợp đồng
+    ├── api/me.test.ts         ✅ 5  cài đặt (từng phần, sai, trường lạ, ảnh hưởng /words/today), tên, đổi mật khẩu
+    │                                (400 không phải 401, đăng xuất thiết bị khác), xóa tài khoản (cascade, người khác giữ nguyên)
+    ├── api/                      5–6  admin, kiểm tra hợp đồng
     ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
     └── helpers/               ✅ 4  fixtures (makeWord), globalSetup (chặn DB không phải test + migrate), db (reset),
                                      api (agent có Origin + cookie, đăng ký nhanh), testDbUrl
