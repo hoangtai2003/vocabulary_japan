@@ -202,7 +202,7 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
   - `new_learned` là số lượt chấm có `was_new = true`.
   - `reviewed` là số lượt chấm còn lại, kể cả lượt chấm lại một thẻ vừa "Quên" trong cùng phiên.
 - `/stats/calendar`:
-  - `from` và `to` là bắt buộc, tính cả hai đầu, cách nhau tối đa 400 ngày. Sai định dạng thì trả 400.
+  - `from` và `to` là bắt buộc, tính cả hai đầu, tối đa 366 ngày (theo prompt backend, mục 5.4). Sai định dạng, ngày không có thật hoặc `from` sau `to` thì trả 400.
   - Chỉ trả những ngày có `count > 0`. `count` là tổng số lượt chấm trong ngày.
 - `today.new_learned` đếm số từ khác nhau, không đếm số lượt.
 

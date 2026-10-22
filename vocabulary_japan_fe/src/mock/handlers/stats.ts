@@ -1,4 +1,4 @@
-import { addDays, isDateKey, parseDateKey, startOfWeek, toDateKey } from '@/utils/dates';
+import { addDays, diffInCalendarDays, isDateKey, parseDateKey, startOfWeek, toDateKey } from '@/utils/dates';
 import { computeStreak } from '@/utils/streak';
 import { readDb } from '../db';
 import type { MockDb } from '../types';
@@ -6,7 +6,7 @@ import { api, errors, handle, http, HttpResponse, intParam, requireUser } from '
 import { dueWords, userStates } from './shared';
 
 /** Tối đa số ngày cho một lần gọi /stats/calendar. */
-const MAX_CALENDAR_DAYS = 400;
+const MAX_CALENDAR_DAYS = 366;
 
 function userLogs(db: MockDb, userId: string) {
   return db.reviews.filter((r) => r.user_id === userId);
@@ -82,7 +82,8 @@ export const statsHandlers = [
       if (!isDateKey(to)) fields.to = 'Ngày kết thúc phải có dạng YYYY-MM-DD';
       if (!fields.from && !fields.to) {
         if (from > to) fields.from = 'Ngày bắt đầu phải trước ngày kết thúc';
-        else if (addDays(parseDateKey(from), MAX_CALENDAR_DAYS) < parseDateKey(to)) {
+        // Tính cả hai đầu khoảng, giống backend: đúng 366 ngày vẫn hợp lệ.
+        else if (diffInCalendarDays(parseDateKey(to), parseDateKey(from)) + 1 > MAX_CALENDAR_DAYS) {
           fields.to = `Khoảng thời gian tối đa ${MAX_CALENDAR_DAYS} ngày`;
         }
       }

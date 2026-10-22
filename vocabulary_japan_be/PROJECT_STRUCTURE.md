@@ -48,7 +48,8 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   │   │                            trong một transaction, khóa dòng (FOR UPDATE) chống chấm song song
 │   │   ├── quiz/              ✅ 5  /quiz/start (lưu đề vào quiz_sessions, hết hạn 2 giờ), /quiz/submit (server tự chấm,
 │   │   │                            mỗi bài nộp một lần: UPDATE … WHERE submitted_at IS NULL)
-│   │   ├── stats/                5  overview, weekly, calendar (GROUP BY local_date)
+│   │   ├── stats/             ✅ 5  overview, weekly (tuần từ thứ Hai), calendar (≤ 366 ngày): count/groupBy theo
+│   │   │                            local_date, is_new trong PostgreSQL; streak từ DISTINCT local_date
 │   │   ├── me/                   5  settings, profile, password, DELETE /me
 │   │   └── admin/                5  CRUD từ vựng (+ sort/order)
 │   ├── serializers/           4–5  user.ts (GĐ4), word.ts (từ + trạng thái người dùng, chủ đề)
@@ -67,7 +68,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
     │                                dữ liệu sai, 10 request chấm song song, cách ly A/B
     ├── api/quiz.test.ts       ✅ 5  đề đúng quy tắc, ưu tiên từ đã học, lỗi theo trường, chấm trên server, câu bỏ trống,
     │                                nộp lại / nộp song song / hết hạn / quiz của người khác, không đổi SRS, dọn hết hạn
-    ├── api/                      5–6  stats, me, admin, kiểm tra hợp đồng
+    ├── api/stats.test.ts      ✅ 5  chỉ số khi chưa học, streak (hôm nay chưa học, bị ngắt, dài nhất), hôm nay,
+    │                                tuần (thứ Hai, tuần trống), lịch (tính cả hai đầu, 366 ngày, ngày không có thật)
+    ├── api/                      5–6  me, admin, kiểm tra hợp đồng
     ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
     └── helpers/               ✅ 4  fixtures (makeWord), globalSetup (chặn DB không phải test + migrate), db (reset),
                                      api (agent có Origin + cookie, đăng ký nhanh), testDbUrl

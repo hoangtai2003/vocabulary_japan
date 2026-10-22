@@ -11,6 +11,7 @@ import { createRateLimiters } from './middleware/rateLimit.ts';
 import { createAuthRouter } from './modules/auth/routes.ts';
 import { quizRouter } from './modules/quiz/routes.ts';
 import { reviewsRouter } from './modules/reviews/routes.ts';
+import { statsRouter } from './modules/stats/routes.ts';
 import { wordsRouter } from './modules/words/routes.ts';
 import { healthRouter } from './modules/health/routes.ts';
 
@@ -40,6 +41,7 @@ export function createApp(): Express {
   apiRouter.use(wordsRouter);
   apiRouter.use(reviewsRouter);
   apiRouter.use(quizRouter);
+  apiRouter.use(statsRouter);
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);
