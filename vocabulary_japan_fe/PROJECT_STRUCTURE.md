@@ -15,7 +15,7 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
 ├── API_CONTRACT.md            ✅ 2  Bản sao mục 4 + phụ lục chi tiết đã chốt, đầu vào cho backend
 ├── DESIGN.md                ✅ 3  Plan thiết kế: token, font, wireframe, tự phê bình
 ├── README.md                  ✅ 5  Cách chạy, tài khoản mẫu, chuyển API thật, reset mock, biến môi trường,
-│                                lệnh build và thư mục đầu ra dist/ (deploy theo ../vocabulary_japan_be/DEPLOY.md)
+│                                lệnh build và thư mục đầu ra dist/ (deploy theo ../DEPLOY.md)
 ├── public/
 │   ├── mockServiceWorker.js   ✅ 1  Worker MSW (sinh bằng `msw init`)
 │   └── favicon.svg            ✅ 2  Con dấu son 字

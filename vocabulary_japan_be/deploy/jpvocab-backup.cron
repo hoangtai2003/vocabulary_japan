@@ -1,2 +1,0 @@
-# Sao lưu database jpvocab lúc 02:30 mỗi đêm, dưới user postgres. Log ghi vào syslog.
-30 2 * * * postgres /usr/local/bin/jpvocab-backup 2>&1 | logger -t jpvocab-backup

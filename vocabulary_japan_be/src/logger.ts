@@ -19,7 +19,8 @@ export const logger = pino({
     ],
     censor: '[ẩn]',
   },
-  ...(env.NODE_ENV === 'development'
+  // Log dễ đọc chỉ khi dev trong terminal; container (không TTY, không có pino-pretty) ghi JSON.
+  ...(env.NODE_ENV === 'development' && process.stdout.isTTY
     ? { transport: { target: 'pino-pretty', options: { translateTime: 'SYS:HH:MM:ss', ignore: 'pid,hostname' } } }
     : {}),
 });

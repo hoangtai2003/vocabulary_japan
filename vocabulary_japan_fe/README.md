@@ -80,4 +80,4 @@ Thư mục đầu ra: **`dist/`** (`index.html`, `assets/` với tên file có h
 - SPA fallback: đường dẫn không phải file thì trả `/index.html`, để tải lại trang ở `/tu-vung`, `/quan-tri`… vẫn mở được app;
 - không cache `index.html`; `assets/` cache lâu được.
 
-Trên server Ubuntu của dự án, Nginx lo cả ba việc (`../vocabulary_japan_be/deploy/nginx-jpvocab.conf`) và `dist/` được chép vào `/var/www/jpvocab`. Hướng dẫn đầy đủ: [`../vocabulary_japan_be/DEPLOY.md`](../vocabulary_japan_be/DEPLOY.md), mục 7. Sau lần cài đầu, `deploy/deploy.sh` của backend tự build lại frontend và chép `dist/` mỗi lần deploy.
+Ở production, `Dockerfile` trong thư mục này build `dist/` rồi đóng gói vào image Caddy; Caddy lo cả ba việc (`../deploy/Caddyfile`). Hướng dẫn đầy đủ: [`../DEPLOY.md`](../DEPLOY.md).

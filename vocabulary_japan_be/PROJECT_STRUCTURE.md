@@ -14,10 +14,10 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 ├── prisma.config.ts           ✅ 2  Cấu hình Prisma 7: schema, migrations, lệnh seed, DATABASE_URL (nạp .env bằng Node)
 ├── .gitignore                 ✅ 2  + src/generated
 ├── README.md              ✅ 6  Cách chạy, lệnh, biến môi trường, tài khoản mẫu, kết nối frontend, thêm từ
-├── DEPLOY.md              ✅ 6  Từng bước lên Ubuntu: user riêng, PostgreSQL, env 600, systemd, Nginx, HTTPS,
-│                                deploy.sh, sao lưu/khôi phục, khắc phục sự cố
-├── deploy/                ✅ 6  jpvocab-api.service, nginx-jpvocab.conf, api.env.example, deploy.sh, backup.sh,
-│                                jpvocab-backup.cron (nginx -t, systemd-analyze, sao lưu + khôi phục đã chạy thử)
+├── Dockerfile             ✅ 6  Image production: build TS rồi bỏ devDependencies, chạy dưới user node;
+│                                giữ src/ để seed và create-admin chạy thẳng bằng Node 24
+├── .dockerignore          ✅ 6  Bỏ node_modules, dist, src/generated, tests, .env
+│                                (deploy: ../DEPLOY.md, ../docker-compose.yml, ../deploy/)
 ├── prisma/
 │   ├── schema.prisma          ✅ 2  Schema theo prompt mục 4; bảng/cột snake_case; timestamptz; 5 index thêm (có lý do)
 │   ├── migrations/            ✅ 5  …_init; …_daily_new_words_settings (thêm goal, level)

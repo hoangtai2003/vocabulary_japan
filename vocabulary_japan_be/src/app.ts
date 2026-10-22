@@ -24,7 +24,7 @@ import { healthRouter } from './modules/health/routes.ts';
 export function createApp(): Express {
   const app = express();
 
-  // Sau Nginx: tin header X-Forwarded-* từ proxy cục bộ, để rate limit lấy đúng IP người dùng.
+  // Sau reverse proxy (Caddy): tin header X-Forwarded-* từ proxy cục bộ, để rate limit lấy đúng IP người dùng.
   app.set('trust proxy', env.TRUST_PROXY);
 
   app.use(helmet());

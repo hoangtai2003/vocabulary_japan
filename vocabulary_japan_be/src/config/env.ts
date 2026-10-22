@@ -13,7 +13,7 @@ const envSchema = z
   .object({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     PORT: z.coerce.number().int().min(1).max(65535).default(4000),
-    /** Địa chỉ lắng nghe. Production đặt 127.0.0.1 (chỉ Nginx gọi được); bỏ trống = mọi địa chỉ. */
+    /** Địa chỉ lắng nghe; bỏ trống = mọi địa chỉ (production trong Docker để trống). */
     HOST: z.string().optional(),
     DATABASE_URL: z.string().url({ error: 'Phải là URL PostgreSQL, ví dụ postgresql://user:pass@localhost:5432/db' }),
     CORS_ORIGIN: z.string().url({ error: 'Phải là URL, ví dụ http://localhost:5173' }),
@@ -32,7 +32,10 @@ const envSchema = z
         }
       }, 'Múi giờ IANA không hợp lệ, ví dụ Asia/Ho_Chi_Minh'),
     LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
-    /** Giá trị cho app.set('trust proxy'); mặc định chỉ tin proxy trên localhost (Nginx cùng máy). */
+    /**
+     * Giá trị cho app.set('trust proxy'); mặc định chỉ tin proxy trên localhost. Production trong
+     * Docker đặt uniquelocal (Caddy gọi từ dải IP nội bộ của Docker), xem docker-compose.yml.
+     */
     TRUST_PROXY: z.string().default('loopback'),
   })
   .superRefine((env, ctx) => {

@@ -54,7 +54,7 @@ Xem chú thích đầy đủ trong `.env.example`. Server kiểm tra mọi biế
 | `DATABASE_URL` | (bắt buộc) | PostgreSQL |
 | `DATABASE_URL_TEST` | `…@localhost:5433/jpvocab_test` | chỉ dùng khi chạy test |
 | `PORT` | `4000` | |
-| `HOST` | mọi địa chỉ | production: `127.0.0.1` (chỉ Nginx gọi được) |
+| `HOST` | mọi địa chỉ | để trống trong Docker (container chỉ nằm trong mạng nội bộ của compose) |
 | `CORS_ORIGIN` | (bắt buộc) | origin của frontend, ví dụ `http://localhost:5173`; cũng dùng để kiểm tra Origin chống CSRF |
 | `SESSION_TTL_DAYS` | `30` | thời hạn phiên đăng nhập |
 | `COOKIE_SECURE` | `false` | `true` khi chạy HTTPS; bắt buộc ở production |
@@ -93,6 +93,6 @@ Lưu ý:
 
 ## Deploy
 
-Hướng dẫn từng bước lên server Ubuntu (Nginx, systemd, HTTPS, sao lưu): [`DEPLOY.md`](DEPLOY.md). File cấu hình nằm trong `deploy/`.
+Deploy bằng Docker Compose (Caddy + HTTPS tự động): [`../DEPLOY.md`](../DEPLOY.md). Image API build từ `Dockerfile` trong thư mục này; `docker-compose.yml` production và `deploy/` nằm ở thư mục gốc repo.
 
-Deploy bản mới sau lần cài đầu tiên: `bash deploy/deploy.sh` trên server.
+Deploy bản mới sau lần cài đầu tiên: `/opt/jpvocab/deploy/deploy.sh` trên server.
