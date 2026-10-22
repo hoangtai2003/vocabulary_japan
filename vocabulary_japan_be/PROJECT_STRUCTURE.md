@@ -30,8 +30,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   ├── config/env.ts          ✅ 1  Đọc .env (process.loadEnvFile), validate bằng zod, sai thì dừng ngay
 │   ├── db/prisma.ts           ✅ 2  Một PrismaClient dùng chung (driver adapter @prisma/adapter-pg)
 │   ├── generated/prisma/      ✅ 2  Prisma Client sinh tự động (prisma generate), không commit
-│   ├── domain/                2–3  Hàm thuần chép từ frontend, tính theo APP_TIMEZONE. GĐ2 (seed cần): dates, srs,
-│   │                                normalize (+ buildSearchText), random. GĐ3: streak, quiz, chọn từ mới trong ngày
+│   ├── domain/                ✅ 3  Hàm thuần, chép logic từ frontend, ngày tính theo APP_TIMEZONE:
+│   │                                dates, srs, normalize (+ buildSearchText), random, streak, quiz,
+│   │                                today (chọn từ mới trong ngày), types (hình dạng JSON của hợp đồng)
 │   ├── middleware/
 │   │   ├── errorHandler.ts    ✅ 1  404 JSON + error handler duy nhất (ApiError, ZodError, body hỏng/quá lớn, 500)
 │   │   ├── requireAuth.ts        4  Đọc cookie sid, tìm session còn hạn, gắn req.user
@@ -56,6 +57,6 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 └── tests/
     ├── api/app.test.ts        ✅ 1  health, 404 JSON, body hỏng/quá lớn, CORS, helmet
     ├── api/                      4–6 auth, phân quyền, cách ly dữ liệu, today, reviews, quiz, hợp đồng
-    ├── domain/                ✅ 2  srs (chép từ frontend), dates (nửa đêm, giờ mùa hè), normalize; GĐ3: streak, quiz
-    └── helpers/                  4  Tạo app + DB test, reset giữa các test, đăng nhập nhanh
+    ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
+    └── helpers/               3–4  fixtures.ts (makeWord, GĐ3); GĐ4: tạo app + DB test, reset, đăng nhập nhanh
 ```
