@@ -1,3 +1,4 @@
+import { DEFAULT_SRS_STATE, type SrsState } from '../domain/srs.ts';
 import { DEFAULT_WORD_STATE, type Word, type WordType, type WordWithState } from '../domain/types.ts';
 import type { Topic, UserWord, Word as WordModel } from '../generated/prisma/client.ts';
 
@@ -40,4 +41,17 @@ export function toWordWithState(word: WordModel, userWord: UserWord | null | und
 
 export function toTopicJson(topic: Topic) {
   return { id: topic.id, name_vi: topic.nameVi };
+}
+
+/** Trạng thái SRS (hình dạng của domain/srs.ts) từ bản ghi user_words; chưa có thì mặc định. */
+export function toSrsState(userWord: UserWord | null | undefined): SrsState {
+  if (!userWord) return { ...DEFAULT_SRS_STATE };
+  return {
+    status: userWord.status,
+    ease: userWord.ease,
+    interval_days: userWord.intervalDays,
+    repetitions: userWord.repetitions,
+    due_at: userWord.dueAt?.toISOString() ?? null,
+    last_reviewed_at: userWord.lastReviewedAt?.toISOString() ?? null,
+  };
 }

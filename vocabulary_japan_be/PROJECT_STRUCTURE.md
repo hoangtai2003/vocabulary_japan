@@ -44,7 +44,8 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   │   ├── auth/              ✅ 4  routes.ts, schemas.ts, service.ts, sessions.ts (token 32 byte, DB lưu SHA-256, cookie sid)
 │   │   ├── words/             ✅ 5  /words/today (chốt theo ngày, tính lại khi đổi mục tiêu/cấp độ), /words (lọc,
 │   │   │                            tìm ILIKE trên search_text, phân trang), /words/:id, /topics, favorite, note
-│   │   ├── reviews/              5  /reviews/due, POST /reviews/:wordId
+│   │   ├── reviews/           ✅ 5  /reviews/due (+ next_due_at), POST /reviews/:wordId: SRS + user_words + review_logs
+│   │   │                            trong một transaction, khóa dòng (FOR UPDATE) chống chấm song song
 │   │   ├── quiz/                 5  /quiz/start, /quiz/submit
 │   │   ├── stats/                5  overview, weekly, calendar (GROUP BY local_date)
 │   │   ├── me/                   5  settings, profile, password, DELETE /me
@@ -61,7 +62,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
     ├── api/auth.test.ts       ✅ 4  đăng ký, đăng nhập, me, đăng xuất, phiên hết hạn, phân quyền, Origin, rate limit
     ├── api/words.test.ts      ✅ 5  401, chủ đề, phân trang, lọc, tìm không dấu (+ escape %), yêu thích, ghi chú,
     │                                cách ly A/B, /words/today (chốt ngày, đổi mục tiêu/cấp độ, từ bị xóa)
-    ├── api/                      5–6  reviews, quiz, stats, me, admin, kiểm tra hợp đồng
+    ├── api/reviews.test.ts    ✅ 5  mốc cuối ngày giờ VN, thứ tự, limit, next_due_at, lần chấm đầu/sau, Quên,
+    │                                dữ liệu sai, 10 request chấm song song, cách ly A/B
+    ├── api/                      5–6  quiz, stats, me, admin, kiểm tra hợp đồng
     ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
     └── helpers/               ✅ 4  fixtures (makeWord), globalSetup (chặn DB không phải test + migrate), db (reset),
                                      api (agent có Origin + cookie, đăng ký nhanh), testDbUrl
