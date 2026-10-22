@@ -150,6 +150,8 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
 2. **`GET /admin/words` nhận thêm `sort` và `order`**, để bảng Quản trị sắp xếp theo cột trên toàn bộ dữ liệu, không chỉ trong trang hiện tại.
    - `sort` ∈ `id | kanji | kana | romaji | level | type | topic_id`, mặc định `id`.
    - `order` ∈ `asc | desc`, mặc định `asc`.
+   - `level` sắp theo thứ tự N5 → N4 → N3 (dễ → khó), không theo chuỗi. Từ không có kanji đứng đầu khi sắp `kanji` tăng dần.
+   - Cùng giá trị thì sắp tiếp theo `id`, cùng chiều.
    - Giá trị không hợp lệ thì dùng mặc định.
 3. **`GET /health`** trả `{ ok: true }`, không cần đăng nhập. Thêm theo prompt backend (mục 3.1) để kiểm tra khi deploy. Frontend không gọi endpoint này.
 
@@ -173,6 +175,9 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
   - `new_words` gồm cả từ đã học hôm nay, với trạng thái mới, để giao diện đánh dấu "đã học".
   - `learned_today` là số từ được chấm lần đầu trong hôm nay.
 - `DELETE /admin/words/:id` xóa luôn trạng thái của từ đó ở mọi người dùng.
+- `POST` và `PUT /admin/words`:
+  - `topic_id` không tồn tại → 400 `VALIDATION_ERROR`, `fields.topic_id = "Chủ đề không tồn tại"`.
+  - Trùng `(kanji, kana, level)` với một từ khác (hai kanji rỗng coi là bằng nhau) → 400 `VALIDATION_ERROR`, `fields.kana = "Từ này đã có trong dữ liệu"`. Sửa một từ mà giữ nguyên nội dung thì không tính là trùng với chính nó.
 
 ### D. Ôn tập
 

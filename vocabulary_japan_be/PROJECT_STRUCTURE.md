@@ -52,13 +52,15 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   │   │                            local_date, is_new trong PostgreSQL; streak từ DISTINCT local_date
 │   │   ├── me/                ✅ 5  settings (strict), profile, password (xóa phiên khác, giữ phiên hiện tại), DELETE /me
 │   │   │                            (cascade, xóa cookie). /me/export đã bỏ theo prompt backend
-│   │   └── admin/                5  CRUD từ vựng (+ sort/order)
+│   │   └── admin/             ✅ 5  CRUD từ vựng: danh sách (q, level, topic, sort/order, phân trang), thêm/sửa dùng chung
+│   │                                wordInputSchema (khớp form frontend), kiểm tra chủ đề + trùng (kể cả kanji rỗng), xóa cascade
 │   ├── serializers/           4–5  user.ts (GĐ4), word.ts (từ + trạng thái người dùng, chủ đề)
 │   ├── types/express.d.ts     ✅ 4  Bổ sung req.user, req.sessionId cho Express
 │   └── utils/
 │       ├── ApiError.ts        ✅ 1  ApiError(status, code, message, fields?) + hàm tạo nhanh
 │       ├── zodFields.ts       ✅ 1  Lỗi zod → fields { tên_trường: thông_báo }
 │       ├── password.ts        ✅ 2  argon2id hash/verify, chuẩn hóa email, giới hạn 6–128 ký tự
+│       ├── like.ts            ✅ 5  escapeLike: escape % _ \ cho ILIKE (dùng ở /words và /admin/words)
 │       └── pagination.ts      ✅ 5  page ≥ 1, page_size 20 (tối đa 100), giá trị sai dùng mặc định
 └── tests/
     ├── api/app.test.ts        ✅ 1  health, 404 JSON, body hỏng/quá lớn, CORS, helmet
@@ -73,7 +75,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
     │                                tuần (thứ Hai, tuần trống), lịch (tính cả hai đầu, 366 ngày, ngày không có thật)
     ├── api/me.test.ts         ✅ 5  cài đặt (từng phần, sai, trường lạ, ảnh hưởng /words/today), tên, đổi mật khẩu
     │                                (400 không phải 401, đăng xuất thiết bị khác), xóa tài khoản (cascade, người khác giữ nguyên)
-    ├── api/                      5–6  admin, kiểm tra hợp đồng
+    ├── api/admin.test.ts      ✅ 5  401/403, sắp xếp (kanji rỗng, level N5→N3, giá trị sai), tìm/lọc, thêm (search_text,
+    │                                lỗi giống form, chủ đề, trùng), sửa (giữ trạng thái học, trùng, 404), xóa (cascade, hôm nay)
+    ├── api/                      6  kiểm tra hợp đồng (mọi endpoint so với schema)
     ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
     └── helpers/               ✅ 4  fixtures (makeWord), globalSetup (chặn DB không phải test + migrate), db (reset),
                                      api (agent có Origin + cookie, đăng ký nhanh), testDbUrl

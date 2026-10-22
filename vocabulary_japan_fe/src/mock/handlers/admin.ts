@@ -33,14 +33,31 @@ function nextWordId(db: MockDb): string {
   return `w${String(max + 1).padStart(3, '0')}`;
 }
 
-/** Validate body tạo/sửa từ bằng schema dùng chung, kiểm tra chủ đề tồn tại. */
-function parseWordInput(db: MockDb, body: unknown): WordInput {
+/** Thứ tự cấp độ khi sắp xếp: N5 → N4 → N3 (dễ → khó), giống thứ tự enum ở backend. */
+const LEVEL_ORDER: Record<string, number> = { N5: 0, N4: 1, N3: 2 };
+
+/**
+ * Validate body tạo/sửa từ bằng schema dùng chung, kiểm tra chủ đề tồn tại và không trùng
+ * (kanji, kana, cấp độ) với từ khác — giống backend (API_CONTRACT.md phụ lục C).
+ */
+function parseWordInput(db: MockDb, body: unknown, excludeId?: string): WordInput {
   const parsed = wordInputSchema.safeParse(body);
   if (!parsed.success) throw errors.validation(zodFieldErrors(parsed.error));
-  if (!db.topics.some((t) => t.id === parsed.data.topic_id)) {
+  const input = parsed.data;
+  if (!db.topics.some((t) => t.id === input.topic_id)) {
     throw errors.validation({ topic_id: 'Chủ đề không tồn tại' });
   }
-  return parsed.data;
+  const duplicate = db.words.some(
+    (w) =>
+      w.id !== excludeId &&
+      w.kana === input.kana &&
+      (w.kanji ?? null) === input.kanji &&
+      w.level === input.level,
+  );
+  if (duplicate) {
+    throw errors.validation({ kana: 'Từ này đã có trong dữ liệu' }, 'Từ này đã có trong dữ liệu');
+  }
+  return input;
 }
 
 export const adminHandlers = [
@@ -66,9 +83,11 @@ export const adminHandlers = [
         .filter((w) => !topic || w.topic_id === topic)
         .filter((w) => wordMatchesQuery(w, q))
         .sort((a, b) => {
-          const av = a[sort] ?? '';
-          const bv = b[sort] ?? '';
-          return (av.localeCompare(bv, 'ja') || a.id.localeCompare(b.id)) * direction;
+          const byValue =
+            sort === 'level'
+              ? (LEVEL_ORDER[a.level] ?? 0) - (LEVEL_ORDER[b.level] ?? 0)
+              : (a[sort] ?? '').localeCompare(b[sort] ?? '', 'ja');
+          return (byValue || a.id.localeCompare(b.id)) * direction;
         });
 
       return HttpResponse.json(
@@ -99,7 +118,7 @@ export const adminHandlers = [
         requireAdmin(db);
         const index = db.words.findIndex((w) => w.id === params.id);
         if (index < 0) throw errors.notFound('Không tìm thấy từ này');
-        const updated: Word = { id: String(params.id), ...parseWordInput(db, body) };
+        const updated: Word = { id: String(params.id), ...parseWordInput(db, body, String(params.id)) };
         db.words[index] = updated;
         return updated;
       });

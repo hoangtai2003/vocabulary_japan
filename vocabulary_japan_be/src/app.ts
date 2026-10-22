@@ -8,6 +8,7 @@ import { logger } from './logger.ts';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
 import { originCheck } from './middleware/originCheck.ts';
 import { createRateLimiters } from './middleware/rateLimit.ts';
+import { adminRouter } from './modules/admin/routes.ts';
 import { createAuthRouter } from './modules/auth/routes.ts';
 import { meRouter } from './modules/me/routes.ts';
 import { quizRouter } from './modules/quiz/routes.ts';
@@ -44,6 +45,7 @@ export function createApp(): Express {
   apiRouter.use(quizRouter);
   apiRouter.use(statsRouter);
   apiRouter.use(meRouter);
+  apiRouter.use(adminRouter);
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);

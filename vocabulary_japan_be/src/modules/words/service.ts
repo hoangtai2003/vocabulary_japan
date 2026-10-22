@@ -7,6 +7,7 @@ import type { WordWithState } from '../../domain/types.ts';
 import type { Prisma, User } from '../../generated/prisma/client.ts';
 import { toTopicJson, toWordWithState } from '../../serializers/word.ts';
 import { ApiError } from '../../utils/ApiError.ts';
+import { escapeLike } from '../../utils/like.ts';
 import { paginated, skipTake } from '../../utils/pagination.ts';
 import type { ListWordsQuery } from './schemas.ts';
 
@@ -16,9 +17,6 @@ const TZ = () => env.APP_TIMEZONE;
 const withUserState = (userId: string) => ({ userWords: { where: { userId }, take: 1 } }) as const;
 
 const notFound = () => ApiError.notFound('Không tìm thấy từ này');
-
-/** Escape ký tự đại diện của LIKE/ILIKE trong PostgreSQL (ký tự escape mặc định là \). */
-export const escapeLike = (value: string) => value.replace(/[\\%_]/g, '\\$&');
 
 /** Thứ tự danh sách: cấp độ (N5, N4, N3 — theo thứ tự khai báo enum), rồi chủ đề, rồi id. */
 const WORD_ORDER: Prisma.WordOrderByWithRelationInput[] = [{ level: 'asc' }, { topicId: 'asc' }, { id: 'asc' }];
