@@ -14,7 +14,7 @@ cp .env.example .env          # dùng được ngay cho máy dev
 docker compose up -d          # PostgreSQL dev (cổng 5432) và test (cổng 5433)
 npm install                   # cài gói, tự sinh Prisma Client
 npm run db:migrate            # tạo bảng
-npm run db:seed               # từ vựng + tài khoản mẫu + lịch sử mẫu
+npm run db:seed               # từ vựng + dạng mondai + đề mẫu số 11 + tài khoản mẫu + lịch sử mẫu
 npm run dev                   # http://localhost:4000/api/health → {"ok":true}
 ```
 
@@ -39,7 +39,7 @@ Lịch sử mẫu tính theo ngày chạy seed. Mỗi lần chạy `npm run db:s
 | `npm test` | toàn bộ test (domain + API trên DB test cổng 5433) |
 | `npm run db:migrate` | tạo migration mới từ `prisma/schema.prisma` và áp dụng (dev) |
 | `npm run db:deploy` | áp dụng migration có sẵn (production) |
-| `npm run db:seed` | thêm từ vựng còn thiếu; ngoài production thêm tài khoản và lịch sử mẫu |
+| `npm run db:seed` | thêm từ vựng và dạng mondai còn thiếu; ngoài production thêm đề mẫu số 11 (đã xuất bản), tài khoản và lịch sử mẫu |
 | `npm run db:reset` | xóa sạch DB dev rồi migrate và seed lại |
 | `npm run create-admin -- --email … --password … [--name …]` | tạo hoặc nâng quyền admin (dùng cho production) |
 
@@ -62,6 +62,7 @@ Xem chú thích đầy đủ trong `.env.example`. Server kiểm tra mọi biế
 | `APP_TIMEZONE` | `Asia/Ho_Chi_Minh` | múi giờ tính "hôm nay", tuần, streak |
 | `LOG_LEVEL` | `info` | |
 | `TRUST_PROXY` | `loopback` | chỉ tin header X-Forwarded-* từ proxy trên cùng máy |
+| `UPLOAD_DIR` | `uploads` | thư mục ảnh của bài đọc đề thi; Docker đặt `/app/uploads` (volume riêng) |
 
 ## Kết nối với frontend
 
@@ -90,6 +91,12 @@ Lưu ý:
 1. Sửa file ở `prisma/seed-data/`.
 2. Chép sang frontend rồi chạy `npm test` ở đó để kiểm tra dữ liệu hợp lệ: `cp prisma/seed-data/*.json ../vocabulary_japan_fe/src/test/mock/data/`.
 3. `npm run db:seed`. Seed chỉ **thêm** từ còn thiếu (theo id), không ghi đè từ đã có, nên không mất chỉnh sửa đã làm ở trang Quản trị. Muốn áp dụng lại toàn bộ dữ liệu gốc trên máy dev thì dùng `npm run db:reset`.
+
+## Luyện đề JLPT (SRS 2.0)
+
+- Định dạng file nhập đề: [EXAM_IMPORT_FORMAT.md](EXAM_IMPORT_FORMAT.md). Đề mẫu: `prisma/seed-data/exams/n4-de-luyen-11.json`.
+- Ảnh của bài đọc lưu ở `UPLOAD_DIR` (mặc định `uploads/`, không đưa lên git; Docker: volume `uploads`).
+- Endpoint và kiểu dữ liệu: `../vocabulary_japan_fe/API_CONTRACT.md`, mục "Luyện đề JLPT" và phụ lục J.
 
 ## Deploy
 

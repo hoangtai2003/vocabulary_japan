@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { requireAdmin } from '../../middleware/requireAdmin.ts';
 import { requireAuth } from '../../middleware/requireAuth.ts';
+import { examAdminRouter } from '../examAdmin/routes.ts';
 import { adminListQuerySchema, wordInputSchema } from './schemas.ts';
 import { createWord, deleteWord, listAdminWords, updateWord } from './service.ts';
 
@@ -25,3 +26,6 @@ adminRouter.delete('/admin/words/:id', async (req, res) => {
   await deleteWord(req.params.id);
   res.status(204).end();
 });
+
+// Quản trị đề thi (SRS 2.0): cùng lớp requireAuth + requireAdmin ở trên.
+adminRouter.use(examAdminRouter);

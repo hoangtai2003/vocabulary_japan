@@ -1,5 +1,6 @@
 import { adminHandlers } from './admin';
 import { authHandlers } from './auth';
+import { examHandlers } from './exams';
 import { meHandlers } from './me';
 import { quizHandlers } from './quiz';
 import { reviewsHandlers } from './reviews';
@@ -15,4 +16,5 @@ export const handlers = [
   ...statsHandlers,
   ...meHandlers,
   ...adminHandlers,
+  ...examHandlers,
 ];

@@ -37,6 +37,8 @@ const envSchema = z
      * Docker đặt uniquelocal (Caddy gọi từ dải IP nội bộ của Docker), xem docker-compose.yml.
      */
     TRUST_PROXY: z.string().default('loopback'),
+    /** Thư mục lưu ảnh của bài đọc (SRS 2.0, NFR-EX-10); production trỏ vào volume riêng. */
+    UPLOAD_DIR: z.string().min(1).default('uploads'),
   })
   .superRefine((env, ctx) => {
     if (env.COOKIE_SAME_SITE === 'none' && !env.COOKIE_SECURE) {

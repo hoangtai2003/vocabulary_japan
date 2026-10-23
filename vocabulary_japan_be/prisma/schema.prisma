@@ -39,20 +39,23 @@ enum Theme {
 }
 
 model User {
-  id            String         @id @default(uuid())
-  email         String         @unique // lưu dạng chữ thường
-  passwordHash  String         @map("password_hash")
-  displayName   String         @map("display_name")
-  role          Role           @default(user)
-  dailyGoal     Int            @default(10) @map("daily_goal") // 5 | 10 | 20, kiểm tra bằng zod
-  level         JlptLevel      @default(N5)
-  theme         Theme          @default(system)
-  createdAt     DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
-  sessions      Session[]
-  userWords     UserWord[]
-  reviewLogs    ReviewLog[]
-  dailyNewWords DailyNewWord[]
-  quizSessions  QuizSession[]
+  id             String          @id @default(uuid())
+  email          String          @unique // lưu dạng chữ thường
+  passwordHash   String          @map("password_hash")
+  displayName    String          @map("display_name")
+  role           Role            @default(user)
+  dailyGoal      Int             @default(10) @map("daily_goal") // 5 | 10 | 20, kiểm tra bằng zod
+  level          JlptLevel       @default(N5)
+  theme          Theme           @default(system)
+  createdAt      DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  sessions       Session[]
+  userWords      UserWord[]
+  reviewLogs     ReviewLog[]
+  dailyNewWords  DailyNewWord[]
+  quizSessions   QuizSession[]
+  attempts       Attempt[]
+  wrongQuestions WrongQuestion[]
+  questionEdits  QuestionEdit[]
 
   @@map("users")
 }
@@ -173,4 +176,286 @@ model QuizSession {
   @@index([userId])
   @@index([expiresAt])
   @@map("quiz_sessions")
+}
+
+// ---------- Module luyện đề JLPT (SRS 2.0, mục 4) ----------
+// Bên trái là nội dung đề do quản trị viên soạn (exams → exam_sections → mondai → passages,
+// questions), bên phải là bài làm (attempts → attempt_sections, attempt_answers). Hai bên nối
+// với nhau ở questions: sửa đáp án đúng của một câu thì chấm lại mọi bài làm đã trả lời câu đó.
+
+enum ExamStatus {
+  draft
+  pending_review
+  published
+  hidden
+}
+
+/**
+ * DR-EX-12: phần Nghe thêm sau mà không đổi cấu trúc; bản 2.0 chỉ dùng reading.
+ */
+enum SectionKind {
+  reading
+  listening
+}
+
+/**
+ * Kiểu trả lời: chọn 1 trong 4, hoặc câu sắp xếp ★ (DR-EX-06, DR-EX-07).
+ */
+enum AnswerKind {
+  choice
+  star
+}
+
+/**
+ * exam, section: có bấm giờ. practice, wrong_review, by_type: không giới hạn giờ.
+ */
+enum AttemptMode {
+  exam
+  section
+  practice
+  wrong_review
+  by_type
+}
+
+enum AttemptStatus {
+  in_progress
+  submitted
+  abandoned
+}
+
+/**
+ * Dạng mondai (mục 2.2): dữ liệu tham chiếu, quản trị viên sửa được, không viết cứng trong code.
+ */
+model MondaiType {
+  id                  String     @id // ví dụ n4_kanji_yomi
+  level               JlptLevel
+  sectionTitle        String     @map("section_title") // phần thi thường gặp, ví dụ 文字・語彙
+  labelJa             String     @map("label_ja") // 漢字読み
+  nameVi              String     @map("name_vi") // Đọc kanji
+  answerKind          AnswerKind @map("answer_kind")
+  hasPassage          Boolean    @default(false) @map("has_passage")
+  defaultInstructions String     @default("") @map("default_instructions")
+  sortOrder           Int        @default(0) @map("sort_order")
+  mondai              Mondai[]
+  attempts            Attempt[]
+
+  @@map("mondai_types")
+}
+
+model Exam {
+  id           String        @id @default(uuid())
+  title        String
+  level        JlptLevel
+  difficulty   String?
+  description  String        @default("")
+  instructions String        @default("")
+  source       String // NFR-EX-11: căn cứ kiểm tra quyền sử dụng đề
+  status       ExamStatus    @default(draft)
+  publishedAt  DateTime?     @map("published_at") @db.Timestamptz(3)
+  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime      @updatedAt @map("updated_at") @db.Timestamptz(3)
+  sections     ExamSection[]
+  attempts     Attempt[]
+
+  @@unique([level, title])
+  @@index([status, level])
+  @@map("exams")
+}
+
+model ExamSection {
+  id              String           @id @default(uuid())
+  examId          String           @map("exam_id")
+  position        Int
+  title           String
+  kind            SectionKind      @default(reading)
+  durationMinutes Int?             @map("duration_minutes") // thiếu thì không xuất bản được (DR-EX-10)
+  scoreGroup      String           @default("") @map("score_group")
+  exam            Exam             @relation(fields: [examId], references: [id], onDelete: Cascade)
+  mondai          Mondai[]
+  attemptSections AttemptSection[]
+
+  @@index([examId, position])
+  @@map("exam_sections")
+}
+
+model Mondai {
+  id           String      @id @default(uuid())
+  sectionId    String      @map("section_id")
+  position     Int
+  number       Int // 問題1, 問題2…
+  typeId       String?     @map("type_id")
+  instructions String      @default("")
+  tip          String      @default("")
+  section      ExamSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  type         MondaiType? @relation(fields: [typeId], references: [id], onDelete: SetNull)
+  passages     Passage[]
+  questions    Question[]
+
+  @@index([sectionId, position])
+  @@index([typeId])
+  @@map("mondai")
+}
+
+model Passage {
+  id              String     @id @default(uuid())
+  mondaiId        String     @map("mondai_id")
+  position        Int
+  label           String     @default("") // （1）
+  intro           String     @default("") // câu dẫn ngữ cảnh
+  content         String     @default("") // bản trong đề, cú pháp DR-EX-08
+  contentFurigana String     @default("") @map("content_furigana") // bản đọc kèm furigana (FR-EXP-04)
+  translationVi   String     @default("") @map("translation_vi")
+  attachments     Json       @default("[]") // DR-EX-12: [{ kind: 'image' | 'audio', upload_id }]
+  mondai          Mondai     @relation(fields: [mondaiId], references: [id], onDelete: Cascade)
+  questions       Question[]
+
+  @@index([mondaiId, position])
+  @@map("passages")
+}
+
+model Question {
+  id             String          @id @default(uuid())
+  mondaiId       String          @map("mondai_id")
+  passageId      String?         @map("passage_id")
+  position       Int
+  numberOverride Int?            @map("number_override") // DR-EX-05: ghi đè số câu cho khớp đề gốc
+  kind           AnswerKind
+  prompt         String          @default("")
+  options        String[] // 4 lựa chọn, hoặc 4 mảnh của câu ★
+  correctOption  Int?            @map("correct_option") // 1–4; câu ★ tự tính từ star_order
+  starPrefix     String          @default("") @map("star_prefix")
+  starSuffix     String          @default("") @map("star_suffix")
+  starPosition   Int?            @map("star_position") // ô ★ (1–4)
+  starOrder      Int[]           @default([]) @map("star_order") // thứ tự đúng, theo số mảnh
+  explanation    Json            @default("{}") // 6 mục của FR-EXP-02 (DR-EX-09)
+  learnerNote    String          @default("") @map("learner_note")
+  needsReview    Boolean         @default(false) @map("needs_review")
+  internalNote   String          @default("") @map("internal_note")
+  attachments    Json            @default("[]")
+  createdAt      DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt      DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  mondai         Mondai          @relation(fields: [mondaiId], references: [id], onDelete: Cascade)
+  passage        Passage?        @relation(fields: [passageId], references: [id], onDelete: SetNull)
+  answers        AttemptAnswer[]
+  wrongEntries   WrongQuestion[]
+  edits          QuestionEdit[]
+
+  @@index([mondaiId, position])
+  @@index([passageId])
+  @@map("questions")
+}
+
+/**
+ * FR-CMS-18: ai sửa câu nào, lúc nào, trường nào.
+ */
+model QuestionEdit {
+  id         String   @id @default(uuid())
+  questionId String   @map("question_id")
+  userId     String?  @map("user_id")
+  fields     String[]
+  editedAt   DateTime @default(now()) @map("edited_at") @db.Timestamptz(3)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([questionId, editedAt])
+  @@map("question_edits")
+}
+
+/**
+ * Ảnh của bài đọc (FR-CMS-09); tệp nằm trên volume riêng (NFR-EX-10), bảng chỉ giữ thông tin.
+ */
+model Upload {
+  id          String   @id // tên tệp trên đĩa, không có đuôi
+  contentType String   @map("content_type")
+  size        Int
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("uploads")
+}
+
+/**
+ * DR-EX-13. Bộ câu hỏi chốt lúc bắt đầu (question_ids), nên sửa đề sau đó không đổi phạm vi lượt làm.
+ */
+model Attempt {
+  id                String           @id @default(uuid())
+  userId            String           @map("user_id")
+  examId            String?          @map("exam_id") // null với làm lại câu sai, luyện theo dạng
+  mode              AttemptMode
+  scopeType         String           @map("scope_type") // exam | section | mondai | wrong | by_type
+  scopeId           String?          @map("scope_id")
+  level             JlptLevel
+  mondaiTypeId      String?          @map("mondai_type_id")
+  status            AttemptStatus    @default(in_progress)
+  questionIds       String[]         @map("question_ids")
+  currentQuestionId String?          @map("current_question_id")
+  startedAt         DateTime         @default(now()) @map("started_at") @db.Timestamptz(3)
+  submittedAt       DateTime?        @map("submitted_at") @db.Timestamptz(3)
+  correctCount      Int?             @map("correct_count")
+  totalCount        Int              @map("total_count")
+  regradedAt        DateTime?        @map("regraded_at") @db.Timestamptz(3) // FR-RES-10
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // Đề đã có lượt làm thì không xóa được (FR-CMS-17), nên Restrict.
+  exam              Exam?            @relation(fields: [examId], references: [id], onDelete: Restrict)
+  mondaiType        MondaiType?      @relation(fields: [mondaiTypeId], references: [id], onDelete: SetNull)
+  sections          AttemptSection[]
+  answers           AttemptAnswer[]
+
+  @@index([userId, examId, status])
+  @@index([examId])
+  @@map("attempts")
+}
+
+/**
+ * Một phần thi trong lượt làm; hạn nộp do server tính khi bắt đầu phần (FR-RUN-03).
+ */
+model AttemptSection {
+  attemptId   String      @map("attempt_id")
+  sectionId   String      @map("section_id")
+  position    Int
+  startedAt   DateTime?   @map("started_at") @db.Timestamptz(3)
+  deadlineAt  DateTime?   @map("deadline_at") @db.Timestamptz(3) // null khi không bấm giờ
+  submittedAt DateTime?   @map("submitted_at") @db.Timestamptz(3)
+  attempt     Attempt     @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  section     ExamSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@id([attemptId, sectionId])
+  @@index([sectionId])
+  @@map("attempt_sections")
+}
+
+/**
+ * DR-EX-14. is_correct chỉ có giá trị sau khi chấm (nộp phần, hoặc ngay khi trả lời ở chế độ luyện).
+ */
+model AttemptAnswer {
+  attemptId       String    @map("attempt_id")
+  questionId      String    @map("question_id")
+  choice          Int?
+  flagged         Boolean   @default(false)
+  timeSpentMs     Int       @default(0) @map("time_spent_ms")
+  isCorrect       Boolean?  @map("is_correct")
+  clientChangedAt DateTime? @map("client_changed_at") @db.Timestamptz(3) // bỏ qua bản gửi lại cũ hơn
+  updatedAt       DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  attempt         Attempt   @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question        Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@id([attemptId, questionId])
+  // Chấm lại khi sửa đáp án (FR-RES-10) tìm mọi câu trả lời của một câu hỏi.
+  @@index([questionId])
+  @@map("attempt_answers")
+}
+
+/**
+ * DR-EX-16: câu cần làm lại của từng người, kèm số lần làm đúng liên tiếp.
+ */
+model WrongQuestion {
+  userId        String   @map("user_id")
+  questionId    String   @map("question_id")
+  correctStreak Int      @default(0) @map("correct_streak")
+  lastWrongAt   DateTime @map("last_wrong_at") @db.Timestamptz(3)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question      Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@id([userId, questionId])
+  @@index([questionId])
+  @@map("wrong_questions")
 }

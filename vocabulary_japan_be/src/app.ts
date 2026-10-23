@@ -10,6 +10,7 @@ import { originCheck } from './middleware/originCheck.ts';
 import { createRateLimiters } from './middleware/rateLimit.ts';
 import { adminRouter } from './modules/admin/routes.ts';
 import { createAuthRouter } from './modules/auth/routes.ts';
+import { examsRouter } from './modules/exams/routes.ts';
 import { meRouter } from './modules/me/routes.ts';
 import { quizRouter } from './modules/quiz/routes.ts';
 import { reviewsRouter } from './modules/reviews/routes.ts';
@@ -30,8 +31,11 @@ export function createApp(): Express {
   app.use(helmet());
   app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
   app.use(pinoHttp({ logger, quietReqLogger: true }));
-  // Giới hạn body JSON 1 MB (prompt mục 6.3).
-  app.use(express.json({ limit: '1mb' }));
+  // Giới hạn body JSON 1 MB (prompt mục 6.3). Riêng nhập đề nhận file tới 5 MB (SRS 2.0, FR-IMP-01);
+  // file được gửi dưới dạng chuỗi JSON nên body lớn hơn file một chút (ký tự thoát).
+  const jsonDefault = express.json({ limit: '1mb' });
+  const jsonImport = express.json({ limit: '8mb' });
+  app.use((req, res, next) => (req.path === '/api/admin/exams/import' ? jsonImport : jsonDefault)(req, res, next));
   app.use(cookieParser());
 
   const limiters = createRateLimiters();
@@ -43,6 +47,7 @@ export function createApp(): Express {
   apiRouter.use(wordsRouter);
   apiRouter.use(reviewsRouter);
   apiRouter.use(quizRouter);
+  apiRouter.use(examsRouter);
   apiRouter.use(statsRouter);
   apiRouter.use(meRouter);
   apiRouter.use(adminRouter);

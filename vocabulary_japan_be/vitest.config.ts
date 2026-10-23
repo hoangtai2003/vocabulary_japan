@@ -1,3 +1,5 @@
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { defineConfig } from 'vitest/config';
 import { TEST_DATABASE_URL } from './tests/helpers/testDbUrl.ts';
 
@@ -12,6 +14,8 @@ export default defineConfig({
       DATABASE_URL: TEST_DATABASE_URL,
       LOG_LEVEL: 'silent',
       CORS_ORIGIN: 'http://localhost:5173',
+      // Ảnh tải lên trong test ghi vào thư mục tạm, không lẫn với uploads/ của máy dev.
+      UPLOAD_DIR: join(tmpdir(), 'jpvocab-test-uploads'),
     },
     // Máy dev ít RAM: giới hạn số worker giống frontend.
     maxWorkers: 2,

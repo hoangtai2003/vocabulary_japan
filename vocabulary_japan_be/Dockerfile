@@ -30,6 +30,11 @@ COPY --from=build /app/prisma ./prisma
 # nên không cần tsx trong image chạy.
 COPY --from=build /app/src ./src
 
+# Thư mục ảnh của bài đọc (SRS 2.0, NFR-EX-10): gắn volume riêng ở docker-compose.yml. Tạo sẵn và
+# giao cho user node, để volume mới tạo lần đầu nhận đúng quyền ghi.
+RUN mkdir -p /app/uploads && chown node:node /app/uploads
+ENV UPLOAD_DIR=/app/uploads
+
 # File thuộc root, tiến trình chạy dưới user node: API không sửa được mã nguồn của chính nó.
 USER node
 EXPOSE 4000

@@ -20,9 +20,10 @@
 }
 
 {$SITE_ADDRESS} {
-	# Body tối đa 6 MB (API tự giới hạn JSON ở 1 MB).
+	# Body tối đa 10 MB. API tự giới hạn: JSON 1 MB, riêng nhập đề thi 8 MB (file đề ≤ 5 MB gửi dạng
+	# chuỗi JSON nên dài hơn file), ảnh bài đọc 2 MB.
 	request_body {
-		max_size 6MB
+		max_size 10MB
 	}
 
 	encode zstd gzip

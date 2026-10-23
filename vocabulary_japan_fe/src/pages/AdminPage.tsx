@@ -1,6 +1,7 @@
 import { Plus, Search } from 'lucide-react';
 import { useState } from 'react';
 import { AdminTableSkeleton } from '@/components/admin/AdminTableSkeleton';
+import { AdminTabs } from '@/components/admin/AdminTabs';
 import { AdminWordTable, type SortState } from '@/components/admin/AdminWordTable';
 import { DeleteWordModal } from '@/components/admin/DeleteWordModal';
 import { Pagination } from '@/components/admin/Pagination';
@@ -131,6 +132,8 @@ export default function AdminPage() {
           </Button>
         }
       />
+
+      <AdminTabs />
 
       <section aria-label="Kho từ vựng" className="flex flex-col gap-4">
         <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_auto]">

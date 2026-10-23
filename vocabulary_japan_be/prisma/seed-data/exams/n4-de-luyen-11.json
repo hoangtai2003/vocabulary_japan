@@ -1,0 +1,4313 @@
+{
+  "format_version": 1,
+  "exam": {
+    "title": "N4 · Đề luyện số 11",
+    "level": "N4",
+    "difficulty": "Nâng cao",
+    "description": "Cấu trúc và số câu theo đề thi JLPT N4 thật (dạng từ 2020). Từ vựng, kanji và ngữ pháp vẫn trong phạm vi N5–N4, nhưng đáp án nhiễu tinh tế hơn, ngữ pháp tập trung vào các cặp dễ lẫn, và đọc hiểu cần suy luận.",
+    "instructions": "Chọn 1 đáp án đúng nhất trong 1・2・3・4. Phần được hỏi được gạch chân. Kanji ngoài phạm vi N4 có furigana.",
+    "source": "Tự soạn: đề luyện số 11 (nâng cao) và bản chữa đề do chủ dự án cung cấp",
+    "sections": [
+      {
+        "title": "言語知識（文字・語彙）",
+        "kind": "reading",
+        "duration_minutes": 25,
+        "score_group": "Kiến thức ngôn ngữ・Đọc hiểu",
+        "mondai": [
+          {
+            "number": 1,
+            "type_id": "n4_kanji_yomi",
+            "instructions": "＿＿＿の ことばは ひらがなで どう 書きますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "chú ý **âm đục（゛）**, **âm dài（う）**, **âm ngắt（っ）** và âm ん.",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【工事】中なので、この 道は 通れません。",
+                "options": [
+                  "こうし",
+                  "こうじ",
+                  "こおじ",
+                  "くうじ"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 こうじ",
+                  "full_sentence": "{工事中|こうじちゅう}なので、この{道|みち}は{通|とお}れません。",
+                  "translation_vi": "Vì đang thi công nên không đi qua con đường này được.",
+                  "why_correct": "工 = こう (âm dài), 事 = じ (đục) → こうじ = công trình, thi công. 工事中 = đang thi công.",
+                  "why_wrong": "1 こうし: thiếu đục (じ). 3 こおじ: âm dài của こう viết bằng **う**, không viết お. 4 くうじ: 工 không đọc くう (くう là cách đọc của 空 trong {空港|くうこう}).",
+                  "grammar": [
+                    {
+                      "pattern": "N{中|ちゅう}",
+                      "explanation": "đang N.",
+                      "examples": [
+                        "{会議中|かいぎちゅう}です。(Đang họp.)"
+                      ]
+                    },
+                    {
+                      "pattern": "N／Naなので",
+                      "explanation": "vì ~ (danh từ, tính từ な phải thêm な trước ので).",
+                      "examples": [
+                        "{雨|あめ}なので、{出|で}かけません。"
+                      ]
+                    },
+                    {
+                      "pattern": "Thể khả năng",
+                      "explanation": "通る → 通れる → 通れません (không đi qua được).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "工事",
+                      "reading": "こうじ",
+                      "meaning": "thi công",
+                      "word_id": null
+                    },
+                    {
+                      "word": "道",
+                      "reading": "みち",
+                      "meaning": "đường",
+                      "word_id": null
+                    },
+                    {
+                      "word": "通る",
+                      "reading": "とおる",
+                      "meaning": "đi qua",
+                      "word_id": null
+                    },
+                    {
+                      "word": "〜中",
+                      "reading": "ちゅう",
+                      "meaning": "đang ~",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "日本料理の 中で、【特に】 すしが 好きです。",
+                "options": [
+                  "とくい",
+                  "どくに",
+                  "とっに",
+                  "とくに"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 とくに",
+                  "full_sentence": "{日本料理|にほんりょうり}の{中|なか}で、{特|とく}にすしが{好|す}きです。",
+                  "translation_vi": "Trong các món Nhật, tôi đặc biệt thích sushi.",
+                  "why_correct": "特に = とくに = đặc biệt là, nhất là. 特 đọc とく, thêm に → とくに (không biến âm).",
+                  "why_wrong": "1 とくい: đó là {得意|とくい}= giỏi, sở trường → khác từ. 2 どくに: thêm đục sai. 3 とっに: không có âm ngắt (っ chỉ xuất hiện khi ghép với âm k/s/t/p, ví dụ {特急|とっきゅう}）.",
+                  "grammar": [
+                    {
+                      "pattern": "Nの中で（いちばん／特に）〜",
+                      "explanation": "trong số N, (nhất/đặc biệt) ~.",
+                      "examples": [
+                        "{果物|くだもの}の中で、りんごがいちばん好きです。"
+                      ]
+                    },
+                    {
+                      "pattern": "Nが好きです",
+                      "explanation": "thích N (dùng が, không dùng を).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "特に",
+                      "reading": "とくに",
+                      "meaning": "đặc biệt",
+                      "word_id": null
+                    },
+                    {
+                      "word": "得意",
+                      "reading": "とくい",
+                      "meaning": "giỏi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "料理",
+                      "reading": "りょうり",
+                      "meaning": "món ăn, nấu ăn",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "メールの 【返事】が まだ 来ません。",
+                "options": [
+                  "へんじ",
+                  "へんし",
+                  "へいじ",
+                  "かえじ"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 へんじ",
+                  "full_sentence": "メールの{返事|へんじ}がまだ{来|き}ません。",
+                  "translation_vi": "Thư trả lời email vẫn chưa đến.",
+                  "why_correct": "返 = へん, 事 = じ (đục) → へんじ = trả lời.",
+                  "why_wrong": "2 へんし: thiếu đục. 3 へいじ: 返 không đọc へい. 4 かえじ: 返 đọc かえ chỉ khi là động từ 返す（かえす）; trong từ ghép đọc âm On へん.",
+                  "grammar": [
+                    {
+                      "pattern": "まだ＋Vません",
+                      "explanation": "vẫn chưa V.",
+                      "examples": [
+                        "まだ{昼|ひる}ごはんを{食|た}べていません。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh: **まだ〜ません** (chưa) / **もう〜ました** (đã ~ rồi).",
+                      "explanation": "",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "返事",
+                      "reading": "へんじ",
+                      "meaning": "trả lời",
+                      "word_id": null
+                    },
+                    {
+                      "word": "返す",
+                      "reading": "かえす",
+                      "meaning": "trả lại",
+                      "word_id": null
+                    },
+                    {
+                      "word": "まだ",
+                      "reading": "",
+                      "meaning": "vẫn, chưa",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "日曜日 【以外】は 毎日 働いて います。",
+                "options": [
+                  "いない",
+                  "いげ",
+                  "いがい",
+                  "いかい"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 いがい",
+                  "full_sentence": "{日曜日|にちようび}{以外|いがい}は{毎日|まいにち}{働|はたら}いています。",
+                  "translation_vi": "Trừ chủ nhật ra thì ngày nào tôi cũng làm việc.",
+                  "why_correct": "以 = い, 外 = がい (đục) → いがい = ngoài ~, trừ ~.",
+                  "why_wrong": "1 いない: đó là {以内|いない}= trong vòng (3日以内: trong vòng 3 ngày) → khác từ. 2 いげ: không có từ này. 4 いかい: thiếu đục.",
+                  "grammar": [
+                    {
+                      "pattern": "N以外は",
+                      "explanation": "trừ N ra thì ~.",
+                      "examples": [
+                        "{肉|にく}以外は{何|なん}でも食べます。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vています",
+                      "explanation": "(働いています) = thói quen / tình trạng đang diễn ra hằng ngày.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "以外",
+                      "reading": "いがい",
+                      "meaning": "ngoài, trừ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "以内",
+                      "reading": "いない",
+                      "meaning": "trong vòng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "以上",
+                      "reading": "いじょう",
+                      "meaning": "trở lên",
+                      "word_id": null
+                    },
+                    {
+                      "word": "働く",
+                      "reading": "はたらく",
+                      "meaning": "làm việc",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【急に】 雨が 降って きました。",
+                "options": [
+                  "きゅに",
+                  "ぎゅうに",
+                  "きゅうに",
+                  "いそに"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 きゅうに",
+                  "full_sentence": "{急|きゅう}に{雨|あめ}が{降|ふ}ってきました。",
+                  "translation_vi": "Đột nhiên trời đổ mưa.",
+                  "why_correct": "急 = きゅう (âm dài) → 急に = đột nhiên.",
+                  "why_wrong": "1 きゅに: thiếu âm dài う. 2 ぎゅうに: thêm đục sai. 4 いそに: 急 đọc いそ chỉ trong động từ 急ぐ（いそぐ）= vội.",
+                  "grammar": [
+                    {
+                      "pattern": "Vてくる",
+                      "explanation": "(降ってきました) = (sự việc) bắt đầu xảy ra / xuất hiện.",
+                      "examples": [
+                        "おなかがすいてきました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Naに＋V",
+                      "explanation": "tính từ な thành trạng từ bằng に. 急な → 急に.",
+                      "examples": [
+                        "{静|しず}かに話してください。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "急に",
+                      "reading": "きゅうに",
+                      "meaning": "đột nhiên",
+                      "word_id": null
+                    },
+                    {
+                      "word": "急ぐ",
+                      "reading": "いそぐ",
+                      "meaning": "vội",
+                      "word_id": null
+                    },
+                    {
+                      "word": "降る",
+                      "reading": "ふる",
+                      "meaning": "rơi (mưa, tuyết)",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "日本人と 日本語で 【会話】を する 練習を して います。",
+                "options": [
+                  "かいわ",
+                  "がいわ",
+                  "かいは",
+                  "かわ"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 かいわ",
+                  "full_sentence": "{日本人|にほんじん}と{日本語|にほんご}で{会話|かいわ}をする{練習|れんしゅう}をしています。",
+                  "translation_vi": "Tôi đang luyện hội thoại bằng tiếng Nhật với người Nhật.",
+                  "why_correct": "会 = かい, 話 = わ → かいわ = hội thoại.",
+                  "why_wrong": "2 がいわ: thêm đục sai. 3 かいは: viết bằng chữ cái は là sai (đọc là わ nhưng phải viết わ). 4 かわ: thiếu い.",
+                  "grammar": [
+                    {
+                      "pattern": "Nで",
+                      "explanation": "(日本語で) = bằng (phương tiện, ngôn ngữ).",
+                      "examples": [
+                        "{英語|えいご}で話します。"
+                      ]
+                    },
+                    {
+                      "pattern": "Nと",
+                      "explanation": "(日本人と) = với (người cùng làm).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vる＋練習をする",
+                      "explanation": "luyện tập V.",
+                      "examples": [
+                        "{漢字|かんじ}を{書|か}く練習をします。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "会話",
+                      "reading": "かいわ",
+                      "meaning": "hội thoại",
+                      "word_id": null
+                    },
+                    {
+                      "word": "練習",
+                      "reading": "れんしゅう",
+                      "meaning": "luyện tập",
+                      "word_id": null
+                    },
+                    {
+                      "word": "話",
+                      "reading": "はなし",
+                      "meaning": "câu chuyện",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "デパートの 【地下】で おかしを 買いました。",
+                "options": [
+                  "じか",
+                  "ちげ",
+                  "じげ",
+                  "ちか"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 ちか",
+                  "full_sentence": "デパートの{地下|ちか}でお{菓子|かし}を{買|か}いました。",
+                  "translation_vi": "Tôi đã mua bánh kẹo ở tầng hầm của trung tâm thương mại.",
+                  "why_correct": "地 = ち, 下 = か → ちか = dưới đất, tầng hầm. Như {地下鉄|ちかてつ}= tàu điện ngầm.",
+                  "why_wrong": "1 じか: 地 đọc じ trong {地震|じしん}, nhưng ở 地下 đọc ち. 2 ちげ: 下 không đọc げ ở đây (げ trong {下車|げしゃ}, ít gặp). 3 じげ: sai cả hai.",
+                  "grammar": [
+                    {
+                      "pattern": "(nơi chốn)で＋V",
+                      "explanation": "làm V ở đâu.",
+                      "examples": [
+                        "{図書館|としょかん}で{勉強|べんきょう}します。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "地下",
+                      "reading": "ちか",
+                      "meaning": "tầng hầm, dưới đất",
+                      "word_id": null
+                    },
+                    {
+                      "word": "地下鉄",
+                      "reading": "ちかてつ",
+                      "meaning": "tàu điện ngầm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "お菓子",
+                      "reading": "おかし",
+                      "meaning": "bánh kẹo",
+                      "word_id": null
+                    },
+                    {
+                      "word": "デパート",
+                      "reading": "",
+                      "meaning": "trung tâm thương mại",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 2,
+            "type_id": "n4_hyouki",
+            "instructions": "＿＿＿の ことばは どう 書きますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "các đáp án nhiễu là chữ **trông gần giống** nhau. Nhìn kỹ bộ bên trái và phần bên phải.",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "駅の 前で 友だちを 【まって】 います。",
+                "options": [
+                  "持って",
+                  "侍って",
+                  "待って",
+                  "特って"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 待って",
+                  "full_sentence": "{駅|えき}の{前|まえ}で{友|とも}だちを{待|ま}っています。",
+                  "translation_vi": "Tôi đang đợi bạn trước ga.",
+                  "why_correct": "待つ（まつ）= đợi. Bộ 彳 (bộ \"bước đi\") + 寺.",
+                  "why_wrong": "1 持って = もって (cầm, mang) — bộ 扌 (tay). 2 侍: chữ \"thị\" (samurai), bộ 亻, không phải động từ まつ. 4 特: chữ とく (đặc biệt), bộ 牛.",
+                  "grammar": [
+                    {
+                      "pattern": "Nを待つ",
+                      "explanation": "đợi N (dùng を).",
+                      "examples": [
+                        "バスを待っています。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vています",
+                      "explanation": "đang V.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "待つ",
+                      "reading": "まつ",
+                      "meaning": "đợi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "持つ",
+                      "reading": "もつ",
+                      "meaning": "cầm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "特に",
+                      "reading": "とくに",
+                      "meaning": "đặc biệt",
+                      "word_id": null
+                    },
+                    {
+                      "word": "駅",
+                      "reading": "えき",
+                      "meaning": "ga",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "姉と わたしは 【おなじ】 学校に 通って います。",
+                "options": [
+                  "同じ",
+                  "回じ",
+                  "向じ",
+                  "司じ"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 同じ",
+                  "full_sentence": "{姉|あね}と{私|わたし}は{同|おな}じ{学校|がっこう}に{通|かよ}っています。",
+                  "translation_vi": "Chị gái và tôi học cùng một trường.",
+                  "why_correct": "同じ（おなじ）= giống nhau, cùng. Chú ý: 同じ đứng trước danh từ **không cần の/な** (同じ学校).",
+                  "why_wrong": "2 回 (かい, lần), 3 向 (む, hướng), 4 司 (し): đều là chữ trông giống 同 nhưng khác nghĩa, không có \"〜じ\" nghĩa là giống.",
+                  "grammar": [
+                    {
+                      "pattern": "同じ＋N",
+                      "explanation": "cùng N.",
+                      "examples": [
+                        "同じ{電車|でんしゃ}に{乗|の}りました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Nに通う",
+                      "explanation": "đi (học/làm) thường xuyên ở N.",
+                      "examples": [
+                        "{毎日|まいにち}{会社|かいしゃ}に通っています。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "同じ",
+                      "reading": "おなじ",
+                      "meaning": "giống, cùng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "通う",
+                      "reading": "かよう",
+                      "meaning": "đi lại thường xuyên",
+                      "word_id": null
+                    },
+                    {
+                      "word": "姉",
+                      "reading": "あね",
+                      "meaning": "chị gái",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "よく 【かんがえて】から 答えて ください。",
+                "options": [
+                  "老えて",
+                  "孝えて",
+                  "者えて",
+                  "考えて"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 考えて",
+                  "full_sentence": "よく{考|かんが}えてから{答|こた}えてください。",
+                  "translation_vi": "Hãy suy nghĩ kỹ rồi hãy trả lời.",
+                  "why_correct": "考える（かんがえる）= suy nghĩ. Phần dưới là **丂**.",
+                  "why_wrong": "1 老 (ろう, già — phần dưới là 匕), 2 孝 (こう, hiếu — phần dưới là 子), 3 者 (しゃ, người — phần dưới là 日). Bốn chữ cùng phần trên 耂 nên rất dễ nhầm.",
+                  "grammar": [
+                    {
+                      "pattern": "Vてから",
+                      "explanation": "sau khi V xong thì ~.",
+                      "examples": [
+                        "{手|て}を{洗|あら}ってから食べます。"
+                      ]
+                    },
+                    {
+                      "pattern": "よく＋V",
+                      "explanation": "V kỹ / V thường xuyên. Ở đây: suy nghĩ kỹ.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "考える",
+                      "reading": "かんがえる",
+                      "meaning": "suy nghĩ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "答える",
+                      "reading": "こたえる",
+                      "meaning": "trả lời",
+                      "word_id": null
+                    },
+                    {
+                      "word": "よく",
+                      "reading": "",
+                      "meaning": "kỹ, thường",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "この パソコンは もう 5年も 【つかって】 います。",
+                "options": [
+                  "便って",
+                  "使って",
+                  "吏って",
+                  "仗って"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 使って",
+                  "full_sentence": "このパソコンはもう{5年|ごねん}も{使|つか}っています。",
+                  "translation_vi": "Cái máy tính này tôi đã dùng những 5 năm rồi.",
+                  "why_correct": "使う（つかう）= dùng. Bộ 亻 + 吏.",
+                  "why_wrong": "1 便 (べん, tiện — {便利|べんり}), 3 吏 (thiếu bộ 亻), 4 仗 (chữ khác, không dùng ở N4). Chú ý 便 và 使 rất giống nhau.",
+                  "grammar": [
+                    {
+                      "pattern": "(số lượng)も",
+                      "explanation": "những ~ (nhấn mạnh nhiều).",
+                      "examples": [
+                        "{2時間|にじかん}も待ちました。"
+                      ]
+                    },
+                    {
+                      "pattern": "もう＋(thời gian)＋Vています",
+                      "explanation": "đã ~ được (bao lâu) rồi.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "使う",
+                      "reading": "つかう",
+                      "meaning": "dùng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "便利",
+                      "reading": "べんり",
+                      "meaning": "tiện lợi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "パソコン",
+                      "reading": "",
+                      "meaning": "máy tính",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "あの 人の 名前を 【しって】 いますか。",
+                "options": [
+                  "和って",
+                  "知って",
+                  "矢って",
+                  "短って"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 知って",
+                  "full_sentence": "あの{人|ひと}の{名前|なまえ}を{知|し}っていますか。",
+                  "translation_vi": "Bạn có biết tên người kia không?",
+                  "why_correct": "知る（しる）= biết. Gồm 矢 + 口.",
+                  "why_wrong": "1 和 (わ, hòa), 3 矢 (や, mũi tên — thiếu 口), 4 短 (みじか, ngắn — 短い). Các chữ này đều có phần giống 知.",
+                  "grammar": [
+                    {
+                      "pattern": "知っています／知りません",
+                      "explanation": "\"biết\" dùng **知っています**, nhưng \"không biết\" dùng **知りません** (không nói 知っていません).",
+                      "examples": [
+                        "A「{田中|たなか}さんを知っていますか。」B「いいえ、知りません。」"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "知る",
+                      "reading": "しる",
+                      "meaning": "biết",
+                      "word_id": null
+                    },
+                    {
+                      "word": "短い",
+                      "reading": "みじかい",
+                      "meaning": "ngắn",
+                      "word_id": null
+                    },
+                    {
+                      "word": "名前",
+                      "reading": "なまえ",
+                      "meaning": "tên",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 3,
+            "type_id": "n4_bunmyaku",
+            "instructions": "（　）に 何を 入れますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "わたしが 悪かったので、けんかした 友だちに 電話して （　）。",
+                "options": [
+                  "あやまりました",
+                  "ことわりました",
+                  "おこりました",
+                  "さそいました"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 あやまりました",
+                  "full_sentence": "{私|わたし}が{悪|わる}かったので、けんかした{友|とも}だちに{電話|でんわ}して{謝|あやま}りました。",
+                  "translation_vi": "Vì tôi có lỗi nên tôi đã gọi điện xin lỗi người bạn đã cãi nhau với mình.",
+                  "why_correct": "\"Mình có lỗi\" (わたしが悪かった) → việc nên làm là **xin lỗi** = あやまる（謝る）.",
+                  "why_wrong": "2 ことわりました（断る）= từ chối → không hợp. 3 おこりました（怒る）= nổi giận → người có lỗi là mình, giận thì vô lý. 4 さそいました（誘う）= rủ → không liên quan đến \"mình có lỗi\".",
+                  "grammar": [
+                    {
+                      "pattern": "Nに謝る",
+                      "explanation": "xin lỗi N.",
+                      "examples": [
+                        "{先生|せんせい}に謝りました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vて、V",
+                      "explanation": "(電話して謝りました) = V rồi V / bằng cách V.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Aかったので",
+                      "explanation": "vì đã ~. 悪い → 悪かった.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "謝る",
+                      "reading": "あやまる",
+                      "meaning": "xin lỗi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "断る",
+                      "reading": "ことわる",
+                      "meaning": "từ chối",
+                      "word_id": null
+                    },
+                    {
+                      "word": "怒る",
+                      "reading": "おこる",
+                      "meaning": "giận",
+                      "word_id": null
+                    },
+                    {
+                      "word": "誘う",
+                      "reading": "さそう",
+                      "meaning": "rủ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "けんか",
+                      "reading": "",
+                      "meaning": "cãi nhau",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "友だちの {結婚式|けっこんしき}に （　）されたので、新しい 服を 買いました。",
+                "options": [
+                  "しょうかい",
+                  "そうだん",
+                  "しょうたい",
+                  "れんらく"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 しょうたい",
+                  "full_sentence": "{友|とも}だちの{結婚式|けっこんしき}に{招待|しょうたい}されたので、{新|あたら}しい{服|ふく}を{買|か}いました。",
+                  "translation_vi": "Vì được bạn mời dự đám cưới nên tôi đã mua quần áo mới.",
+                  "why_correct": "招待する（しょうたいする）= mời (đến sự kiện). **Nに招待される** = được mời đến N. Đúng với 結婚式に.",
+                  "why_wrong": "1 しょうかい（紹介）= giới thiệu: \"được giới thiệu vào đám cưới\" không có nghĩa. 2 そうだん（相談）= bàn bạc, hỏi ý kiến: không hợp với 結婚式に. 4 れんらく（連絡）= liên lạc: \"được liên lạc vào đám cưới\" không tự nhiên, và không liên quan việc mua áo mới.",
+                  "grammar": [
+                    {
+                      "pattern": "Thể bị động",
+                      "explanation": "({受身|うけみ}): する → される. 招待する → 招待される (được mời).",
+                      "examples": [
+                        "先生にほめられました。(Được thầy khen.)"
+                      ]
+                    },
+                    {
+                      "pattern": "Nに招待する／される",
+                      "explanation": "mời (đến) N.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "招待",
+                      "reading": "しょうたい",
+                      "meaning": "mời",
+                      "word_id": null
+                    },
+                    {
+                      "word": "紹介",
+                      "reading": "しょうかい",
+                      "meaning": "giới thiệu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "相談",
+                      "reading": "そうだん",
+                      "meaning": "bàn bạc",
+                      "word_id": null
+                    },
+                    {
+                      "word": "連絡",
+                      "reading": "れんらく",
+                      "meaning": "liên lạc",
+                      "word_id": null
+                    },
+                    {
+                      "word": "結婚式",
+                      "reading": "けっこんしき",
+                      "meaning": "đám cưới",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "父は 毎朝 6時に 起きて、犬を さんぽに （　）行きます。",
+                "options": [
+                  "もって",
+                  "つれて",
+                  "おくって",
+                  "あんないして"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 つれて",
+                  "full_sentence": "{父|ちち}は{毎朝|まいあさ}{6時|ろくじ}に{起|お}きて、{犬|いぬ}を{散歩|さんぽ}に{連|つ}れて{行|い}きます。",
+                  "translation_vi": "Bố tôi mỗi sáng dậy lúc 6 giờ và dắt chó đi dạo.",
+                  "why_correct": "**連れて行く（つれていく）** = dẫn (người, động vật) đi. Dùng cho thứ **tự đi được**.",
+                  "why_wrong": "1 もって（持って行く）= mang (đồ vật) đi → chó không phải đồ vật. 3 おくって（送って行く）= tiễn, đưa về (thường dùng cho người: 駅まで送って行く) → không dùng cho đi dạo. 4 あんないして（案内して行く）= dẫn đường, hướng dẫn → không tự nhiên với chó.",
+                  "grammar": [
+                    {
+                      "pattern": "So sánh **持って行く／連れて行く**: 持って行く = mang **đồ vật**; 連れて行く = dẫn **người/động vật**. 例: {子|こ}どもを{公園|こうえん}に連れて行きます。かさを持って行きます。",
+                      "explanation": "",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Nに行く",
+                      "explanation": "(散歩に行く) = đi (làm việc gì).",
+                      "examples": [
+                        "{買|か}い{物|もの}に行きます。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "連れる",
+                      "reading": "つれる",
+                      "meaning": "dẫn theo",
+                      "word_id": null
+                    },
+                    {
+                      "word": "散歩",
+                      "reading": "さんぽ",
+                      "meaning": "đi dạo",
+                      "word_id": null
+                    },
+                    {
+                      "word": "送る",
+                      "reading": "おくる",
+                      "meaning": "tiễn, gửi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "案内",
+                      "reading": "あんない",
+                      "meaning": "hướng dẫn",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "わたしの へやは {西|にし}向きなので、夏の 午後は とても （　）。",
+                "options": [
+                  "すずしいです",
+                  "くらいです",
+                  "さむいです",
+                  "あついです"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 あついです",
+                  "full_sentence": "{私|わたし}の{部屋|へや}は{西向|にしむ}きなので、{夏|なつ}の{午後|ごご}はとても{暑|あつ}いです。",
+                  "translation_vi": "Phòng tôi quay về hướng tây nên buổi chiều mùa hè rất nóng.",
+                  "why_correct": "Phòng hướng tây → buổi chiều nắng chiếu vào trực tiếp. Lại là **mùa hè** → **nóng** = 暑い.",
+                  "why_wrong": "1 すずしいです (mát): ngược lại — nắng chiều chiếu vào thì không mát. 2 くらいです (tối): buổi chiều nắng chiếu vào nên sáng, không tối. 3 さむいです (lạnh): mùa hè không lạnh.",
+                  "grammar": [
+                    {
+                      "pattern": "N向き",
+                      "explanation": "quay về hướng N.",
+                      "examples": [
+                        "{南向|みなみむ}きの部屋は{明|あか}るいです。"
+                      ]
+                    },
+                    {
+                      "pattern": "Nなので",
+                      "explanation": "vì là N.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "西",
+                      "reading": "にし",
+                      "meaning": "tây",
+                      "word_id": null
+                    },
+                    {
+                      "word": "〜向き",
+                      "reading": "むき",
+                      "meaning": "hướng ~",
+                      "word_id": null
+                    },
+                    {
+                      "word": "暑い",
+                      "reading": "あつい",
+                      "meaning": "nóng (thời tiết)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "涼しい",
+                      "reading": "すずしい",
+                      "meaning": "mát",
+                      "word_id": null
+                    },
+                    {
+                      "word": "午後",
+                      "reading": "ごご",
+                      "meaning": "buổi chiều",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "あんなに 勉強したのに、試験の {結果|けっか}が 悪くて （　）しました。",
+                "options": [
+                  "あんしん",
+                  "がっかり",
+                  "にっこり",
+                  "すっきり"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 がっかり",
+                  "full_sentence": "あんなに{勉強|べんきょう}したのに、{試験|しけん}の{結果|けっか}が{悪|わる}くて、がっかりしました。",
+                  "translation_vi": "Đã học nhiều đến thế mà kết quả thi lại tệ, tôi thất vọng quá.",
+                  "why_correct": "がっかりする = thất vọng, chán nản. Hợp với 〜のに (đã ~ vậy mà) và 結果が悪い.",
+                  "why_wrong": "1 あんしん（安心）する = yên tâm → ngược nghĩa (kết quả xấu không yên tâm được). 3 にっこりする = mỉm cười → không hợp. 4 すっきりする = nhẹ nhõm, sảng khoái → không hợp với kết quả xấu.",
+                  "grammar": [
+                    {
+                      "pattern": "〜のに",
+                      "explanation": "vậy mà, thế mà (kết quả trái mong đợi, có ý tiếc/bất mãn).",
+                      "examples": [
+                        "{薬|くすり}を{飲|の}んだのに、{治|なお}りません。"
+                      ]
+                    },
+                    {
+                      "pattern": "Aくて",
+                      "explanation": "(悪くて) = vì ~ nên (nguyên nhân dẫn đến cảm xúc).",
+                      "examples": [
+                        "{寂|さび}しくて、{泣|な}きました。"
+                      ]
+                    },
+                    {
+                      "pattern": "あんなに",
+                      "explanation": "đến như thế (nhắc lại việc cả hai đều biết).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "がっかり",
+                      "reading": "",
+                      "meaning": "thất vọng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "安心",
+                      "reading": "あんしん",
+                      "meaning": "yên tâm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "にっこり",
+                      "reading": "",
+                      "meaning": "mỉm cười",
+                      "word_id": null
+                    },
+                    {
+                      "word": "すっきり",
+                      "reading": "",
+                      "meaning": "nhẹ nhõm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "結果",
+                      "reading": "けっか",
+                      "meaning": "kết quả",
+                      "word_id": null
+                    },
+                    {
+                      "word": "試験",
+                      "reading": "しけん",
+                      "meaning": "kỳ thi",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "来月から {給料|きゅうりょう}が （　）ので、うれしいです。",
+                "options": [
+                  "さがる",
+                  "へる",
+                  "やすむ",
+                  "あがる"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 あがる",
+                  "full_sentence": "{来月|らいげつ}から{給料|きゅうりょう}が{上|あ}がるので、{嬉|うれ}しいです。",
+                  "translation_vi": "Từ tháng sau lương tăng nên tôi vui.",
+                  "why_correct": "Vui (うれしい) → lương **tăng** = 給料が上がる.",
+                  "why_wrong": "1 さがる (giảm) và 2 へる (giảm bớt): ngược nghĩa với うれしい. 3 やすむ (nghỉ): \"lương nghỉ\" không có nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "N（giá, lương, nhiệt độ）が上がる／下がる",
+                      "explanation": "N tăng / giảm.",
+                      "examples": [
+                        "{気温|きおん}が上がりました。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜ので",
+                      "explanation": "vì ~ (lý do khách quan, mềm hơn から).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "給料",
+                      "reading": "きゅうりょう",
+                      "meaning": "lương",
+                      "word_id": null
+                    },
+                    {
+                      "word": "上がる",
+                      "reading": "あがる",
+                      "meaning": "tăng, lên",
+                      "word_id": null
+                    },
+                    {
+                      "word": "下がる",
+                      "reading": "さがる",
+                      "meaning": "giảm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "減る",
+                      "reading": "へる",
+                      "meaning": "giảm bớt",
+                      "word_id": null
+                    },
+                    {
+                      "word": "嬉しい",
+                      "reading": "うれしい",
+                      "meaning": "vui",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "雨の 日は 道が （　）やすいので、気を つけて 運転して ください。",
+                "options": [
+                  "すべり",
+                  "ころび",
+                  "たおれ",
+                  "こわれ"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 すべり",
+                  "full_sentence": "{雨|あめ}の{日|ひ}は{道|みち}が{滑|すべ}りやすいので、{気|き}をつけて{運転|うんてん}してください。",
+                  "translation_vi": "Ngày mưa đường dễ trơn trượt, nên hãy lái xe cẩn thận.",
+                  "why_correct": "滑る（すべる）= trơn, trượt. Chủ ngữ là **道** (đường) → đường trơn → すべりやすい.",
+                  "why_wrong": "2 ころび（転ぶ）= ngã: người ngã chứ đường không \"ngã\". 3 たおれ（倒れる）= đổ, ngã (cây, người): đường không đổ. 4 こわれ（壊れる）= hỏng: đường không \"hỏng\" vì mưa theo nghĩa này, và không liên quan đến lái xe cẩn thận.",
+                  "grammar": [
+                    {
+                      "pattern": "Vます（bỏ ます）＋やすい",
+                      "explanation": "dễ V. 滑る → 滑りやすい. Ngược lại: **〜にくい** = khó V.",
+                      "examples": [
+                        "このペンは{書|か}きやすいです。"
+                      ]
+                    },
+                    {
+                      "pattern": "気をつけて＋V",
+                      "explanation": "V cẩn thận.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "滑る",
+                      "reading": "すべる",
+                      "meaning": "trơn trượt",
+                      "word_id": null
+                    },
+                    {
+                      "word": "転ぶ",
+                      "reading": "ころぶ",
+                      "meaning": "ngã",
+                      "word_id": null
+                    },
+                    {
+                      "word": "倒れる",
+                      "reading": "たおれる",
+                      "meaning": "đổ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "運転",
+                      "reading": "うんてん",
+                      "meaning": "lái xe",
+                      "word_id": null
+                    },
+                    {
+                      "word": "気をつける",
+                      "reading": "きをつける",
+                      "meaning": "cẩn thận",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "わたしは 弟と 顔が よく （　）と 言われます。",
+                "options": [
+                  "にあって いる",
+                  "あって いる",
+                  "にて いる",
+                  "ちがって いる"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 にて いる",
+                  "full_sentence": "{私|わたし}は{弟|おとうと}と{顔|かお}がよく{似|に}ていると{言|い}われます。",
+                  "translation_vi": "Tôi hay bị (mọi người) nói là mặt giống em trai.",
+                  "why_correct": "**Nと似ている** = giống N (về ngoại hình, tính cách). Luôn dùng dạng **似ている**.",
+                  "why_wrong": "1 にあっている（似合う）= hợp (quần áo hợp với người): \"mặt hợp với em trai\" sai nghĩa. 2 あっている（合う）= khớp, đúng: không dùng cho khuôn mặt giống nhau. 4 ちがっている = khác nhau: \"よく\" (rất) + khác nhau không tự nhiên, và câu \"bị nói là\" thường dùng cho sự giống nhau đáng chú ý.",
+                  "grammar": [
+                    {
+                      "pattern": "Nと／Nに似ている",
+                      "explanation": "giống N.",
+                      "examples": [
+                        "{娘|むすめ}は{母|はは}に似ています。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜と言われる",
+                      "explanation": "bị/được (người khác) nói là ~ (bị động của 言う).",
+                      "examples": [
+                        "よく{若|わか}いと言われます。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh **似ている và 似合う**: 似ている = giống; 似合う = hợp. 例: その服、よく似合いますね。",
+                      "explanation": "",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "似る",
+                      "reading": "にる",
+                      "meaning": "giống",
+                      "word_id": null
+                    },
+                    {
+                      "word": "似合う",
+                      "reading": "にあう",
+                      "meaning": "hợp",
+                      "word_id": null
+                    },
+                    {
+                      "word": "顔",
+                      "reading": "かお",
+                      "meaning": "mặt",
+                      "word_id": null
+                    },
+                    {
+                      "word": "弟",
+                      "reading": "おとうと",
+                      "meaning": "em trai",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 4,
+            "type_id": "n4_iikae",
+            "instructions": "＿＿＿の 文と だいたい 同じ いみの 文が あります。1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【この 店は 夜 9時まで 開いて います。】",
+                "options": [
+                  "この 店は 夜 9時に 開きます。",
+                  "この 店は 夜 9時から しまって います。",
+                  "この 店は 夜 9時まで 休みです。",
+                  "この 店は 夜 9時に しまります。"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 この 店は 夜 9時に しまります。",
+                  "full_sentence": "この{店|みせ}は{夜|よる}{9時|くじ}まで{開|あ}いています。\n＝ この店は夜9時に{閉|し}まります。",
+                  "translation_vi": "Cửa hàng này mở cửa đến 9 giờ tối.\n= Cửa hàng này đóng cửa lúc 9 giờ tối.",
+                  "why_correct": "\"Mở đến 9 giờ\" = \"9 giờ thì đóng\". Câu 4 nói lại trực tiếp: 9時に閉まります.",
+                  "why_wrong": "1 9時に開きます: 9 giờ mới **mở** → ngược nghĩa. 2 9時から閉まっています: nghĩa \"từ 9 giờ thì đã đóng\" cũng gần, nhưng 〜から閉まっている thường nói về tình trạng đóng kéo dài (ví dụ đóng cửa từ 9 giờ rồi, ít dùng để mô tả giờ đóng cửa hằng ngày). Đề chọn 4 là câu khớp nhất. 3 9時まで休みです: đến 9 giờ là **nghỉ** (đóng) → ngược nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "Vている（trạng thái）",
+                      "explanation": "開いている = đang mở (trạng thái); 閉まっている = đang đóng.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜まで",
+                      "explanation": "cho đến ~ (hành động kéo dài) / **〜に** = vào lúc ~ (thời điểm).",
+                      "examples": [
+                        "5時まで働きます。5時に帰ります。"
+                      ]
+                    },
+                    {
+                      "pattern": "Cặp **tự động từ**: {開|あ}く mở ↔ {閉|し}まる đóng.",
+                      "explanation": "",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "開く",
+                      "reading": "あく",
+                      "meaning": "mở",
+                      "word_id": null
+                    },
+                    {
+                      "word": "閉まる",
+                      "reading": "しまる",
+                      "meaning": "đóng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "休み",
+                      "reading": "やすみ",
+                      "meaning": "nghỉ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "店",
+                      "reading": "みせ",
+                      "meaning": "cửa hàng",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "Lựa chọn 2（9時から しまって います）nghĩa cũng gần, nhưng lựa chọn 4 là cách nói lại trực tiếp và chuẩn nhất, nên đáp án là 4.",
+                "needs_review": true,
+                "internal_note": "Điểm cần chốt số 2 (SRS 2.0, mục 7.2): đáp án nhiễu số 2 quá gần nghĩa. Đề xuất đổi lựa chọn 2 trước khi xuất bản.",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【兄は 弟に 本を 読ませました。】",
+                "options": [
+                  "兄は 弟に 本を 読んで あげました。",
+                  "弟は 兄に 言われて、本を 読みました。",
+                  "弟は 兄に 本を 読んで もらいました。",
+                  "兄は 弟に 本を 読まれました。"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 弟は 兄に 言われて、本を 読みました。",
+                  "full_sentence": "{兄|あに}は{弟|おとうと}に{本|ほん}を{読|よ}ませました。\n＝ 弟は兄に{言|い}われて、本を読みました。",
+                  "translation_vi": "Anh trai đã bắt em trai đọc sách.\n= Em trai bị anh bảo nên đã đọc sách.",
+                  "why_correct": "**Thể sai khiến** 読ませる = bắt/cho (ai) đọc. Người đọc là **弟**, vì anh trai bảo. Câu 2 nói đúng: em trai đọc vì bị anh bảo.",
+                  "why_wrong": "1 兄は弟に本を読んであげました: anh đọc **cho** em → người đọc là anh → sai. 3 弟は兄に本を読んでもらいました: em được anh đọc cho → người đọc là anh → sai. 4 兄は弟に本を読まれました: bị động (anh bị em đọc mất sách) → sai nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "Thể sai khiến ({使役|しえき})",
+                      "explanation": "nhóm 1: う→あ＋せる (読む → 読ませる); nhóm 2: る→させる (食べる → 食べさせる); する → させる; 来る → {来|こ}させる. **AはBにVさせる** = A bắt/cho B làm V.",
+                      "examples": [
+                        "母は私に{野菜|やさい}を食べさせました。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh: **Vてあげる** (mình làm cho người khác) / **Vてもらう** (được người khác làm cho) / **Vさせる** (bắt người khác làm).",
+                      "explanation": "",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "兄",
+                      "reading": "あに",
+                      "meaning": "anh trai",
+                      "word_id": null
+                    },
+                    {
+                      "word": "弟",
+                      "reading": "おとうと",
+                      "meaning": "em trai",
+                      "word_id": null
+                    },
+                    {
+                      "word": "読む",
+                      "reading": "よむ",
+                      "meaning": "đọc",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【山田さんは 来月 会社を やめる ことに なりました。】",
+                "options": [
+                  "山田さんは 来月 会社を やめたいと 思って います。",
+                  "山田さんは 来月 会社を やめる かもしれません。",
+                  "山田さんが 来月 会社を やめる ことが 決まりました。",
+                  "山田さんは 来月 会社を やめないかもしれません。"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 山田さんが 来月 会社を やめる ことが 決まりました。",
+                  "full_sentence": "{山田|やまだ}さんは{来月|らいげつ}{会社|かいしゃ}を{辞|や}めることになりました。\n＝ 山田さんが来月会社を辞めることが{決|き}まりました。",
+                  "translation_vi": "Anh/chị Yamada đã được quyết định là sẽ nghỉ việc ở công ty vào tháng sau.\n= Việc anh/chị Yamada nghỉ việc vào tháng sau đã được quyết định.",
+                  "why_correct": "**〜ことになる** = (việc) được quyết định (thường không phải do bản thân tự quyết, hoặc nói khiêm tốn). = 〜ことが決まる.",
+                  "why_wrong": "1 やめたいと思っています: chỉ là **muốn** nghỉ, chưa quyết định → sai. 2 やめるかもしれません: **có lẽ** nghỉ → chưa chắc → sai. 4 やめないかもしれません: có lẽ **không** nghỉ → ngược nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "Vる／Vないことになる",
+                      "explanation": "được quyết định là ~ (kết quả quyết định).",
+                      "examples": [
+                        "来年、{大阪|おおさか}へ行くことになりました。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh **ことになる và ことにする**: ことにする = **tự mình** quyết định; ことになる = **được quyết định** (bởi hoàn cảnh, công ty...). 例: {毎日走|はし}ることにしました。(Tôi quyết định chạy mỗi ngày.)",
+                      "explanation": "",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜かもしれません",
+                      "explanation": "có lẽ ~ (không chắc chắn).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "辞める",
+                      "reading": "やめる",
+                      "meaning": "nghỉ (việc)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "決まる",
+                      "reading": "きまる",
+                      "meaning": "được quyết định",
+                      "word_id": null
+                    },
+                    {
+                      "word": "来月",
+                      "reading": "らいげつ",
+                      "meaning": "tháng sau",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【あの 店の ケーキは おいしそうです。】",
+                "options": [
+                  "あの 店の ケーキは、見ると おいしく 見えます。",
+                  "あの 店の ケーキは おいしいと 聞きました。",
+                  "あの 店の ケーキは、食べたら おいしかったです。",
+                  "あの 店の ケーキは おいしい はずです。"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 あの 店の ケーキは、見ると おいしく 見えます。",
+                  "full_sentence": "あの{店|みせ}のケーキは{美味|おい}しそうです。\n＝ あの店のケーキは、{見|み}ると美味しく{見|み}えます。",
+                  "translation_vi": "Bánh của cửa hàng kia trông có vẻ ngon.\n= Bánh của cửa hàng kia nhìn thì thấy ngon.",
+                  "why_correct": "**Aい（bỏ い）＋そう** = **trông có vẻ** ~ (phán đoán bằng **mắt nhìn**). おいしそう = nhìn thấy ngon. Câu 1 diễn đạt đúng: nhìn thì trông ngon.",
+                  "why_wrong": "2 おいしいと聞きました: **nghe nói** ngon → đó là 「おいしいそうです」 (truyền đạt), khác 「おいしそうです」. 3 食べたらおいしかった: đã **ăn** và thấy ngon → không còn là phán đoán. 4 おいしいはずです: chắc chắn ngon (suy luận có căn cứ) → khác \"trông có vẻ\".",
+                  "grammar": [
+                    {
+                      "pattern": "Hai loại そう",
+                      "explanation": "(rất hay thi!):\n• **Aい（bỏ い）／Vます（bỏ ます）＋そう** = trông có vẻ (nhìn thấy): おいしそう, 降りそう.\n• **Thể thường＋そうです** = nghe nói (truyền đạt): おいしいそうです, 降るそうです.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Aく見える",
+                      "explanation": "trông ~.",
+                      "examples": [
+                        "先生は{若|わか}く見えます。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜はずです",
+                      "explanation": "chắc chắn là ~ (theo lý mà nói).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "見える",
+                      "reading": "みえる",
+                      "meaning": "nhìn thấy, trông có vẻ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "美味しい",
+                      "reading": "おいしい",
+                      "meaning": "ngon",
+                      "word_id": null
+                    },
+                    {
+                      "word": "ケーキ",
+                      "reading": "",
+                      "meaning": "bánh ngọt",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "type_id": "n4_youhou",
+            "instructions": "つぎの ことばの つかいかたで いちばん いい ものを 1・2・3・4から 一つ えらんで ください。",
+            "tip": "",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【さがる】",
+                "options": [
+                  "先生の 前で 頭を さがりました。",
+                  "{気温|きおん}が さがって、外は あたたかく なりました。",
+                  "薬を 飲んだら、ねつが さがりました。",
+                  "店の 人が ねだんを さがって くれました。"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 薬を 飲んだら、ねつが さがりました。",
+                  "full_sentence": "{薬|くすり}を{飲|の}んだら、{熱|ねつ}が{下|さ}がりました。",
+                  "translation_vi": "Uống thuốc xong thì hạ sốt.",
+                  "why_correct": "下がる（さがる）= giảm, hạ xuống. Là **tự động từ** (N**が**下がる). 熱が下がる = hạ sốt. Đúng.",
+                  "why_wrong": "1 頭をさがりました: 下がる không đi với を; \"cúi đầu\" là 頭を**下げる**（さげる）. 2 気温がさがって、あたたかくなりました: nhiệt độ **giảm** mà lại **ấm lên** → mâu thuẫn. 4 ねだんをさがってくれました: lại dùng を → phải là {値段|ねだん}を**下げて**くれました (tha động từ).",
+                  "grammar": [
+                    {
+                      "pattern": "Tự động từ / tha động từ",
+                      "explanation": "下がる (Nが下がる — tự giảm) / 下げる (Nを下げる — làm cho giảm). Tương tự: 上がる／上げる.",
+                      "examples": [
+                        "値段を下げてください。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vたら",
+                      "explanation": "(飲んだら) = sau khi V thì (thấy kết quả).",
+                      "examples": [
+                        "{窓|まど}を{開|あ}けたら、{雪|ゆき}が降っていました。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "下がる",
+                      "reading": "さがる",
+                      "meaning": "giảm, hạ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "下げる",
+                      "reading": "さげる",
+                      "meaning": "hạ xuống (cái gì)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "熱",
+                      "reading": "ねつ",
+                      "meaning": "sốt",
+                      "word_id": null
+                    },
+                    {
+                      "word": "気温",
+                      "reading": "きおん",
+                      "meaning": "nhiệt độ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "値段",
+                      "reading": "ねだん",
+                      "meaning": "giá",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【のこる】",
+                "options": [
+                  "料理を 作りすぎて、半分 のこって しまいました。",
+                  "ケーキを 弟の ために 半分 のこって おきました。",
+                  "弟に お金を 少し のこって あげました。",
+                  "古い 写真を 大切に のこって います。"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 料理を 作りすぎて、半分 のこって しまいました。",
+                  "full_sentence": "{料理|りょうり}を{作|つく}りすぎて、{半分|はんぶん}{残|のこ}ってしまいました。",
+                  "translation_vi": "Nấu nhiều quá nên còn thừa mất một nửa.",
+                  "why_correct": "残る（のこる）= còn lại, thừa lại. **Tự động từ** — thức ăn (tự nó) còn lại. Đúng.",
+                  "why_wrong": "2 ケーキを…半分のこっておきました: có を và có chủ ý \"để dành\" → phải dùng **残して**おきました (tha động từ 残す). 3 弟にお金を少しのこってあげました: phải là **残して**あげました. 4 古い写真を大切にのこっています: phải là 残して (hoặc とって) います.",
+                  "grammar": [
+                    {
+                      "pattern": "残る／残す",
+                      "explanation": "Nが残る (còn lại) / Nを残す (để lại).",
+                      "examples": [
+                        "{晩|ばん}ごはんを残さないでください。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vます（bỏ ます）＋すぎる",
+                      "explanation": "V quá mức.",
+                      "examples": [
+                        "食べすぎました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vてしまう",
+                      "explanation": "lỡ ~ mất (tiếc nuối).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vておく",
+                      "explanation": "V sẵn / để sẵn.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "残る",
+                      "reading": "のこる",
+                      "meaning": "còn lại",
+                      "word_id": null
+                    },
+                    {
+                      "word": "残す",
+                      "reading": "のこす",
+                      "meaning": "để lại",
+                      "word_id": null
+                    },
+                    {
+                      "word": "半分",
+                      "reading": "はんぶん",
+                      "meaning": "một nửa",
+                      "word_id": null
+                    },
+                    {
+                      "word": "〜すぎる",
+                      "reading": "",
+                      "meaning": "quá ~",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【なおる】",
+                "options": [
+                  "こわれた 時計を 父が なおりました。",
+                  "かぜが なおって、学校に 行けなく なりました。",
+                  "医者が けがを なおって くれました。",
+                  "一週間 休んだら、けがが すっかり なおりました。"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 一週間 休んだら、けがが すっかり なおりました。",
+                  "full_sentence": "{一週間|いっしゅうかん}{休|やす}んだら、{怪我|けが}がすっかり{治|なお}りました。",
+                  "translation_vi": "Nghỉ một tuần thì vết thương đã khỏi hẳn.",
+                  "why_correct": "治る（なおる）= khỏi (bệnh, vết thương); 直る = được sửa xong. Tự động từ: けがが治る. Đúng.",
+                  "why_wrong": "1 時計を父がなおりました: có を → phải là 父が時計を**直しました** (tha động từ 直す). 2 かぜがなおって、学校に行けなくなりました: khỏi cảm mà lại **không đi học được** → vô lý (phải là 行けるようになりました). 3 医者がけがをなおってくれました: phải là **治して**くれました.",
+                  "grammar": [
+                    {
+                      "pattern": "治る／治す",
+                      "explanation": ", **直る／直す**: Nが治る (khỏi) / Nを治す (chữa); Nが直る (được sửa) / Nを直す (sửa).",
+                      "examples": [
+                        "{自転車|じてんしゃ}を直しました。"
+                      ]
+                    },
+                    {
+                      "pattern": "すっかり",
+                      "explanation": "hoàn toàn, hẳn.",
+                      "examples": [
+                        "すっかり{忘|わす}れました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vたら",
+                      "explanation": "sau khi V thì (kết quả).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "治る",
+                      "reading": "なおる",
+                      "meaning": "khỏi bệnh",
+                      "word_id": null
+                    },
+                    {
+                      "word": "直す",
+                      "reading": "なおす",
+                      "meaning": "sửa",
+                      "word_id": null
+                    },
+                    {
+                      "word": "怪我",
+                      "reading": "けが",
+                      "meaning": "vết thương",
+                      "word_id": null
+                    },
+                    {
+                      "word": "すっかり",
+                      "reading": "",
+                      "meaning": "hoàn toàn",
+                      "word_id": null
+                    },
+                    {
+                      "word": "医者",
+                      "reading": "いしゃ",
+                      "meaning": "bác sĩ",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "【つごう】",
+                "options": [
+                  "この 料理は つごうが いいです。",
+                  "あしたは つごうが 悪いので、あさって 会いませんか。",
+                  "体の つごうが 悪くて、会社を 休みました。",
+                  "この 道は つごうが よくて、広いです。"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 あしたは つごうが 悪いので、あさって 会いませんか。",
+                  "full_sentence": "{明日|あした}は{都合|つごう}が{悪|わる}いので、{明後日|あさって}{会|あ}いませんか。",
+                  "translation_vi": "Ngày mai tôi không tiện, nên ngày kia mình gặp nhau được không?",
+                  "why_correct": "{都合|つごう}= sự thuận tiện về **thời gian, lịch hẹn**. 都合がいい／悪い = tiện / không tiện. Dùng khi hẹn gặp. Đúng.",
+                  "why_wrong": "1 料理はつごうがいい: món ăn không có \"tiện về thời gian\" → muốn khen dùng おいしい. 3 体のつごうが悪くて: sức khỏe dùng 体の**{調子|ちょうし}**が悪い. 4 道はつごうがよくて、広い: đường không dùng つごう → có thể dùng {便利|べんり}.",
+                  "grammar": [
+                    {
+                      "pattern": "都合がいい／悪い",
+                      "explanation": "tiện / không tiện (lịch).",
+                      "examples": [
+                        "{何曜日|なんようび}が都合がいいですか。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh **都合 và 調子**: 都合 = lịch trình, sự thuận tiện; 調子 = tình trạng (cơ thể, máy móc). 例: パソコンの調子が悪いです。",
+                      "explanation": "",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vませんか",
+                      "explanation": "cùng V nhé? (rủ rê).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "都合",
+                      "reading": "つごう",
+                      "meaning": "sự thuận tiện",
+                      "word_id": null
+                    },
+                    {
+                      "word": "調子",
+                      "reading": "ちょうし",
+                      "meaning": "tình trạng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "明後日",
+                      "reading": "あさって",
+                      "meaning": "ngày kia",
+                      "word_id": null
+                    },
+                    {
+                      "word": "便利",
+                      "reading": "べんり",
+                      "meaning": "tiện lợi",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "言語知識（文法）・読解",
+        "kind": "reading",
+        "duration_minutes": 55,
+        "score_group": "Kiến thức ngôn ngữ・Đọc hiểu",
+        "mondai": [
+          {
+            "number": 1,
+            "type_id": "n4_bun_bunpou1",
+            "instructions": "（　）に 何を 入れますか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "日本語の ニュースが わかる （　）、毎日 聞いて います。",
+                "options": [
+                  "ために",
+                  "ためで",
+                  "ように",
+                  "ようで"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 ように",
+                  "full_sentence": "{日本語|にほんご}のニュースがわかるように、{毎日|まいにち}{聞|き}いています。",
+                  "translation_vi": "Để có thể hiểu được tin tức tiếng Nhật, ngày nào tôi cũng nghe.",
+                  "why_correct": "Trước chỗ trống là **わかる** — động từ **không có ý chí** (mình không \"quyết định hiểu\" được, nó tự đến). Mục đích với động từ không ý chí (わかる, 見える, できる, thể khả năng, thể ない) → dùng **ように**.",
+                  "why_wrong": "1 ために: ために đi với động từ **có ý chí** (買う, 行く, 勉強する...). わかる không có ý chí → không dùng ために. 2 ためで và 4 ようで: không có cách nói này để chỉ mục đích.",
+                  "grammar": [
+                    {
+                      "pattern": "Vる（không ý chí）／Vない＋ように",
+                      "explanation": "để (có thể) ~.",
+                      "examples": [
+                        "{忘|わす}れないように、メモします。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vる（có ý chí）／Nの＋ために",
+                      "explanation": "để ~ (mục đích rõ ràng, mình chủ động làm).",
+                      "examples": [
+                        "{車|くるま}を買うために、お{金|かね}をためています。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh ために và ように",
+                      "explanation": "hỏi \"động từ trước có phải việc mình tự quyết làm được không?\". Có → ために; không (hiểu, nhìn thấy, có thể, không quên...) → ように. Chủ ngữ hai vế khác nhau cũng dùng ように: 子どもが読めるように、ひらがなで書きます。",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "ニュース",
+                      "reading": "",
+                      "meaning": "tin tức",
+                      "word_id": null
+                    },
+                    {
+                      "word": "わかる",
+                      "reading": "",
+                      "meaning": "hiểu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "聞く",
+                      "reading": "きく",
+                      "meaning": "nghe",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "自分の 店を 持つ （　）、毎月 お金を ためて います。",
+                "options": [
+                  "ために",
+                  "ように",
+                  "のに",
+                  "ので"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 ために",
+                  "full_sentence": "{自分|じぶん}の{店|みせ}を{持|も}つために、{毎月|まいつき}お{金|かね}をためています。",
+                  "translation_vi": "Để có cửa hàng của riêng mình, tháng nào tôi cũng tiết kiệm tiền.",
+                  "why_correct": "持つ (có, sở hữu) ở đây là mục tiêu **có ý chí**, mình chủ động hướng tới, chủ ngữ hai vế giống nhau → **ために**.",
+                  "why_wrong": "2 ように: ように đi với động từ không ý chí / thể khả năng (持てるように thì được), 持つように không tự nhiên. 3 のに: のに nghĩa \"vậy mà\" (trái ngược) — \"có cửa hàng vậy mà tiết kiệm\" vô lý. (のに còn nghĩa \"để dùng cho\" như 料理を作るのに使う, nhưng không hợp với \"tiết kiệm tiền hằng tháng\" ở đây.) 4 ので: \"vì có cửa hàng nên tiết kiệm\" → sai: cửa hàng là **mục tiêu tương lai**, chưa có.",
+                  "grammar": [
+                    {
+                      "pattern": "Vる＋ために",
+                      "explanation": "để V (mục đích). Xem so sánh ở câu 1.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "お金をためる",
+                      "explanation": "tiết kiệm tiền, để dành tiền.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "自分",
+                      "reading": "じぶん",
+                      "meaning": "bản thân",
+                      "word_id": null
+                    },
+                    {
+                      "word": "持つ",
+                      "reading": "もつ",
+                      "meaning": "có, sở hữu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "ためる",
+                      "reading": "",
+                      "meaning": "để dành",
+                      "word_id": null
+                    },
+                    {
+                      "word": "毎月",
+                      "reading": "まいつき",
+                      "meaning": "mỗi tháng",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "A「来月、京都へ 行くんです。」 B「京都へ 行く （　）、{新幹線|しんかんせん}の きっぷを 早めに 買った ほうが いいですよ。」",
+                "options": [
+                  "と",
+                  "たら",
+                  "ば",
+                  "なら"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 なら",
+                  "full_sentence": "A「{来月|らいげつ}、{京都|きょうと}へ{行|い}くんです。」 B「京都へ行くなら、{新幹線|しんかんせん}の{切符|きっぷ}を{早|はや}めに{買|か}ったほうがいいですよ。」",
+                  "translation_vi": "A: \"Tháng sau tôi đi Kyoto.\" B: \"Nếu đi Kyoto thì nên mua vé tàu Shinkansen sớm đấy.\"",
+                  "why_correct": "B **nhận lấy thông tin** của A (đi Kyoto) rồi **khuyên**. Việc mua vé xảy ra **trước** chuyến đi. → **なら** là đúng.",
+                  "why_wrong": "1 と: と dùng cho kết quả tất yếu/tự nhiên, không đi với lời khuyên ở vế sau. 2 たら: 行ったら = **sau khi** đến Kyoto rồi → mua vé sớm khi đã đến nơi thì vô lý. 3 ば: 行けば thường không dùng để tiếp nhận lời người khác rồi khuyên; và ở đây cũng có ý \"sau khi đi\". Chỉ なら cho phép vế sau xảy ra **trước** vế trước.",
+                  "grammar": [
+                    {
+                      "pattern": "Thể thường＋なら",
+                      "explanation": "nếu (định) ~ thì... (tiếp nhận thông tin từ người kia, đưa lời khuyên).",
+                      "examples": [
+                        "A「カメラを買いたいです。」B「カメラを買うなら、あの店がいいですよ。」"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh と／たら／ば／なら",
+                      "explanation": "\n• **と**: hễ A là B (tự nhiên, tất yếu). {春|はる}になると、{暖|あたた}かくなります。Không dùng với yêu cầu, lời khuyên.\n• **たら**: sau khi A (xong) thì B. Dùng được với yêu cầu.\n• **ば**: nếu A (điều kiện). \n• **なら**: nếu nói về chuyện A thì... B có thể xảy ra trước A.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vたほうがいい",
+                      "explanation": "nên V.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "新幹線",
+                      "reading": "しんかんせん",
+                      "meaning": "tàu Shinkansen",
+                      "word_id": null
+                    },
+                    {
+                      "word": "切符",
+                      "reading": "きっぷ",
+                      "meaning": "vé",
+                      "word_id": null
+                    },
+                    {
+                      "word": "早めに",
+                      "reading": "はやめに",
+                      "meaning": "sớm một chút",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "駅に （　）、電話して ください。むかえに 行きますから。",
+                "options": [
+                  "着くと",
+                  "着いたら",
+                  "着けば",
+                  "着くなら"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 着いたら",
+                  "full_sentence": "{駅|えき}に{着|つ}いたら、{電話|でんわ}してください。{迎|むか}えに{行|い}きますから。",
+                  "translation_vi": "Khi nào đến ga thì gọi điện cho tôi nhé. Tôi sẽ ra đón.",
+                  "why_correct": "Trình tự: **đến ga xong** → gọi điện. Vế sau là **yêu cầu** (〜てください) → dùng **たら**.",
+                  "why_wrong": "1 着くと: と không dùng khi vế sau là yêu cầu/nhờ vả. 3 着けば: ば với động từ hành động thường không đi với yêu cầu ở vế sau. 4 着くなら: なら = \"nếu định đến ga thì...\" → gọi trước khi đến → sai ý (người nói muốn được gọi khi đã đến nơi để ra đón).",
+                  "grammar": [
+                    {
+                      "pattern": "Vたら、〜てください",
+                      "explanation": "sau khi V thì hãy ~.",
+                      "examples": [
+                        "{仕事|しごと}が{終|お}わったら、{連絡|れんらく}してください。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vます（bỏ ます）／Nに行く",
+                      "explanation": "(迎えに行く) = đi để ~.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜から",
+                      "explanation": "cuối câu = vì ~ (giải thích lý do).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "着く",
+                      "reading": "つく",
+                      "meaning": "đến nơi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "迎える",
+                      "reading": "むかえる",
+                      "meaning": "đón",
+                      "word_id": null
+                    },
+                    {
+                      "word": "迎えに行く",
+                      "reading": "むかえにいく",
+                      "meaning": "đi đón",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "会社の 決まりで、来月から 土曜日も 働く （　）。",
+                "options": [
+                  "ことに しました",
+                  "ことに なりました",
+                  "ように しました",
+                  "ことが あります"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 ことに なりました",
+                  "full_sentence": "{会社|かいしゃ}の{決|き}まりで、{来月|らいげつ}から{土曜日|どようび}も{働|はたら}くことになりました。",
+                  "translation_vi": "Theo quy định của công ty, từ tháng sau tôi phải làm việc cả thứ Bảy.",
+                  "why_correct": "「会社の決まりで」 = do **quy định công ty** → không phải mình tự quyết → **ことになる**.",
+                  "why_wrong": "1 ことにしました: mình **tự quyết định** → mâu thuẫn với \"theo quy định công ty\". 3 ようにしました: cố gắng làm ~ (thói quen) → không hợp với quy định. 4 ことがあります: \"có khi ~\" → không hợp với 来月から (từ tháng sau, thay đổi rõ ràng).",
+                  "grammar": [
+                    {
+                      "pattern": "Vることになる",
+                      "explanation": "được quyết định là ~ (không do mình).",
+                      "examples": [
+                        "来年、{国|くに}へ帰ることになりました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vることにする",
+                      "explanation": "tự quyết định ~ (xem câu 6).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Nで",
+                      "explanation": "(決まりで) = do, vì (nguyên nhân).",
+                      "examples": [
+                        "{病気|びょうき}で休みました。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "決まり",
+                      "reading": "きまり",
+                      "meaning": "quy định",
+                      "word_id": null
+                    },
+                    {
+                      "word": "働く",
+                      "reading": "はたらく",
+                      "meaning": "làm việc",
+                      "word_id": null
+                    },
+                    {
+                      "word": "土曜日",
+                      "reading": "どようび",
+                      "meaning": "thứ Bảy",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "体に 悪いので、わたしは 今日から お酒を 飲まない （　）。",
+                "options": [
+                  "ことに なりました",
+                  "ように なりました",
+                  "ことが ありました",
+                  "ことに しました"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 ことに しました",
+                  "full_sentence": "{体|からだ}に{悪|わる}いので、{私|わたし}は{今日|きょう}からお{酒|さけ}を{飲|の}まないことにしました。",
+                  "translation_vi": "Vì có hại cho sức khỏe nên tôi quyết định từ hôm nay không uống rượu nữa.",
+                  "why_correct": "「わたしは」 + lý do cá nhân (体に悪い) + 今日から → **tự mình quyết định** → **ことにしました**.",
+                  "why_wrong": "1 ことになりました: được (người khác/hoàn cảnh) quyết định → không hợp với lý do cá nhân. 2 ようになりました: **trở nên** (thay đổi dần dần, khả năng) — 飲まないようになりました không tự nhiên với 今日から (quyết định ngay). 3 ことがありました: \"đã từng có lúc\" → không hợp với 今日から.",
+                  "grammar": [
+                    {
+                      "pattern": "Vる／Vないことにする",
+                      "explanation": "quyết định (làm/không làm) V.",
+                      "examples": [
+                        "{毎朝|まいあさ}ジョギングすることにしました。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh ことにする／ことになる／ようにする／ようになる",
+                      "explanation": "\n• ことにする: tự quyết định (một lần).\n• ことになる: được quyết định.\n• ようにする: cố gắng (duy trì thói quen). 野菜を食べるようにしています。\n• ようになる: trở nên (thay đổi khả năng/thói quen). {泳|およ}げるようになりました。",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "体",
+                      "reading": "からだ",
+                      "meaning": "cơ thể",
+                      "word_id": null
+                    },
+                    {
+                      "word": "お酒",
+                      "reading": "おさけ",
+                      "meaning": "rượu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "〜に悪い",
+                      "reading": "わるい",
+                      "meaning": "có hại cho ~",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "空が 暗く なって きました。今にも 雨が （　）です。",
+                "options": [
+                  "降りそう",
+                  "降るそう",
+                  "降ったそう",
+                  "降らないそう"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 降りそう",
+                  "full_sentence": "{空|そら}が{暗|くら}くなってきました。{今|いま}にも{雨|あめ}が{降|ふ}りそうです。",
+                  "translation_vi": "Bầu trời tối dần rồi. Trông như sắp mưa đến nơi.",
+                  "why_correct": "Nhìn thấy trời tối → phán đoán bằng **mắt** → **Vます（bỏ ます）＋そう**. 「今にも」 (sắp ~ đến nơi) luôn đi với **〜そう** (dáng vẻ).",
+                  "why_wrong": "2 降るそう: **nghe nói** mưa (truyền đạt) → không hợp với 今にも và việc tự mình nhìn trời. 3 降ったそう: nghe nói **đã** mưa → sai. 4 降らないそう: nghe nói không mưa → ngược nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "Vます（bỏ ます）＋そうだ",
+                      "explanation": "trông như sắp V.",
+                      "examples": [
+                        "{荷物|にもつ}が{落|お}ちそうです。"
+                      ]
+                    },
+                    {
+                      "pattern": "今にも〜そう",
+                      "explanation": "sắp ~ đến nơi.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Aく＋なってくる",
+                      "explanation": "(暗くなってきました) = dần dần trở nên ~.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "今にも",
+                      "reading": "いまにも",
+                      "meaning": "sắp ~ đến nơi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "空",
+                      "reading": "そら",
+                      "meaning": "bầu trời",
+                      "word_id": null
+                    },
+                    {
+                      "word": "暗い",
+                      "reading": "くらい",
+                      "meaning": "tối",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "天気{予報|よほう}に よると、あしたは 雪が （　）です。",
+                "options": [
+                  "降りそう",
+                  "降らなそう",
+                  "降るそう",
+                  "降りそうな"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 降るそう",
+                  "full_sentence": "{天気予報|てんきよほう}によると、{明日|あした}は{雪|ゆき}が{降|ふ}るそうです。",
+                  "translation_vi": "Theo dự báo thời tiết, nghe nói ngày mai sẽ có tuyết.",
+                  "why_correct": "「天気予報によると」 = theo dự báo → thông tin **nghe được** → **thể thường＋そうです** (truyền đạt). 降る (thể thường) + そうです.",
+                  "why_wrong": "1 降りそう: trông như sắp → dùng cho thứ mình nhìn thấy, không hợp với 〜によると. 2 降らなそう: trông như không mưa → sai cả nghĩa lẫn loại そう. 4 降りそうな: dạng bổ nghĩa danh từ (降りそうな空), không đứng trước です ở đây.",
+                  "grammar": [
+                    {
+                      "pattern": "Nによると、thể thường＋そうです",
+                      "explanation": "theo N thì nghe nói ~.",
+                      "examples": [
+                        "ニュースによると、{電車|でんしゃ}が{止|と}まっているそうです。"
+                      ]
+                    },
+                    {
+                      "pattern": "So sánh hai loại そう",
+                      "explanation": "(rất hay ra thi):\n• **Vます／Aい（bỏ）＋そう**: trông có vẻ (nhìn): 降りそう, おいしそう.\n• **Thể thường＋そうです**: nghe nói: 降るそうです, おいしいそうです.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "天気予報",
+                      "reading": "てんきよほう",
+                      "meaning": "dự báo thời tiết",
+                      "word_id": null
+                    },
+                    {
+                      "word": "〜によると",
+                      "reading": "",
+                      "meaning": "theo ~",
+                      "word_id": null
+                    },
+                    {
+                      "word": "雪",
+                      "reading": "ゆき",
+                      "meaning": "tuyết",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "強い 風で、ドアが 急に （　）しまいました。",
+                "options": [
+                  "しめて",
+                  "しめられて",
+                  "しまられて",
+                  "しまって"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 しまって",
+                  "full_sentence": "{強|つよ}い{風|かぜ}で、ドアが{急|きゅう}に{閉|し}まってしまいました。",
+                  "translation_vi": "Do gió mạnh, cửa đột nhiên đóng sầm lại.",
+                  "why_correct": "Chủ ngữ là **ドアが** và do gió (không có người làm) → **tự động từ 閉まる**. 閉まる → 閉まって + しまいました.",
+                  "why_wrong": "1 しめて (閉める): tha động từ, phải là Nを閉める (có người đóng) → không hợp với ドアが. 2 しめられて (bị đóng): bị động của 閉める, ám chỉ có ai đó đóng → không tự nhiên khi nguyên nhân là gió. 3 しまられて: tự động từ 閉まる không có thể bị động như vậy → sai.",
+                  "grammar": [
+                    {
+                      "pattern": "Tự động từ / tha động từ",
+                      "explanation": "Nが閉まる (cửa tự đóng) / Nを閉める (mình đóng cửa). Tương tự: 開く／開ける, 付く／付ける, 消える／消す.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vてしまう",
+                      "explanation": "lỡ V mất / V mất rồi (không mong muốn).",
+                      "examples": [
+                        "{財布|さいふ}を{落|お}としてしまいました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Nで",
+                      "explanation": "(強い風で) = do N.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "閉まる",
+                      "reading": "しまる",
+                      "meaning": "đóng (tự)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "閉める",
+                      "reading": "しめる",
+                      "meaning": "đóng (cái gì)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "風",
+                      "reading": "かぜ",
+                      "meaning": "gió",
+                      "word_id": null
+                    },
+                    {
+                      "word": "急に",
+                      "reading": "きゅうに",
+                      "meaning": "đột nhiên",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "へやの 電気を （　）まま、寝て しまいました。",
+                "options": [
+                  "ついた",
+                  "つけた",
+                  "ついて",
+                  "つけて"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 つけた",
+                  "full_sentence": "{部屋|へや}の{電気|でんき}を{付|つ}けたまま、{寝|ね}てしまいました。",
+                  "translation_vi": "Tôi lỡ ngủ quên mà vẫn để đèn trong phòng bật.",
+                  "why_correct": "Có **を** (電気を) → cần **tha động từ 付ける**. Mẫu **Vた＋まま** → **つけたまま**.",
+                  "why_wrong": "1 ついた: tự động từ 付く, không đi với を (phải là 電気がついたまま). 3 ついて và 4 つけて: thể て không đi trước まま; mẫu là **Vたまま**.",
+                  "grammar": [
+                    {
+                      "pattern": "Vたまま",
+                      "explanation": "để nguyên trạng thái V mà (làm việc khác).",
+                      "examples": [
+                        "{靴|くつ}を{履|は}いたまま、家に入らないでください。"
+                      ]
+                    },
+                    {
+                      "pattern": "Tự / tha",
+                      "explanation": "電気**が**つく (đèn sáng) / 電気**を**つける (bật đèn).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vてしまう",
+                      "explanation": "lỡ V mất.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "電気",
+                      "reading": "でんき",
+                      "meaning": "đèn, điện",
+                      "word_id": null
+                    },
+                    {
+                      "word": "付ける",
+                      "reading": "つける",
+                      "meaning": "bật",
+                      "word_id": null
+                    },
+                    {
+                      "word": "付く",
+                      "reading": "つく",
+                      "meaning": "sáng (đèn)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "まま",
+                      "reading": "",
+                      "meaning": "giữ nguyên",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "わたしは 子どもの とき、毎晩 母に ピアノを 練習 （　）。",
+                "options": [
+                  "されました",
+                  "させました",
+                  "させられました",
+                  "しました"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 させられました",
+                  "full_sentence": "{私|わたし}は{子|こ}どもの{時|とき}、{毎晩|まいばん}{母|はは}にピアノを{練習|れんしゅう}させられました。",
+                  "translation_vi": "Hồi nhỏ, tối nào tôi cũng bị mẹ bắt tập piano.",
+                  "why_correct": "Chủ ngữ là **わたし**, người bắt là **母に**, mình phải làm (không muốn) → **thể bị sai khiến ({使役受身|しえきうけみ})**: する → させられる.",
+                  "why_wrong": "1 されました (bị động): \"bị mẹ tập piano\" → không có nghĩa. 2 させました (sai khiến): \"tôi bắt mẹ tập piano\" → ngược vai. 4 しました: \"tôi tập piano với mẹ (に)\" → bỏ mất nghĩa \"bị bắt\", và 母に không hợp.",
+                  "grammar": [
+                    {
+                      "pattern": "Thể bị sai khiến",
+                      "explanation": "AはBにVさせられる = A bị B bắt làm V. Cách chia:\n• nhóm 1: 書く → 書か**せられる** (hoặc 書か**される**)\n• nhóm 2: 食べる → 食べ**させられる**\n• する → **させられる**, 来る → **{来|こ}させられる**",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "例: 子どものとき、{嫌|きら}いな{野菜|やさい}を食べさせられました。",
+                      "explanation": "",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "So sánh: **させる** (bắt người khác) / **させられる** (bị người khác bắt).",
+                      "explanation": "",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "練習",
+                      "reading": "れんしゅう",
+                      "meaning": "luyện tập",
+                      "word_id": null
+                    },
+                    {
+                      "word": "毎晩",
+                      "reading": "まいばん",
+                      "meaning": "mỗi tối",
+                      "word_id": null
+                    },
+                    {
+                      "word": "子どものとき",
+                      "reading": "",
+                      "meaning": "hồi nhỏ",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "夜中に となりの 人に 大きな 音で 音楽を （　）、寝られませんでした。",
+                "options": [
+                  "かけられて",
+                  "かけさせて",
+                  "かけて もらって",
+                  "かけさせられて"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 かけられて",
+                  "full_sentence": "{夜中|よなか}に{隣|となり}の{人|ひと}に{大|おお}きな{音|おと}で{音楽|おんがく}をかけられて、{寝|ね}られませんでした。",
+                  "translation_vi": "Nửa đêm bị người hàng xóm mở nhạc to nên tôi không ngủ được.",
+                  "why_correct": "Người hàng xóm mở nhạc → **mình bị làm phiền** → **bị động phiền toái (迷惑の{受身|めいわくのうけみ})**: かける → かけられる. 「となりの人に」 đúng là người gây ra.",
+                  "why_wrong": "2 かけさせて (sai khiến): \"tôi bắt hàng xóm mở nhạc\" → vô lý vì sau đó lại không ngủ được. 3 かけてもらって: \"được hàng xóm mở nhạc cho\" → mang nghĩa biết ơn, mâu thuẫn với 寝られませんでした. 4 かけさせられて: \"bị hàng xóm bắt (tôi) mở nhạc\" → sai nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "Bị động phiền toái",
+                      "explanation": "(わたしは) Nに Vられる = bị N làm V (gây phiền cho mình). Tiếng Việt cũng nói \"bị\".",
+                      "examples": [
+                        "雨に降られました。(Bị mắc mưa.) 子どもに{泣|な}かれて、寝られませんでした。"
+                      ]
+                    },
+                    {
+                      "pattern": "Thể khả năng",
+                      "explanation": "寝る → 寝られる (ngủ được).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "音楽をかける",
+                      "explanation": "mở nhạc.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "夜中",
+                      "reading": "よなか",
+                      "meaning": "nửa đêm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "隣",
+                      "reading": "となり",
+                      "meaning": "bên cạnh, hàng xóm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "音",
+                      "reading": "おと",
+                      "meaning": "âm thanh",
+                      "word_id": null
+                    },
+                    {
+                      "word": "音楽をかける",
+                      "reading": "おんがくをかける",
+                      "meaning": "mở nhạc",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "母の 誕生日に、弟と いっしょに 花を 買って （　）。母は とても よろこんで いました。",
+                "options": [
+                  "あげました",
+                  "くれました",
+                  "もらいました",
+                  "いただきました"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 あげました",
+                  "full_sentence": "{母|はは}の{誕生日|たんじょうび}に、{弟|おとうと}と{一緒|いっしょ}に{花|はな}を{買|か}ってあげました。母はとても{喜|よろこ}んでいました。",
+                  "translation_vi": "Vào sinh nhật mẹ, tôi cùng em trai mua hoa tặng mẹ. Mẹ đã rất vui.",
+                  "why_correct": "**Mình** (và em trai) làm việc tốt **cho mẹ** → **Vてあげる**.",
+                  "why_wrong": "2 くれました: くれる = người khác làm cho **mình** → ở đây mình làm cho mẹ → sai hướng. 3 もらいました: được ai đó làm cho mình → sai hướng. 4 いただきました: khiêm nhường của もらう → cũng sai hướng.",
+                  "grammar": [
+                    {
+                      "pattern": "Vてあげる",
+                      "explanation": "(mình) làm V cho người khác.",
+                      "examples": [
+                        "{友|とも}だちに日本語を{教|おし}えてあげました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vてくれる",
+                      "explanation": "(người khác) làm V cho mình. **Vてもらう** = mình được (người khác) làm V cho.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Lưu ý: với người trên (thầy cô) không nên nói Vてあげる trực tiếp vì nghe như \"ban ơn\". Với mẹ trong câu kể chuyện thì dùng được.",
+                      "explanation": "",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "誕生日",
+                      "reading": "たんじょうび",
+                      "meaning": "sinh nhật",
+                      "word_id": null
+                    },
+                    {
+                      "word": "喜ぶ",
+                      "reading": "よろこぶ",
+                      "meaning": "vui mừng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "一緒に",
+                      "reading": "いっしょに",
+                      "meaning": "cùng nhau",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 2,
+            "type_id": "n4_bun_bunpou2",
+            "instructions": "＿★＿に 入る ものは どれですか。1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "tìm phần **chắc chắn đứng cuối** (đi với từ ngay sau chỗ trống), rồi ghép ngược về trước.",
+            "passages": [],
+            "questions": [
+              {
+                "passage": null,
+                "kind": "star",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "忘れて",
+                  "{頼|たの}まれた",
+                  "母に",
+                  "買い物を"
+                ],
+                "correct_option": null,
+                "star_prefix": "",
+                "star_suffix": "しまいました。",
+                "star_position": 2,
+                "star_order": [
+                  3,
+                  2,
+                  4,
+                  1
+                ],
+                "explanation": {
+                  "answer": "2 頼まれた",
+                  "full_sentence": "**{母|はは}に {頼|たの}まれた {買|か}い{物|もの}を {忘|わす}れて** しまいました。",
+                  "translation_vi": "Tôi lỡ quên mất việc mua đồ mà mẹ nhờ.",
+                  "why_correct": "しまいました cần Vて đứng trước → 忘れて ở cuối. 忘れる cần tân ngữ を → 買い物を. 「母に頼まれた」 là mệnh đề bổ nghĩa cho 買い物 (việc mua đồ bị mẹ nhờ).",
+                  "why_wrong": "Nếu đặt 「頼まれた母に…」 thì nghĩa \"mẹ bị nhờ\" → sai. 母に phải đứng trước 頼まれた vì đây là người nhờ trong câu bị động.",
+                  "grammar": [
+                    {
+                      "pattern": "Nに頼まれる",
+                      "explanation": "được/bị N nhờ (bị động của 頼む).",
+                      "examples": [
+                        "先生に頼まれた{仕事|しごと}をしました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Mệnh đề bổ nghĩa danh từ",
+                      "explanation": "母に頼まれた＋買い物.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vてしまう",
+                      "explanation": "lỡ V mất.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "頼む",
+                      "reading": "たのむ",
+                      "meaning": "nhờ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "買い物",
+                      "reading": "かいもの",
+                      "meaning": "mua sắm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "忘れる",
+                      "reading": "わすれる",
+                      "meaning": "quên",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "star",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "海へ",
+                  "晴れたら",
+                  "行く",
+                  "ことに"
+                ],
+                "correct_option": null,
+                "star_prefix": "あした",
+                "star_suffix": "しました。",
+                "star_position": 4,
+                "star_order": [
+                  2,
+                  1,
+                  3,
+                  4
+                ],
+                "explanation": {
+                  "answer": "4 ことに",
+                  "full_sentence": "あした **{晴|は}れたら {海|うみ}へ {行|い}く ことに** しました。",
+                  "translation_vi": "Tôi quyết định nếu mai trời nắng thì sẽ đi biển.",
+                  "why_correct": "Kết thúc bằng しました → mẫu **Vることにしました** → 行くことに ở cuối. 晴れたら là điều kiện đứng đầu; 海へ đi với 行く.",
+                  "why_wrong": "Thứ tự khác như 「海へ晴れたら」 không có nghĩa; ことに phải đứng ngay trước しました.",
+                  "grammar": [
+                    {
+                      "pattern": "Vることにする",
+                      "explanation": "quyết định V (xem câu 6 phần 問題1).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vたら",
+                      "explanation": "nếu ~ (điều kiện).",
+                      "examples": [
+                        "{時間|じかん}があったら、{映画|えいが}を見ます。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "晴れる",
+                      "reading": "はれる",
+                      "meaning": "trời nắng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "海",
+                      "reading": "うみ",
+                      "meaning": "biển",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "star",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "先生に",
+                  "直して",
+                  "いただいた",
+                  "作文"
+                ],
+                "correct_option": null,
+                "star_prefix": "これは",
+                "star_suffix": "です。",
+                "star_position": 1,
+                "star_order": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "explanation": {
+                  "answer": "1 先生に",
+                  "full_sentence": "これは **{先生|せんせい}に {直|なお}して いただいた {作文|さくぶん}** です。",
+                  "translation_vi": "Đây là bài văn tôi được thầy/cô sửa giúp.",
+                  "why_correct": "Trước です là danh từ → 作文 ở cuối. 直して＋いただいた (Vていただく). 先生に đứng đầu (người làm cho mình).",
+                  "why_wrong": "「作文を先生に…」 không được vì không có を trong lựa chọn; いただいた phải đứng sau 直して.",
+                  "grammar": [
+                    {
+                      "pattern": "Nに Vていただく",
+                      "explanation": "được N (người trên) làm V cho (khiêm nhường của Vてもらう).",
+                      "examples": [
+                        "先生に教えていただきました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Mệnh đề bổ nghĩa",
+                      "explanation": "先生に直していただいた＋作文.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "直す",
+                      "reading": "なおす",
+                      "meaning": "sửa",
+                      "word_id": null
+                    },
+                    {
+                      "word": "作文",
+                      "reading": "さくぶん",
+                      "meaning": "bài văn",
+                      "word_id": null
+                    },
+                    {
+                      "word": "いただく",
+                      "reading": "",
+                      "meaning": "nhận (khiêm nhường)",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": null,
+                "kind": "star",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "かぎが",
+                  "か",
+                  "ある",
+                  "かけて"
+                ],
+                "correct_option": null,
+                "star_prefix": "ドアに",
+                "star_suffix": "どうか 見て きます。",
+                "star_position": 3,
+                "star_order": [
+                  1,
+                  4,
+                  3,
+                  2
+                ],
+                "explanation": {
+                  "answer": "3 ある",
+                  "full_sentence": "ドアに **かぎが かけて ある か** どうか {見|み}て きます。",
+                  "translation_vi": "Tôi đi xem cửa đã được khóa chưa.",
+                  "why_correct": "Sau chỗ trống là どうか → mẫu **〜かどうか** → か ở ô cuối. 「ドアにかぎがかけてある」 = cửa đã được khóa (Vてある).",
+                  "why_wrong": "「かけてかぎがある」 không có nghĩa. Vてある phải là かけて＋ある liền nhau, rồi か.",
+                  "grammar": [
+                    {
+                      "pattern": "Nが Vてある",
+                      "explanation": "(ai đó) đã V và trạng thái còn đó. Dùng tha động từ.",
+                      "examples": [
+                        "{窓|まど}が{開|あ}けてあります。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜かどうか",
+                      "explanation": "có ~ hay không.",
+                      "examples": [
+                        "{明日来|く}るかどうか、わかりません。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vてくる",
+                      "explanation": "(見てきます) = đi V rồi quay lại.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "鍵をかける",
+                      "explanation": "khóa cửa.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "鍵",
+                      "reading": "かぎ",
+                      "meaning": "chìa khóa, khóa",
+                      "word_id": null
+                    },
+                    {
+                      "word": "鍵をかける",
+                      "reading": "",
+                      "meaning": "khóa",
+                      "word_id": null
+                    },
+                    {
+                      "word": "〜かどうか",
+                      "reading": "",
+                      "meaning": "có ~ hay không",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 3,
+            "type_id": "n4_bunshou_bunpou",
+            "instructions": "[[18]] から [[21]] に 何を 入れますか。文章の いみを 考えて、1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "",
+            "passages": [
+              {
+                "key": "p1",
+                "label": "",
+                "intro": "下の 文章は、{留学生|りゅうがくせい}が 書いた 作文です。",
+                "content": "**となりの 人**\n　　　　　　　　　　チャン・ミン\n\n　先月、新しい アパートに ひっこしました。日本人の 友だちに 聞くと、日本では ひっこした とき、となりの 人に あいさつを する {習慣|しゅうかん}が ある [[18]]。\n　それで、わたしは 国の おかしを 持って、となりの へやに 行きました。となりに 住んで いるのは、70才ぐらいの 女の 人でした。わたしが 日本語で あいさつを すると、その 人は「まあ、日本語が 上手ね」と 言って、お茶を [[19]]。\n　それから、わたしたちは よく 話すように なりました。先週、わたしが かぜで 寝て いた ときは、おかゆを 作って 持って きて くれました。[[20]]、元気に なったら、お{礼|れい}に 国の 料理を 作って 持って 行こうと 思って います。\n　日本に 来る 前は、日本人は つめたいと 聞いて いましたが、[[21]] と 思います。",
+                "content_furigana": "{隣|となり}の{人|ひと}　　チャン・ミン\n\n{先月|せんげつ}、{新|あたら}しいアパートに{引|ひ}っ{越|こ}しました。{日本人|にほんじん}の{友|とも}だちに{聞|き}くと、日本では引っ越したとき、隣の人に{挨拶|あいさつ}をする{習慣|しゅうかん}がある [[18]]。\n\nそれで、{私|わたし}は{国|くに}のお{菓子|かし}を{持|も}って、隣の{部屋|へや}に{行|い}きました。隣に{住|す}んでいるのは、{70才|ななじゅっさい}ぐらいの{女|おんな}の人でした。私が{日本語|にほんご}で挨拶をすると、その人は「まあ、日本語が{上手|じょうず}ね」と{言|い}って、お{茶|ちゃ}を [[19]]。\n\nそれから、私たちはよく{話|はな}すようになりました。{先週|せんしゅう}、私が{風邪|かぜ}で{寝|ね}ていたときは、おかゆを{作|つく}って持って{来|き}てくれました。[[20]]、{元気|げんき}になったら、お{礼|れい}に国の{料理|りょうり}を作って持って行こうと{思|おも}っています。\n\n日本に来る{前|まえ}は、日本人は{冷|つめ}たいと聞いていましたが、[[21]] と思います。",
+                "translation_vi": "Người hàng xóm — Trương Minh\n\nTháng trước, tôi đã chuyển đến một căn hộ mới. Khi hỏi người bạn Nhật thì nghe nói ở Nhật có phong tục khi chuyển nhà thì đi chào hỏi người hàng xóm bên cạnh.\n\nVì vậy, tôi đã mang bánh kẹo của nước mình sang phòng bên cạnh. Người sống ở bên cạnh là một bà cụ khoảng 70 tuổi. Khi tôi chào bằng tiếng Nhật, bà nói: \"Ôi, cháu nói tiếng Nhật giỏi quá nhỉ\", rồi pha trà mời tôi.\n\nTừ đó, chúng tôi trở nên hay nói chuyện với nhau. Tuần trước, lúc tôi bị cảm nằm trên giường, bà đã nấu cháo mang sang cho tôi. Vì vậy, tôi định khi khỏe lại sẽ nấu món ăn của nước mình mang sang để cảm ơn bà.\n\nTrước khi đến Nhật, tôi từng nghe nói người Nhật lạnh lùng, nhưng tôi nghĩ không phải như vậy.",
+                "attachments": []
+              }
+            ],
+            "questions": [
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "ことです",
+                  "そうです",
+                  "ほうです",
+                  "つもりです"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 そうです",
+                  "full_sentence": "日本人の友だちに聞くと、日本では引っ越したとき、隣の人に挨拶をする習慣があるそうです。",
+                  "translation_vi": "Khi hỏi người bạn Nhật thì nghe nói ở Nhật có phong tục khi chuyển nhà thì chào hỏi hàng xóm.",
+                  "why_correct": "「友だちに聞くと」 → thông tin **nghe từ người khác** → **thể thường＋そうです** (truyền đạt). ある (thể thường) + そうです.",
+                  "why_wrong": "1 ことです: 〜ことです dùng để khuyên (Vることです = nên ~) hoặc giải thích, không diễn tả \"nghe nói\". 3 ほうです: 〜ほうです = thuộc loại ~ (khá ~), không hợp. 4 つもりです: = định ~, dùng cho ý định của người nói, không dùng với \"phong tục có\".",
+                  "grammar": [
+                    {
+                      "pattern": "Thể thường＋そうです",
+                      "explanation": "nghe nói ~.",
+                      "examples": [
+                        "{田中|たなか}さんは{来月結婚|けっこん}するそうです。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vると",
+                      "explanation": "(聞くと) = khi V thì (phát hiện ra).",
+                      "examples": [
+                        "窓を開けると、海が見えました。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vたとき",
+                      "explanation": "khi đã V.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "引っ越す",
+                      "reading": "ひっこす",
+                      "meaning": "chuyển nhà",
+                      "word_id": null
+                    },
+                    {
+                      "word": "挨拶",
+                      "reading": "あいさつ",
+                      "meaning": "chào hỏi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "習慣",
+                      "reading": "しゅうかん",
+                      "meaning": "phong tục, thói quen",
+                      "word_id": null
+                    },
+                    {
+                      "word": "隣",
+                      "reading": "となり",
+                      "meaning": "bên cạnh",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "いれて あげました",
+                  "いれて もらいました",
+                  "いれさせました",
+                  "いれて くれました"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 いれて くれました",
+                  "full_sentence": "その人は「まあ、日本語が上手ね」と言って、お茶を入れてくれました。",
+                  "translation_vi": "Bà ấy nói \"Ôi, cháu nói tiếng Nhật giỏi quá nhỉ\" rồi pha trà cho tôi.",
+                  "why_correct": "Người hàng xóm (chủ ngữ その人は) pha trà **cho tôi** (người viết) → **Vてくれる**.",
+                  "why_wrong": "1 いれてあげました: その人 làm cho **người khác** → nhưng người được nhận là tôi (người viết), với chủ ngữ là người khác phải dùng くれる. 2 いれてもらいました: chủ ngữ phải là **tôi** (私はその人に入れてもらいました); ở đây chủ ngữ là その人は → sai. 3 いれさせました: bà ấy bắt (ai) pha trà → sai nghĩa.",
+                  "grammar": [
+                    {
+                      "pattern": "(Người khác)が／は Vてくれる",
+                      "explanation": "người khác làm V cho mình.",
+                      "examples": [
+                        "友だちが駅まで{送|おく}ってくれました。"
+                      ]
+                    },
+                    {
+                      "pattern": "お茶を入れる",
+                      "explanation": "pha trà.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜と言って",
+                      "explanation": "nói \"~\" rồi....",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "お茶を入れる",
+                      "reading": "おちゃをいれる",
+                      "meaning": "pha trà",
+                      "word_id": null
+                    },
+                    {
+                      "word": "上手",
+                      "reading": "じょうず",
+                      "meaning": "giỏi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "まあ",
+                      "reading": "",
+                      "meaning": "Ôi (thán từ, thường của phụ nữ)",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "だから",
+                  "けれども",
+                  "それとも",
+                  "たとえば"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 だから",
+                  "full_sentence": "おかゆを作って持って来てくれました。だから、元気になったら、お礼に国の料理を作って持って行こうと思っています。",
+                  "translation_vi": "Bà đã nấu cháo mang sang cho tôi. Vì vậy, tôi định khi khỏe lại sẽ nấu món ăn nước mình mang sang để cảm ơn.",
+                  "why_correct": "Câu trước là **nguyên nhân** (bà nấu cháo cho mình), câu sau là **kết quả** (mình muốn cảm ơn bằng món ăn) → **だから** (vì vậy).",
+                  "why_wrong": "2 けれども (nhưng): hai câu không trái ngược nhau. 3 それとも (hay là): dùng trong câu hỏi lựa chọn → sai. 4 たとえば (ví dụ): câu sau không phải ví dụ của câu trước.",
+                  "grammar": [
+                    {
+                      "pattern": "だから／それで",
+                      "explanation": "vì vậy (nối nguyên nhân → kết quả).",
+                      "examples": [
+                        "雨が降っています。だから、出かけません。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vよう（ý chí）と思っています",
+                      "explanation": "định V. 持って行く → 持って行こう.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "お礼に",
+                      "explanation": "để cảm ơn.",
+                      "examples": [
+                        "お礼に花を送りました。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "おかゆ",
+                      "reading": "",
+                      "meaning": "cháo",
+                      "word_id": null
+                    },
+                    {
+                      "word": "お礼",
+                      "reading": "おれい",
+                      "meaning": "cảm ơn, quà cảm ơn",
+                      "word_id": null
+                    },
+                    {
+                      "word": "元気になる",
+                      "reading": "げんきになる",
+                      "meaning": "khỏe lại",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "",
+                "options": [
+                  "その とおりだった",
+                  "もっと つめたかった",
+                  "そうでは なかった",
+                  "だれにも わからない"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 そうでは なかった",
+                  "full_sentence": "日本に来る前は、日本人は冷たいと聞いていましたが、そうではなかったと思います。",
+                  "translation_vi": "Trước khi đến Nhật, tôi từng nghe nói người Nhật lạnh lùng, nhưng tôi nghĩ không phải như vậy.",
+                  "why_correct": "Có **〜が** (nhưng) → vế sau phải **trái ngược** với \"người Nhật lạnh lùng\". Cả bài kể bà hàng xóm tốt bụng (pha trà, nấu cháo) → **そうではなかった** (không phải như thế).",
+                  "why_wrong": "1 そのとおりだった (đúng như vậy): mâu thuẫn với が và nội dung bài. 2 もっとつめたかった (còn lạnh lùng hơn): ngược nội dung. 4 だれにもわからない (không ai biết): không hợp với \"tôi nghĩ\" sau khi đã trải nghiệm.",
+                  "grammar": [
+                    {
+                      "pattern": "〜と聞いていましたが、〜",
+                      "explanation": "tôi từng nghe nói ~ nhưng (thực tế) ~.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "そうではない",
+                      "explanation": "không phải như thế (phủ định điều vừa nói).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vる{前|まえ}は",
+                      "explanation": "trước khi V thì.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "冷たい",
+                      "reading": "つめたい",
+                      "meaning": "lạnh lùng, lạnh",
+                      "word_id": null
+                    },
+                    {
+                      "word": "そのとおり",
+                      "reading": "",
+                      "meaning": "đúng như thế",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 4,
+            "type_id": "n4_naiyou_tanbun",
+            "instructions": "つぎの（1）から（3）の 文章を 読んで、質問に 答えて ください。答えは、1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "",
+            "passages": [
+              {
+                "key": "p1",
+                "label": "（1）",
+                "intro": "林さんの 机の 上に、この メモが あります。",
+                "content": "林さん\n　来週の 会議の ことです。さいしょは 月曜日の 午後 2時からの 予定でしたが、部長の {出張|しゅっちょう}で、水曜日の 同じ 時間に 変わりました。場所は 5階の 会議室の 予定でしたが、水曜日は 5階が 使えないので、3階の 小さい 会議室に なります。しりょうは、会議の 前の 日までに 人数分 コピーして おいて ください。\n　　　　　　　　　　　　　　　　　　　　田中",
+                "content_furigana": "{林|はやし}さんの{机|つくえ}の{上|うえ}に、このメモがあります。\n\n林さん\n{来週|らいしゅう}の{会議|かいぎ}のことです。{最初|さいしょ}は{月曜日|げつようび}の{午後|ごご}{2時|にじ}からの{予定|よてい}でしたが、{部長|ぶちょう}の{出張|しゅっちょう}で、{水曜日|すいようび}の{同|おな}じ{時間|じかん}に{変|か}わりました。{場所|ばしょ}は{5階|ごかい}の{会議室|かいぎしつ}の予定でしたが、水曜日は5階が{使|つか}えないので、{3階|さんがい}の{小|ちい}さい会議室になります。{資料|しりょう}は、会議の{前|まえ}の{日|ひ}までに{人数分|にんずうぶん}コピーしておいてください。\n{田中|たなか}",
+                "translation_vi": "Trên bàn của anh/chị Hayashi có mẩu giấy nhắn này.\n\nGửi anh/chị Hayashi,\nVề cuộc họp tuần sau. Ban đầu dự định là từ 2 giờ chiều thứ Hai, nhưng vì trưởng phòng đi công tác nên đã đổi sang cùng giờ đó vào thứ Tư. Địa điểm dự định là phòng họp tầng 5, nhưng thứ Tư không dùng được tầng 5, nên sẽ chuyển sang phòng họp nhỏ ở tầng 3. Tài liệu thì nhờ anh/chị photo sẵn đủ số người trước ngày họp một ngày (hạn là ngày trước hôm họp).\nTanaka",
+                "attachments": []
+              },
+              {
+                "key": "p2",
+                "label": "（2）",
+                "intro": "",
+                "content": "　わたしは 毎朝 7時の 電車に 乗って 会社へ 行きます。7時の 電車は いつも こんで いて、すわれた ことが ありません。先週、ためしに 6時半の 電車に 乗って みました。思ったより すいて いて、すわって 本が 読めました。会社に 着くのは 30分 早く なりますが、会社の 近くの きっさてんで コーヒーを 飲む 時間も できました。朝 早く 起きるのは 大変ですが、もう 7時の 電車には もどれないと 思います。",
+                "content_furigana": "{私|わたし}は{毎朝|まいあさ}{7時|しちじ}の{電車|でんしゃ}に{乗|の}って{会社|かいしゃ}へ{行|い}きます。7時の電車はいつも{混|こ}んでいて、{座|すわ}れたことがありません。{先週|せんしゅう}、{試|ため}しに{6時半|ろくじはん}の電車に乗ってみました。{思|おも}ったより{空|す}いていて、座って{本|ほん}が{読|よ}めました。会社に{着|つ}くのは{30分|さんじゅっぷん}{早|はや}くなりますが、会社の{近|ちか}くの{喫茶店|きっさてん}でコーヒーを{飲|の}む{時間|じかん}もできました。朝早く{起|お}きるのは{大変|たいへん}ですが、もう7時の電車には{戻|もど}れないと思います。",
+                "translation_vi": "Mỗi sáng tôi đi tàu điện chuyến 7 giờ đến công ty. Chuyến 7 giờ lúc nào cũng đông, tôi chưa từng ngồi được lần nào. Tuần trước, tôi thử đi chuyến 6 giờ rưỡi. Tàu vắng hơn tôi nghĩ, tôi được ngồi và đọc sách. Tôi đến công ty sớm hơn 30 phút, nhưng lại có cả thời gian uống cà phê ở quán cà phê gần công ty. Dậy sớm buổi sáng thì vất vả, nhưng tôi nghĩ mình không thể quay lại chuyến tàu 7 giờ được nữa.",
+                "attachments": []
+              },
+              {
+                "key": "p3",
+                "label": "（3）",
+                "intro": "スポーツクラブの 入り口に、この お知らせが はって あります。",
+                "content": "**スポーツクラブ さくら　{年末年始|ねんまつねんし}の お知らせ**\n12月29日（月）〜 1月3日（土）は お休みです。\nでも、12月29日と 30日は、プールだけ 午前 10時から 午後 3時まで 使えます。\n1月4日（日）からは、いつもどおりです。（日曜日は 午後 6時まで）",
+                "content_furigana": "スポーツクラブの{入|い}り{口|ぐち}に、このお{知|し}らせが{貼|は}ってあります。\n\nスポーツクラブ さくら {年末年始|ねんまつねんし}のお知らせ\n{12月29日|じゅうにがつにじゅうくにち}（{月|げつ}）〜{1月3日|いちがつみっか}（{土|ど}）はお{休|やす}みです。\nでも、12月29日と{30日|さんじゅうにち}は、プールだけ{午前|ごぜん}{10時|じゅうじ}から{午後|ごご}{3時|さんじ}まで{使|つか}えます。\n{1月4日|よっか}（{日|にち}）からは、いつもどおりです。（{日曜日|にちようび}は{午後6時|ろくじ}まで）",
+                "translation_vi": "Ở lối vào câu lạc bộ thể thao có dán thông báo này.\n\nCâu lạc bộ thể thao Sakura — Thông báo dịp cuối năm, đầu năm mới\nTừ ngày 29 tháng 12 (thứ Hai) đến ngày 3 tháng 1 (thứ Bảy) câu lạc bộ nghỉ.\nTuy nhiên, ngày 29 và 30 tháng 12, chỉ riêng bể bơi được sử dụng từ 10 giờ sáng đến 3 giờ chiều.\nTừ ngày 4 tháng 1 (Chủ nhật) hoạt động như bình thường. (Chủ nhật mở đến 6 giờ chiều.)",
+                "attachments": []
+              }
+            ],
+            "questions": [
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "林さんは、いつまでに 何を しなければ なりませんか。",
+                "options": [
+                  "日曜日までに 会議室を {予約|よやく}する。",
+                  "月曜日までに しりょうを コピーする。",
+                  "火曜日までに しりょうを コピーする。",
+                  "水曜日の 2時までに 5階へ 行く。"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 火曜日までに しりょうを コピーする。",
+                  "full_sentence": "林さんは、いつまでに{何|なに}をしなければなりませんか。",
+                  "translation_vi": "Anh/chị Hayashi phải làm gì, trước khi nào? — 3: Photo tài liệu trước (hết) thứ Ba.",
+                  "why_correct": "**Căn cứ:** 「水曜日の同じ時間に変わりました」 (họp đổi sang thứ Tư) + 「資料は、会議の前の日までに人数分コピーしておいてください」 (photo tài liệu trước ngày họp một ngày). Ngày trước thứ Tư = **thứ Ba** → 火曜日までに.",
+                  "why_wrong": "1 日曜日までに会議室を予約する: memo không nhắc việc đặt phòng; phòng đã được sắp xếp (3階の小さい会議室になります). 2 月曜日までに: đây là bẫy — lấy theo **lịch cũ** (họp thứ Hai). Lịch đã đổi sang thứ Tư nên hạn là thứ Ba. 4 水曜日の2時までに5階へ行く: tầng 5 **không dùng được**, họp ở tầng 3.",
+                  "grammar": [
+                    {
+                      "pattern": "〜までに",
+                      "explanation": "trước (hạn chót) ~. So sánh **まで** (kéo dài đến ~) và **までに** (làm xong trước ~).",
+                      "examples": [
+                        "5時までに帰ってください。(Về trước 5 giờ.) / 5時まで働きます。(Làm đến 5 giờ.)"
+                      ]
+                    },
+                    {
+                      "pattern": "Vなければなりません",
+                      "explanation": "phải V.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vておく",
+                      "explanation": "(コピーしておいて) = làm sẵn (chuẩn bị trước).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Nに変わる",
+                      "explanation": "đổi thành N. **Nになる** = trở thành, sẽ là N.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Nで",
+                      "explanation": "(部長の出張で) = vì N (nguyên nhân).",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "会議",
+                      "reading": "かいぎ",
+                      "meaning": "cuộc họp",
+                      "word_id": null
+                    },
+                    {
+                      "word": "予定",
+                      "reading": "よてい",
+                      "meaning": "dự định",
+                      "word_id": null
+                    },
+                    {
+                      "word": "出張",
+                      "reading": "しゅっちょう",
+                      "meaning": "công tác",
+                      "word_id": null
+                    },
+                    {
+                      "word": "部長",
+                      "reading": "ぶちょう",
+                      "meaning": "trưởng phòng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "資料",
+                      "reading": "しりょう",
+                      "meaning": "tài liệu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "人数分",
+                      "reading": "にんずうぶん",
+                      "meaning": "đủ số người",
+                      "word_id": null
+                    },
+                    {
+                      "word": "変わる",
+                      "reading": "かわる",
+                      "meaning": "thay đổi",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p2",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "この 人は、これから どう する つもりですか。",
+                "options": [
+                  "毎朝 6時半の 電車に 乗る。",
+                  "また 7時の 電車に 乗る。",
+                  "会社の 近くに ひっこす。",
+                  "電車の 中で コーヒーを 飲む。"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 毎朝 6時半の 電車に 乗る。",
+                  "full_sentence": "この{人|ひと}は、これからどうするつもりですか。",
+                  "translation_vi": "Từ giờ người này định làm thế nào? — 1: Mỗi sáng đi chuyến tàu 6 giờ rưỡi.",
+                  "why_correct": "**Căn cứ:** câu cuối 「もう7時の電車には戻れないと思います」 = không thể quay lại chuyến 7 giờ nữa → nghĩa là từ giờ sẽ **tiếp tục đi chuyến 6 giờ rưỡi**. Đây là câu cần **suy luận**: bài không nói thẳng \"tôi sẽ đi 6 giờ rưỡi\".",
+                  "why_wrong": "2 また7時の電車に乗る: ngược với 「もう…戻れない」. 3 会社の近くに引っ越す: không có trong bài. 4 電車の中でコーヒーを飲む: uống cà phê ở **quán gần công ty**, không phải trên tàu.",
+                  "grammar": [
+                    {
+                      "pattern": "もう＋phủ định",
+                      "explanation": "không ~ nữa. 戻れない = không quay lại được (thể khả năng phủ định của 戻る).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vてみる",
+                      "explanation": "(乗ってみました) = thử V.",
+                      "examples": [
+                        "この{服|ふく}を{着|き}てみてもいいですか。"
+                      ]
+                    },
+                    {
+                      "pattern": "試しに",
+                      "explanation": "thử (làm một lần xem sao).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vたことがない",
+                      "explanation": "(座れたことがありません) = chưa từng V.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "思ったより〜",
+                      "explanation": "~ hơn mình nghĩ.",
+                      "examples": [
+                        "テストは思ったより{簡単|かんたん}でした。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vるつもりです",
+                      "explanation": "định V.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "混む",
+                      "reading": "こむ",
+                      "meaning": "đông",
+                      "word_id": null
+                    },
+                    {
+                      "word": "空く",
+                      "reading": "すく",
+                      "meaning": "vắng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "座る",
+                      "reading": "すわる",
+                      "meaning": "ngồi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "試しに",
+                      "reading": "ためしに",
+                      "meaning": "thử",
+                      "word_id": null
+                    },
+                    {
+                      "word": "喫茶店",
+                      "reading": "きっさてん",
+                      "meaning": "quán cà phê",
+                      "word_id": null
+                    },
+                    {
+                      "word": "戻る",
+                      "reading": "もどる",
+                      "meaning": "quay lại",
+                      "word_id": null
+                    },
+                    {
+                      "word": "大変",
+                      "reading": "たいへん",
+                      "meaning": "vất vả",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p3",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "12月30日の 午後 4時に できる ことは 何ですか。",
+                "options": [
+                  "プールで 泳ぐ。",
+                  "ジムで 運動する。",
+                  "スタジオで ヨガを する。",
+                  "どれも できない。"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 どれも できない。",
+                  "full_sentence": "12月30日の{午後4時|よじ}にできることは{何|なん}ですか。",
+                  "translation_vi": "Lúc 4 giờ chiều ngày 30 tháng 12 có thể làm gì? — 4: Không làm được gì cả.",
+                  "why_correct": "**Căn cứ:** 「12月29日〜1月3日はお休みです」 → ngày 30 nghỉ. Ngoại lệ: 「12月29日と30日は、プールだけ午前10時から午後3時まで使えます」 → bể bơi chỉ mở **đến 3 giờ chiều**. 4 giờ chiều đã quá giờ → **không làm được gì**.",
+                  "why_wrong": "1 プールで泳ぐ: bẫy — ngày 30 bể bơi có mở, nhưng chỉ đến **3 giờ**, 4 giờ đã đóng. 2 ジムで運動する và 3 スタジオでヨガをする: ngoài bể bơi thì mọi thứ đều nghỉ (プール**だけ**).",
+                  "grammar": [
+                    {
+                      "pattern": "Nだけ",
+                      "explanation": "chỉ N.",
+                      "examples": [
+                        "日曜日だけ休みです。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜から〜まで",
+                      "explanation": "từ ~ đến ~.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "いつもどおり",
+                      "explanation": "như mọi khi. **Nどおり** = đúng theo N.",
+                      "examples": [
+                        "予定どおり (đúng dự định)."
+                      ]
+                    },
+                    {
+                      "pattern": "Vてある",
+                      "explanation": "(貼ってあります) = đã được V (kết quả còn lại).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "どれも＋phủ định",
+                      "explanation": "không cái nào cả.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "年末年始",
+                      "reading": "ねんまつねんし",
+                      "meaning": "cuối năm và đầu năm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "お知らせ",
+                      "reading": "おしらせ",
+                      "meaning": "thông báo",
+                      "word_id": null
+                    },
+                    {
+                      "word": "入り口",
+                      "reading": "いりぐち",
+                      "meaning": "lối vào",
+                      "word_id": null
+                    },
+                    {
+                      "word": "プール",
+                      "reading": "",
+                      "meaning": "bể bơi",
+                      "word_id": null
+                    },
+                    {
+                      "word": "いつもどおり",
+                      "reading": "",
+                      "meaning": "như thường lệ",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "type_id": "n4_naiyou_chuubun",
+            "instructions": "つぎの 文章を 読んで、質問に 答えて ください。答えは、1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "",
+            "passages": [
+              {
+                "key": "p1",
+                "label": "",
+                "intro": "",
+                "content": "　わたしが 高校生の とき、母は 毎朝 お{弁当|べんとう}を 作って くれました。でも、わたしは 母の お弁当が あまり 好きでは ありませんでした。友だちの お弁当は いつも カラフルで かわいいのに、わたしの お弁当は 茶色い おかずばかりだったからです。ある 日、わたしは 母に「もう お弁当は いらない。パンを 買うから」と 言って しまいました。母は 何も 言わずに、「そう」と 小さい {声|こえ}で 答えました。\n　次の 日から、わたしは 毎日 コンビニで パンを 買って 食べました。はじめは 好きな ものが えらべて うれしかったのですが、一か月も たつと、パンに あきて しまいました。それに、毎日 お金も かかります。\n　大学に 入って 一人で 住むように なってから、わたしは 自分で お弁当を 作るように なりました。朝は 時間が ないので、前の 日の 夜に おかずを 作って おきます。つかれて いる 日は、しょうじきに 言うと、作るのが とても めんどうです。それでも、母は 3年間、一日も 休まずに 作って くれて いました。しかも、母は 毎朝 6時から パートの 仕事に 行って いたのです。\n　先月 家に 帰った とき、母が 作った 肉じゃがを 食べました。高校生の ときは 好きでは なかった 茶色い おかずが、とても おいしく 感じました。わたしは 母に「お弁当、ありがとう」と 言いたかったのですが、はずかしくて、「おいしいね」としか 言えませんでした。",
+                "content_furigana": "{私|わたし}が{高校生|こうこうせい}のとき、{母|はは}は{毎朝|まいあさ}お{弁当|べんとう}を{作|つく}ってくれました。でも、私は母のお弁当があまり{好|す}きではありませんでした。{友|とも}だちのお弁当はいつもカラフルでかわいいのに、私のお弁当は{茶色|ちゃいろ}いおかずばかりだったからです。ある{日|ひ}、私は母に「もうお弁当はいらない。パンを{買|か}うから」と{言|い}ってしまいました。母は{何|なに}も言わずに、「そう」と{小|ちい}さい{声|こえ}で{答|こた}えました。\n\n{次|つぎ}の日から、私は{毎日|まいにち}コンビニでパンを買って{食|た}べました。{初|はじ}めは好きなものが{選|えら}べて{嬉|うれ}しかったのですが、一か{月|いっかげつ}も{経|た}つと、パンに{飽|あ}きてしまいました。それに、毎日お{金|かね}もかかります。\n\n{大学|だいがく}に{入|はい}って{一人|ひとり}で{住|す}むようになってから、私は{自分|じぶん}でお弁当を作るようになりました。朝は{時間|じかん}がないので、前の日の{夜|よる}におかずを作っておきます。{疲|つか}れている日は、{正直|しょうじき}に言うと、作るのがとても{面倒|めんどう}です。それでも、母は{3年間|さんねんかん}、{一日|いちにち}も{休|やす}まずに作ってくれていました。しかも、母は{毎朝6時|ろくじ}からパートの{仕事|しごと}に行っていたのです。\n\n{先月|せんげつ}{家|いえ}に{帰|かえ}ったとき、母が作った{肉|にく}じゃがを食べました。高校生のときは好きではなかった茶色いおかずが、とてもおいしく{感|かん}じました。私は母に「お弁当、ありがとう」と言いたかったのですが、{恥|は}ずかしくて、「おいしいね」としか言えませんでした。",
+                "translation_vi": "Hồi tôi còn là học sinh cấp 3, sáng nào mẹ cũng làm cơm hộp cho tôi. Nhưng tôi không thích cơm hộp của mẹ lắm. Bởi vì cơm hộp của các bạn lúc nào cũng nhiều màu sắc và dễ thương, vậy mà cơm hộp của tôi toàn là những món ăn kèm màu nâu. Một ngày nọ, tôi đã lỡ nói với mẹ: \"Con không cần cơm hộp nữa đâu. Con sẽ mua bánh mì.\" Mẹ không nói gì cả, chỉ khẽ đáp: \"Vậy à.\"\n\nTừ hôm sau, ngày nào tôi cũng mua bánh mì ở cửa hàng tiện lợi để ăn. Lúc đầu tôi vui vì được chọn món mình thích, nhưng mới được một tháng thôi là tôi đã ngán bánh mì. Hơn nữa, ngày nào cũng tốn tiền.\n\nTừ khi vào đại học và bắt đầu sống một mình, tôi đã tự làm cơm hộp. Buổi sáng không có thời gian nên tôi nấu sẵn đồ ăn kèm vào tối hôm trước. Những hôm mệt, nói thật là việc nấu rất phiền. Vậy mà mẹ tôi đã làm cơm hộp cho tôi suốt 3 năm, không nghỉ một ngày nào. Hơn thế nữa, sáng nào mẹ cũng đi làm bán thời gian từ 6 giờ.\n\nTháng trước, khi về nhà, tôi đã ăn món thịt hầm khoai tây (nikujaga) mẹ nấu. Món ăn màu nâu mà hồi cấp 3 tôi không thích, giờ tôi lại thấy rất ngon. Tôi đã muốn nói với mẹ \"Cảm ơn mẹ vì những hộp cơm\", nhưng vì ngại nên tôi chỉ nói được \"Ngon quá mẹ nhỉ\".",
+                "attachments": []
+              }
+            ],
+            "questions": [
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "「わたし」が 高校生の とき、母の お弁当が 好きでは なかったのは どうしてですか。",
+                "options": [
+                  "おかずの {量|りょう}が 少なかったから",
+                  "友だちの お弁当と くらべて、見た目が よくなかったから",
+                  "味が よくなかったから",
+                  "毎日 同じ おかずだったから"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 友だちの お弁当と くらべて、見た目が よくなかったから",
+                  "full_sentence": "「私」が高校生のとき、母のお弁当が好きではなかったのはどうしてですか。",
+                  "translation_vi": "Vì sao hồi cấp 3 \"tôi\" không thích cơm hộp của mẹ? — 2: Vì so với cơm hộp của bạn bè thì trông không đẹp mắt.",
+                  "why_correct": "**Căn cứ:** 「友だちのお弁当はいつもカラフルでかわいいのに、私のお弁当は茶色いおかずばかりだったからです。」 → so sánh với bạn bè, cơm của mình toàn màu nâu → vấn đề là **vẻ ngoài (見た目)**.",
+                  "why_wrong": "1 量が少なかった: bài không nói về lượng. 3 味がよくなかった: bài không chê vị; cuối bài còn thấy món màu nâu **rất ngon**. 4 毎日同じおかずだった: 茶色いおかずばかり = toàn món **màu nâu**, không có nghĩa là mỗi ngày cùng một món.",
+                  "grammar": [
+                    {
+                      "pattern": "Nばかり",
+                      "explanation": "toàn là N.",
+                      "examples": [
+                        "{弟|おとうと}はゲームばかりしています。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜のに",
+                      "explanation": "(かわいいのに) = vậy mà (đối lập, bất mãn).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜からです",
+                      "explanation": "là vì ~ (giải thích lý do ở cuối câu).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Nとくらべて",
+                      "explanation": "so với N.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "お弁当",
+                      "reading": "おべんとう",
+                      "meaning": "cơm hộp",
+                      "word_id": null
+                    },
+                    {
+                      "word": "おかず",
+                      "reading": "",
+                      "meaning": "đồ ăn kèm cơm",
+                      "word_id": null
+                    },
+                    {
+                      "word": "茶色い",
+                      "reading": "ちゃいろい",
+                      "meaning": "màu nâu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "カラフル",
+                      "reading": "",
+                      "meaning": "nhiều màu sắc",
+                      "word_id": null
+                    },
+                    {
+                      "word": "見た目",
+                      "reading": "みため",
+                      "meaning": "vẻ bề ngoài",
+                      "word_id": null
+                    },
+                    {
+                      "word": "量",
+                      "reading": "りょう",
+                      "meaning": "lượng",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "「しかも、母は 毎朝 6時から パートの 仕事に 行って いたのです」と ありますが、「わたし」は ここで どんな ことが 言いたいのですか。",
+                "options": [
+                  "母は 料理より 仕事の ほうが 好きだった。",
+                  "母は 朝 早く 起きるのが 好きだった。",
+                  "母は 仕事が いそがしくて、お弁当を 作れない 日も あった。",
+                  "母は いそがしかったのに、毎日 お弁当を 作って くれて いた。"
+                ],
+                "correct_option": 4,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "4 母は いそがしかったのに、毎日 お弁当を 作って くれて いた。",
+                  "full_sentence": "「しかも、母は毎朝6時からパートの仕事に行っていたのです」とありますが、「私」はここでどんなことが言いたいのですか。",
+                  "translation_vi": "Có câu \"Hơn thế nữa, sáng nào mẹ cũng đi làm bán thời gian từ 6 giờ\", ở đây \"tôi\" muốn nói điều gì? — 4: Mẹ bận rộn vậy mà ngày nào cũng làm cơm hộp cho tôi.",
+                  "why_correct": "**Căn cứ:** câu trước 「それでも、母は3年間、一日も休まずに作ってくれていました。」 + 「しかも」 (hơn thế nữa) → thêm một điều khiến việc của mẹ **càng vất vả hơn**: sáng 6 giờ đã đi làm, vậy mà vẫn làm cơm hộp mỗi ngày. Người viết muốn nhấn mạnh **sự vất vả và tình thương của mẹ**.",
+                  "why_wrong": "1 料理より仕事のほうが好きだった: không có trong bài. 2 朝早く起きるのが好きだった: không có trong bài. 3 お弁当を作れない日もあった: ngược với 「一日も休まずに」 (không nghỉ ngày nào).",
+                  "grammar": [
+                    {
+                      "pattern": "しかも",
+                      "explanation": "hơn nữa, lại còn (thêm thông tin cùng chiều, mạnh hơn).",
+                      "examples": [
+                        "この店は安い。しかも、おいしい。"
+                      ]
+                    },
+                    {
+                      "pattern": "それでも",
+                      "explanation": "dù vậy, vẫn.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vずに",
+                      "explanation": "(休まずに) = mà không V (= Vないで).",
+                      "examples": [
+                        "朝ごはんを食べずに出かけました。"
+                      ]
+                    },
+                    {
+                      "pattern": "〜のです／んです",
+                      "explanation": "giải thích, nhấn mạnh sự thật.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "しかも",
+                      "reading": "",
+                      "meaning": "hơn nữa",
+                      "word_id": null
+                    },
+                    {
+                      "word": "パート",
+                      "reading": "",
+                      "meaning": "làm bán thời gian",
+                      "word_id": null
+                    },
+                    {
+                      "word": "休む",
+                      "reading": "やすむ",
+                      "meaning": "nghỉ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "正直",
+                      "reading": "しょうじき",
+                      "meaning": "thành thật",
+                      "word_id": null
+                    },
+                    {
+                      "word": "面倒",
+                      "reading": "めんどう",
+                      "meaning": "phiền phức",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              },
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "文章の さいごで、「わたし」は どんな 気持ちでしたか。",
+                "options": [
+                  "母に {感謝|かんしゃ}して いるが、うまく 言えなかった。",
+                  "母の 料理が 前より 上手に なって いて、おどろいた。",
+                  "お弁当を ことわった ことを もう 忘れて いた。",
+                  "また 母に お弁当を 作って ほしいと 思った。"
+                ],
+                "correct_option": 1,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "1 母に 感謝して いるが、うまく 言えなかった。",
+                  "full_sentence": "{文章|ぶんしょう}の{最後|さいご}で、「私」はどんな{気持|きも}ちでしたか。",
+                  "translation_vi": "Ở cuối bài, \"tôi\" có tâm trạng thế nào? — 1: Biết ơn mẹ nhưng không nói ra được.",
+                  "why_correct": "**Căn cứ:** 「私は母に『お弁当、ありがとう』と言いたかったのですが、恥ずかしくて、『おいしいね』としか言えませんでした。」 → muốn cảm ơn (biết ơn) nhưng ngại, chỉ nói được \"ngon nhỉ\".",
+                  "why_wrong": "2 母の料理が前より上手になっていて、驚いた: bài nói món màu nâu \"ngon\" là do **cảm nhận của tôi đã thay đổi**, không nói mẹ nấu giỏi hơn hay tôi ngạc nhiên. 3 お弁当を断ったことをもう忘れていた: ngược lại, tôi vẫn nhớ và muốn cảm ơn. 4 また母にお弁当を作ってほしいと思った: bài không nói điều này.",
+                  "grammar": [
+                    {
+                      "pattern": "Nしか＋phủ định",
+                      "explanation": "chỉ ~ (thôi). 「おいしいね」としか言えませんでした = chỉ nói được \"ngon nhỉ\".",
+                      "examples": [
+                        "100円しかありません。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vたかったのですが",
+                      "explanation": "(đã) muốn V nhưng....",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Aくて",
+                      "explanation": "(恥ずかしくて) = vì ~ (nguyên nhân của cảm xúc).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Aく感じる",
+                      "explanation": "cảm thấy ~.",
+                      "examples": [
+                        "部屋が広く感じます。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "感謝",
+                      "reading": "かんしゃ",
+                      "meaning": "biết ơn",
+                      "word_id": null
+                    },
+                    {
+                      "word": "恥ずかしい",
+                      "reading": "はずかしい",
+                      "meaning": "ngại, xấu hổ",
+                      "word_id": null
+                    },
+                    {
+                      "word": "気持ち",
+                      "reading": "きもち",
+                      "meaning": "tâm trạng",
+                      "word_id": null
+                    },
+                    {
+                      "word": "感じる",
+                      "reading": "かんじる",
+                      "meaning": "cảm thấy",
+                      "word_id": null
+                    },
+                    {
+                      "word": "肉じゃが",
+                      "reading": "にくじゃが",
+                      "meaning": "thịt hầm khoai tây",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "number": 6,
+            "type_id": "n4_jouhou_kensaku",
+            "instructions": "下の 案内を 見て、質問に 答えて ください。答えは、1・2・3・4から いちばん いい ものを 一つ えらんで ください。",
+            "tip": "- Gạch chân **điều kiện của từng người**: giờ rảnh, nơi sống, nơi làm, giới tính, tuổi. Loại các khóa không hợp trước.\n- Luôn đọc kỹ dòng ・ dưới bảng: **giảm giá cho ai** (sống **hoặc** làm việc ở thành phố), **tiền nào không được giảm** (nguyên liệu), **khóa nào giới hạn đối tượng**.\n- Các đáp án sai thường là kết quả khi **quên một điều kiện**: quên giảm giá, quên tiền nguyên liệu, hoặc giảm giá cả tiền nguyên liệu.",
+            "passages": [
+              {
+                "key": "p1",
+                "label": "",
+                "intro": "",
+                "content": "**みどり市　料理教室　秋の コース**\n\n| | コース | 曜日・時間 | 回数 | 料金 |\n|---|---|---|---|---|\n| A | 日本料理の きほん | 火 10:00〜12:00 | 4回 | 6,000円 |\n| B | パンを 作ろう | 土 13:00〜16:00 | 3回 | 5,400円 |\n| C | 夜の かんたん 料理 | 水 19:00〜21:00 | 4回 | 7,200円 |\n| D | {親子|おやこ}で おかし作り | 日 10:00〜12:00 | 2回 | 親子 2人で 4,000円 |\n| E | 男の 料理 | 金 19:00〜21:00 | 4回 | 6,400円 |\n\n・みどり市に 住んで いる 人と、みどり市で 働いて いる 人は、料金が 10% 安く なります。\n・CとEは、料金の ほかに、{材料|ざいりょう}の お金が 1回 500円 かかります。（材料の お金は 安く なりません。）\n・Dは、小学生と その 親だけです。Eは、男の 人だけです。",
+                "content_furigana": "みどり{市|し}{料理教室|りょうりきょうしつ}{秋|あき}のコース\n\n| コース | 内容 | {曜日|ようび}・{時間|じかん} | {回数|かいすう} | {料金|りょうきん} |\n|---|---|---|---|---|\n| A | {日本料理|にほんりょうり}の{基本|きほん} | {火|か}10:00〜12:00 | {4回|よんかい} | {6,000円|ろくせんえん} |\n| B | パンを{作|つく}ろう | {土|ど}13:00〜16:00 | {3回|さんかい} | 5,400円 |\n| C | {夜|よる}の{簡単|かんたん}料理 | {水|すい}19:00〜21:00 | 4回 | 7,200円 |\n| D | {親子|おやこ}でお{菓子|かし}作り | {日|にち}10:00〜12:00 | {2回|にかい} | {親子2人|ふたり}で4,000円 |\n| E | {男|おとこ}の料理 | {金|きん}19:00〜21:00 | 4回 | 6,400円 |\n\n・みどり市に{住|す}んでいる人と、みどり市で{働|はたら}いている人は、料金が10%{安|やす}くなります。\n・CとEは、料金のほかに、{材料|ざいりょう}のお金が1回500円かかります。（材料のお金は安くなりません。）\n・Dは、{小学生|しょうがくせい}とその{親|おや}だけです。Eは、男の人だけです。",
+                "translation_vi": "Lớp học nấu ăn thành phố Midori — Các khóa mùa thu\n\n| Khóa | Nội dung | Thứ, giờ | Số buổi | Học phí |\n|---|---|---|---|---|\n| A | Căn bản món Nhật | Thứ Ba 10:00–12:00 | 4 buổi | 6.000 yên |\n| B | Cùng làm bánh mì | Thứ Bảy 13:00–16:00 | 3 buổi | 5.400 yên |\n| C | Món ăn đơn giản buổi tối | Thứ Tư 19:00–21:00 | 4 buổi | 7.200 yên |\n| D | Bố mẹ và con cùng làm bánh kẹo | Chủ nhật 10:00–12:00 | 2 buổi | 4.000 yên cho 2 người (bố/mẹ + con) |\n| E | Nấu ăn cho nam giới | Thứ Sáu 19:00–21:00 | 4 buổi | 6.400 yên |\n\n・Người sống ở thành phố Midori và người làm việc ở thành phố Midori được giảm 10% học phí.\n・Khóa C và E, ngoài học phí còn mất tiền nguyên liệu 500 yên mỗi buổi. (Tiền nguyên liệu không được giảm.)\n・Khóa D chỉ dành cho học sinh tiểu học và bố/mẹ của các em. Khóa E chỉ dành cho nam giới.",
+                "attachments": []
+              }
+            ],
+            "questions": [
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "ワンさんは、みどり市の 会社で 働いて いますが、となりの 市に 住んで います。月曜日から 金曜日まで 毎日 夜 6時まで 働きます。土曜日の 午後は 日本語学校に 通って います。パンでは なく、ふだん 食べる 料理を 習いたいと 思って います。ワンさんが 入れる コースと、ぜんぶで はらう お金は どれですか。",
+                "options": [
+                  "Cコースで 7,200円",
+                  "Cコースで 8,480円",
+                  "Cコースで 9,200円",
+                  "Eコースで 7,760円"
+                ],
+                "correct_option": 2,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "2 Cコースで 8,480円",
+                  "full_sentence": "ワンさんは、みどり市の{会社|かいしゃ}で働いていますが、{隣|となり}の市に住んでいます。{月曜日|げつようび}から{金曜日|きんようび}まで{毎日|まいにち}夜6時まで働きます。{土曜日|どようび}の{午後|ごご}は{日本語学校|にほんごがっこう}に{通|かよ}っています。パンではなく、{普段|ふだん}食べる料理を{習|なら}いたいと思っています。ワンさんが入れるコースと、{全部|ぜんぶ}で{払|はら}うお金はどれですか。",
+                  "translation_vi": "Anh/chị Wang làm việc ở một công ty tại thành phố Midori nhưng sống ở thành phố bên cạnh. Từ thứ Hai đến thứ Sáu, ngày nào cũng làm đến 6 giờ tối. Chiều thứ Bảy đi học ở trường tiếng Nhật. Wang muốn học nấu những món ăn hằng ngày chứ không phải bánh mì. Khóa Wang có thể vào và tổng số tiền phải trả là bao nhiêu? — 2: Khóa C, 8.480 yên.",
+                  "why_correct": "**Căn cứ và cách tính:**\n- A (thứ Ba 10:00–12:00): giờ làm việc → **không được**.\n- B (thứ Bảy chiều, làm bánh mì): vừa trùng giờ học tiếng Nhật, vừa là bánh mì → **không**.\n- D: chỉ dành cho học sinh tiểu học và bố mẹ → **không**.\n- C (thứ Tư 19:00–21:00): làm xong lúc 18:00 → **được**.\n- E (thứ Sáu 19:00): chỉ cho **nam**. Đề không nói Wang là nam → không thể chắc chắn.\n- Wang **làm việc ở Midori** → được giảm 10%: 7.200 × 0,9 = **6.480 yên**.\n- Tiền nguyên liệu khóa C: 500 × 4 buổi = **2.000 yên** (không giảm).\n- Tổng: 6.480 + 2.000 = **8.480 yên**.",
+                  "why_wrong": "1 7,200円: chỉ tính học phí gốc, quên giảm giá và quên tiền nguyên liệu. 3 9,200円: tính tiền nguyên liệu nhưng **quên giảm 10%** (Wang sống ở thành phố khác, nhưng **làm việc** ở Midori nên vẫn được giảm). 4 Eコースで7,760円: tính đúng cho khóa E (6.400 × 0,9 + 2.000 = 7.760), nhưng khóa E **chỉ cho nam**, mà đề không cho biết Wang là nam. ⚠️ Nếu Wang là nam thì lựa chọn 4 cũng đúng; đây là chỗ đề chưa chặt. Khi đi thi thật, chọn đáp án chắc chắn đúng với mọi trường hợp → 2.",
+                  "grammar": [
+                    {
+                      "pattern": "Nではなく、N2",
+                      "explanation": "không phải N mà là N2.",
+                      "examples": [
+                        "電車ではなく、バスで行きます。"
+                      ]
+                    },
+                    {
+                      "pattern": "Vたいと思っています",
+                      "explanation": "muốn V.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Vられる",
+                      "explanation": "(入れる) = có thể vào (thể khả năng của 入る).",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜が、〜",
+                      "explanation": "(働いていますが、住んでいます) = ~ nhưng ~.",
+                      "examples": []
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "料理教室",
+                      "reading": "りょうりきょうしつ",
+                      "meaning": "lớp nấu ăn",
+                      "word_id": null
+                    },
+                    {
+                      "word": "材料",
+                      "reading": "ざいりょう",
+                      "meaning": "nguyên liệu",
+                      "word_id": null
+                    },
+                    {
+                      "word": "料金",
+                      "reading": "りょうきん",
+                      "meaning": "phí",
+                      "word_id": null
+                    },
+                    {
+                      "word": "普段",
+                      "reading": "ふだん",
+                      "meaning": "thường ngày",
+                      "word_id": null
+                    },
+                    {
+                      "word": "習う",
+                      "reading": "ならう",
+                      "meaning": "học",
+                      "word_id": null
+                    },
+                    {
+                      "word": "回数",
+                      "reading": "かいすう",
+                      "meaning": "số lần",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "Câu này có điểm chưa chặt: đề không nói ワンさん là nam hay nữ, mà khóa E chỉ dành cho nam. Nếu ワンさん là nam thì lựa chọn 4（Eコースで 7,760円）cũng đúng. Vì đề không cho biết giới tính, đáp án chắc chắn đúng là 2（C, 8,480円）.",
+                "needs_review": true,
+                "internal_note": "Điểm cần chốt số 2 (SRS 2.0, mục 7.2): đề xuất thêm （女の人） sau ワンさん trong câu hỏi trước khi xuất bản.",
+                "attachments": []
+              },
+              {
+                "passage": "p1",
+                "kind": "choice",
+                "number_override": null,
+                "prompt": "山田さんの 家族は みどり市に 住んで います。山田さん（女の人）は、小学2年生の むすこと いっしょに Dコースに 入ります。山田さんの おっとは Eコースに 入ります。二人の コースで、ぜんぶで いくら はらいますか。",
+                "options": [
+                  "10,400円",
+                  "11,600円",
+                  "11,360円",
+                  "12,400円"
+                ],
+                "correct_option": 3,
+                "star_prefix": "",
+                "star_suffix": "",
+                "star_position": null,
+                "star_order": [],
+                "explanation": {
+                  "answer": "3 11,360円",
+                  "full_sentence": "{山田|やまだ}さんの{家族|かぞく}はみどり市に住んでいます。山田さん（{女|おんな}の人）は、{小学|しょうがく}{2年生|にねんせい}の{息子|むすこ}と{一緒|いっしょ}にDコースに入ります。山田さんの{夫|おっと}はEコースに入ります。{二人|ふたり}のコースで、全部でいくら払いますか。",
+                  "translation_vi": "Gia đình chị Yamada sống ở thành phố Midori. Chị Yamada (nữ) cùng con trai học lớp 2 vào khóa D. Chồng chị Yamada vào khóa E. Tổng tiền cho hai khóa là bao nhiêu? — 3: 11.360 yên.",
+                  "why_correct": "**Căn cứ và cách tính:**\n- Cả nhà **sống ở Midori** → được giảm 10%.\n- Khóa D: 4.000 yên cho 2 người (mẹ + con) → 4.000 × 0,9 = **3.600 yên**. Khóa D **không** có tiền nguyên liệu.\n- Khóa E: 6.400 × 0,9 = **5.760 yên** + nguyên liệu 500 × 4 = **2.000 yên** → **7.760 yên**.\n- Tổng: 3.600 + 7.760 = **11.360 yên**.",
+                  "why_wrong": "1 10,400円: 4.000 + 6.400, quên giảm giá và quên tiền nguyên liệu. 2 11,600円: không khớp với cách tính đúng (có thể là do cộng nhầm). 4 12,400円: 4.000 + 6.400 + 2.000, tính tiền nguyên liệu nhưng **quên giảm 10%**.",
+                  "grammar": [
+                    {
+                      "pattern": "Nといっしょに",
+                      "explanation": "cùng với N.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "Nに入る",
+                      "explanation": "(コースに入ります) = vào, tham gia N.",
+                      "examples": []
+                    },
+                    {
+                      "pattern": "〜のほかに",
+                      "explanation": "ngoài ~ ra (còn).",
+                      "examples": [
+                        "料金のほかに、材料のお金がかかります。"
+                      ]
+                    },
+                    {
+                      "pattern": "(tiền)がかかる",
+                      "explanation": "tốn (tiền).",
+                      "examples": [
+                        "1回500円かかります。"
+                      ]
+                    }
+                  ],
+                  "vocab": [
+                    {
+                      "word": "夫",
+                      "reading": "おっと",
+                      "meaning": "chồng (mình)",
+                      "word_id": null
+                    },
+                    {
+                      "word": "息子",
+                      "reading": "むすこ",
+                      "meaning": "con trai",
+                      "word_id": null
+                    },
+                    {
+                      "word": "小学生",
+                      "reading": "しょうがくせい",
+                      "meaning": "học sinh tiểu học",
+                      "word_id": null
+                    },
+                    {
+                      "word": "親子",
+                      "reading": "おやこ",
+                      "meaning": "bố mẹ và con",
+                      "word_id": null
+                    },
+                    {
+                      "word": "家族",
+                      "reading": "かぞく",
+                      "meaning": "gia đình",
+                      "word_id": null
+                    }
+                  ]
+                },
+                "learner_note": "",
+                "needs_review": false,
+                "internal_note": "",
+                "attachments": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

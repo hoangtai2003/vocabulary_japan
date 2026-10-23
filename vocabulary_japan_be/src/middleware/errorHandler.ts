@@ -19,7 +19,7 @@ function isBodyParserError(error: unknown): error is BodyParserError {
 
 /**
  * Error handler duy nhất. Mọi lỗi (kể cả lỗi async, Express 5 tự chuyển về đây) thành
- * { error: { code, message, fields? } }:
+ * { error: { code, message, fields?, details? } }:
  * - ApiError → đúng status/code của nó
  * - ZodError → 400 VALIDATION_ERROR kèm fields
  * - body JSON hỏng hoặc quá lớn → 400 VALIDATION_ERROR
@@ -35,7 +35,9 @@ export const errorHandler: ErrorRequestHandler = (error: unknown, req, res, _nex
   } else if (isBodyParserError(error) && error.type === 'entity.parse.failed') {
     apiError = ApiError.validation({ _: 'Body phải là JSON hợp lệ' }, 'Dữ liệu gửi lên không hợp lệ');
   } else if (isBodyParserError(error) && error.type === 'entity.too.large') {
-    apiError = ApiError.validation({ _: 'Dữ liệu tối đa 1 MB' }, 'Dữ liệu gửi lên quá lớn');
+    // Nhập đề nhận tối đa 5 MB (FR-IMP-01), tải ảnh tối đa 2 MB; còn lại 1 MB.
+    const limit = req.path.endsWith('/admin/exams/import') ? '5 MB' : req.path.endsWith('/admin/uploads') ? '2 MB' : '1 MB';
+    apiError = ApiError.validation({ _: `Dữ liệu tối đa ${limit}` }, 'Dữ liệu gửi lên quá lớn');
   } else {
     req.log.error({ err: error }, 'Lỗi không mong đợi');
     apiError = new ApiError(500, 'INTERNAL_ERROR', 'Máy chủ đang gặp sự cố. Thử lại sau ít phút.');
@@ -47,6 +49,7 @@ export const errorHandler: ErrorRequestHandler = (error: unknown, req, res, _nex
       code: apiError.code,
       message: apiError.message,
       ...(apiError.fields ? { fields: apiError.fields } : {}),
+      ...(apiError.details ? { details: apiError.details } : {}),
     },
   });
 };

@@ -4,6 +4,8 @@
  * - Chủ đề và từ vựng: lấy đúng file mock của frontend (prisma/seed-data/), giữ nguyên id
  *   (t01, w001...) để hai bên dùng chung một bộ. Chỉ thêm cái chưa có (skipDuplicates), không
  *   ghi đè, để không mất chỉnh sửa của admin trong DB.
+ * - Dạng mondai cấp N4 của module luyện đề (SRS 2.0, mục 2.2): chỉ thêm dạng còn thiếu.
+ * - Khi NODE_ENV ≠ production: đề mẫu số 11 (nhập như quản trị viên nhập, rồi xuất bản) nếu chưa có.
  * - Khi NODE_ENV ≠ production: 2 tài khoản mẫu (mật khẩu 123456) và lịch sử học mẫu của
  *   user@example.com, mô phỏng bằng chính thuật toán SRS giống mock frontend
  *   (src/test/mock/seed.ts): ~25 từ N5 đã học, 20/30 ngày có học, streak hiện tại 4. Lịch sử tính
@@ -15,7 +17,10 @@ import { createRng, type Rng } from '../src/domain/random.ts';
 import { applyGrade, DEFAULT_SRS_STATE, type Quality, type SrsState } from '../src/domain/srs.ts';
 import { prisma } from '../src/db/prisma.ts';
 import type { Word } from '../src/domain/types.ts';
+import { changeStatus } from '../src/modules/examAdmin/service.ts';
+import { importExam } from '../src/modules/examAdmin/importExport.ts';
 import { hashPassword } from '../src/utils/password.ts';
+import { loadSampleExam, seedMondaiTypes } from './exams.ts';
 import { seedVocabulary } from './vocabulary.ts';
 
 const SAMPLE_PASSWORD = '123456';
@@ -195,12 +200,29 @@ async function seedSampleAccounts(words: Word[]) {
   );
 }
 
-async function main() {
-  const words = await seedTopicsAndWords();
-  if (env.NODE_ENV === 'production') {
-    console.log('NODE_ENV=production: bỏ qua tài khoản và lịch sử mẫu. Tạo admin bằng npm run create-admin.');
+/** Đề mẫu số 11 cho môi trường phát triển: nhập qua đúng luồng nhập đề rồi xuất bản. */
+async function seedSampleExam() {
+  const file = JSON.parse(loadSampleExam()) as { exam: { title: string; level: 'N4' } };
+  const existing = await prisma.exam.findUnique({ where: { level_title: { level: file.exam.level, title: file.exam.title } } });
+  if (existing) {
+    console.log(`Đề mẫu: đã có "${file.exam.title}".`);
     return;
   }
+  const { body } = await importExam(loadSampleExam(), false);
+  const examId = (body as { exam: { id: string } }).exam.id;
+  await changeStatus(examId, 'pending_review');
+  await changeStatus(examId, 'published');
+  console.log(`Đề mẫu: đã nhập và xuất bản "${file.exam.title}".`);
+}
+
+async function main() {
+  const words = await seedTopicsAndWords();
+  console.log(`Dạng mondai: thêm ${await seedMondaiTypes(prisma)}.`);
+  if (env.NODE_ENV === 'production') {
+    console.log('NODE_ENV=production: bỏ qua tài khoản, lịch sử và đề mẫu. Tạo admin bằng npm run create-admin.');
+    return;
+  }
+  await seedSampleExam();
   await seedSampleAccounts(words);
 }
 

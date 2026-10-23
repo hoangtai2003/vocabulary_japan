@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { ChartCard } from '@/components/progress/ChartCard';
+import { ExamStatsSection } from '@/components/progress/ExamStatsSection';
 import { StatGrid } from '@/components/progress/StatGrid';
 import { StudyHeatmap } from '@/components/progress/StudyHeatmap';
 import { WeeklyChart } from '@/components/progress/WeeklyChart';
@@ -89,6 +90,8 @@ export default function ProgressPage() {
           )}
         </>
       )}
+
+      <ExamStatsSection />
     </div>
   );
 }

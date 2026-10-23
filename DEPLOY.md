@@ -118,7 +118,9 @@ docker compose logs -f web      # Ctrl+C để thoát; thấy "certificate obtai
 ## 5. Dữ liệu ban đầu và tài khoản admin
 
 ```bash
-# Chủ đề và từ vựng (ở production, seed bỏ qua tài khoản và lịch sử mẫu). Chạy lại không tạo trùng.
+# Chủ đề, từ vựng và danh sách dạng mondai của module luyện đề (ở production, seed bỏ qua tài
+# khoản, lịch sử và đề mẫu). Chạy lại không tạo trùng. Bản cập nhật có module luyện đề: chạy lại
+# lệnh này một lần sau khi deploy để có danh sách dạng mondai N4.
 docker compose exec api node prisma/seed.ts
 
 # Tài khoản admin thật
@@ -127,6 +129,8 @@ docker compose exec api node src/scripts/create-admin.ts \
 ```
 
 Mở `https://ten-mien-cua-ban.vn` và đăng nhập bằng tài khoản admin vừa tạo.
+
+**Đề thi:** vào Quản trị → Đề thi → Nhập đề, bấm "Tải file mẫu" (đề luyện N4 số 11) rồi chọn đúng file đó để nhập, kiểm tra bằng Xem trước, sau đó Gửi duyệt → Xuất bản. Định dạng file: `vocabulary_japan_be/EXAM_IMPORT_FORMAT.md`.
 
 ## 6. Xem log, khởi động lại
 
@@ -141,7 +145,13 @@ docker compose up -d                  # chạy lại
 
 Mọi container có `restart: unless-stopped`, nên tự chạy lại khi server khởi động lại hoặc khi tiến trình bị lỗi.
 
-> **Không bao giờ chạy `docker compose down -v`** trên server thật: `-v` xóa volume `db-data`, tức là toàn bộ database.
+> **Không bao giờ chạy `docker compose down -v`** trên server thật: `-v` xóa volume `db-data` (toàn bộ database) và `uploads` (ảnh của bài đọc đề thi).
+
+**Sao lưu ảnh của đề thi.** Ảnh chèn vào bài đọc nằm trong volume `uploads` (`/app/uploads` trong container `api`), không nằm trong database. Nếu sao lưu database thì sao lưu cả volume này (NFR-EX-10), ví dụ:
+
+```bash
+docker compose exec api tar -czf - -C /app uploads > uploads-$(date +%F).tar.gz
+```
 
 ## 7. Deploy bản mới
 

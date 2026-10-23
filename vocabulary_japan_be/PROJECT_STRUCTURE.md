@@ -1,6 +1,6 @@
 # Cấu trúc backend
 
-Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã có.
+Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã có. "2.0" = module luyện đề JLPT (SRS 2.0).
 
 ```
 .
@@ -14,16 +14,19 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 ├── prisma.config.ts           ✅ 2  Cấu hình Prisma 7: schema, migrations, lệnh seed, DATABASE_URL (nạp .env bằng Node)
 ├── .gitignore                 ✅ 2  + src/generated
 ├── README.md              ✅ 6  Cách chạy, lệnh, biến môi trường, tài khoản mẫu, kết nối frontend, thêm từ
+├── EXAM_IMPORT_FORMAT.md  ✅ 2.0 Định dạng file nhập đề (DR-EX-11), cú pháp đánh dấu, lỗi/cảnh báo, dạng mondai N4
 ├── Dockerfile             ✅ 6  Image production: build TS rồi bỏ devDependencies, chạy dưới user node;
 │                                giữ src/ để seed và create-admin chạy thẳng bằng Node 24
 ├── .dockerignore          ✅ 6  Bỏ node_modules, dist, src/generated, tests, .env
 │                                (deploy: ../DEPLOY.md, ../docker-compose.yml, ../deploy/)
 ├── prisma/
 │   ├── schema.prisma          ✅ 2  Schema theo prompt mục 4; bảng/cột snake_case; timestamptz; 5 index thêm (có lý do)
-│   ├── migrations/            ✅ 5  …_init; …_daily_new_words_settings (thêm goal, level)
+│   ├── migrations/            ✅ 5  …_init; …_daily_new_words_settings (thêm goal, level); …_exams (2.0)
 │   ├── seed.ts                ✅ 2  Chủ đề + từ (qua vocabulary.ts); khi ≠ production: 2 tài khoản mẫu + lịch sử mẫu
 │   ├── vocabulary.ts          ✅ 5  Đọc seed-data, thêm chủ đề/từ còn thiếu — dùng chung cho seed và test
-│   └── seed-data/             ✅ 2  words.json (416 từ), topics.json (15 chủ đề), nguồn gốc của bộ từ
+│   ├── exams.ts               ✅ 2.0 11 dạng mondai N4 (mục 2.2), đọc đề mẫu — dùng chung cho seed và test
+│   └── seed-data/             ✅ 2  words.json (416 từ), topics.json (15 chủ đề), nguồn gốc của bộ từ;
+│                                    exams/n4-de-luyen-11.json: đề mẫu số 11 (57 câu, lời giải đủ 6 mục)
 ├── src/
 │   ├── app.ts                 ✅ 1  Tạo Express app: helmet, CORS, pino-http, JSON 1 MB, cookie, router /api, 404, error handler
 │   ├── server.ts              ✅ 5  listen PORT, dọn phiên + quiz hết hạn (lúc khởi động + mỗi 24 giờ), tắt êm
@@ -34,7 +37,9 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   ├── generated/prisma/      ✅ 2  Prisma Client sinh tự động (prisma generate), không commit
 │   ├── domain/                ✅ 3  Hàm thuần, chép logic từ frontend, ngày tính theo APP_TIMEZONE:
 │   │                                dates, srs, normalize (+ buildSearchText), random, streak, quiz,
-│   │                                today (chọn từ mới trong ngày), types (hình dạng JSON của hợp đồng)
+│   │                                today (chọn từ mới trong ngày), types (hình dạng JSON của hợp đồng);
+│   │                                2.0: markup (cú pháp DR-EX-08), exam (đánh số câu, kiểm tra DR-EX-10,
+│   │                                câu ★, điểm ước tính) — frontend chép hai file này
 │   ├── middleware/
 │   │   ├── errorHandler.ts    ✅ 1  404 JSON + error handler duy nhất (ApiError, ZodError, body hỏng/quá lớn, 500)
 │   │   ├── requireAuth.ts     ✅ 4  Đọc cookie sid, tìm phiên còn hạn, gắn req.user / req.sessionId
@@ -54,8 +59,16 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   │   │                            local_date, is_new trong PostgreSQL; streak từ DISTINCT local_date
 │   │   ├── me/                ✅ 5  settings (strict), profile, password (xóa phiên khác, giữ phiên hiện tại), DELETE /me
 │   │   │                            (cascade, xóa cookie). /me/export đã bỏ theo prompt backend
-│   │   └── admin/             ✅ 5  CRUD từ vựng: danh sách (q, level, topic, sort/order, phân trang), thêm/sửa dùng chung
-│   │                                wordInputSchema (khớp form frontend), kiểm tra chủ đề + trùng (kể cả kanji rỗng), xóa cascade
+│   │   ├── admin/             ✅ 5  CRUD từ vựng: danh sách (q, level, topic, sort/order, phân trang), thêm/sửa dùng chung
+│   │   │                            wordInputSchema (khớp form frontend), kiểm tra chủ đề + trùng (kể cả kanji rỗng), xóa cascade
+│   │   ├── examAdmin/         ✅ 2.0 Quản trị đề (gắn trong adminRouter): schemas (dùng chung cho API và file nhập),
+│   │   │                            service (danh sách, tạo, sửa, xóa, nhân bản, kiểm tra, trạng thái, sắp xếp),
+│   │   │                            content (sửa từng tầng, xác nhận chấm lại, lịch sử sửa), importExport, uploads (ảnh,
+│   │   │                            kiểm tra chữ ký tệp), mondaiTypes, vocab (tự gắn mã từ cho lời giải)
+│   │   └── exams/             ✅ 2.0 Người học: tree (đọc cây đề, serializer), service (danh sách, chi tiết), attempts (lượt
+│   │                                làm, hạn nộp do server ghi, nộp tự động khi hết giờ, lưu đáp án có khóa dòng), grading
+│   │                                (chấm, câu sai, chấm lại nền), results, practice (câu sai, luyện theo dạng, thống kê,
+│   │                                thêm từ vào ôn tập), content (nội dung theo bộ câu đã chốt, không lộ đáp án)
 │   ├── serializers/           4–5  user.ts (GĐ4), word.ts (từ + trạng thái người dùng, chủ đề)
 │   ├── types/express.d.ts     ✅ 4  Bổ sung req.user, req.sessionId cho Express
 │   └── utils/
@@ -63,7 +76,8 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │       ├── zodFields.ts       ✅ 1  Lỗi zod → fields { tên_trường: thông_báo }
 │       ├── password.ts        ✅ 2  argon2id hash/verify, chuẩn hóa email, giới hạn 6–128 ký tự
 │       ├── like.ts            ✅ 5  escapeLike: escape % _ \ cho ILIKE (dùng ở /words và /admin/words)
-│       └── pagination.ts      ✅ 5  page ≥ 1, page_size 20 (tối đa 100), giá trị sai dùng mặc định
+│       ├── pagination.ts      ✅ 5  page ≥ 1, page_size 20 (tối đa 100), giá trị sai dùng mặc định
+│       └── background.ts      ✅ 2.0 Việc chạy nền trong tiến trình (chấm lại sau khi sửa đáp án); test chờ được
 └── tests/
     ├── api/app.test.ts        ✅ 1  health, 404 JSON, body hỏng/quá lớn, CORS, helmet
     ├── api/auth.test.ts       ✅ 4  đăng ký, đăng nhập, me, đăng xuất, phiên hết hạn, phân quyền, Origin, rate limit
@@ -79,7 +93,12 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
     │                                (400 không phải 401, đăng xuất thiết bị khác), xóa tài khoản (cascade, người khác giữ nguyên)
     ├── api/admin.test.ts      ✅ 5  401/403, sắp xếp (kanji rỗng, level N5→N3, giá trị sai), tìm/lọc, thêm (search_text,
     │                                lỗi giống form, chủ đề, trùng), sửa (giữ trạng thái học, trùng, 404), xóa (cascade, hôm nay)
-    ├── api/contract.test.ts   ✅ 6  gọi đủ 26 endpoint của API_CONTRACT.md (đọc từ bảng, bỏ ⏸), so status + schema strict
-    ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize
+    ├── api/contract.test.ts   ✅ 6  gọi đủ 73 endpoint của API_CONTRACT.md (đọc từ bảng, bỏ ⏸), so status + schema strict
+    ├── api/examAdmin.test.ts  ✅ 2.0 nhập đề mẫu 11 (57 câu, câu ★, lỗi kèm vị trí, 5 MB), xuất/nhập lại, trạng thái,
+    │                                kiểm tra, nhân bản, xóa/ẩn, soạn từng tầng, lịch sử, sắp xếp, chấm lại, ảnh, dạng mondai
+    ├── api/exams.test.ts      ✅ 2.0 không lộ đáp án, làm lần lượt, chấm khớp bảng đáp án (57/57 = 120), lượt dở, hết giờ,
+    │                                nộp song song, chế độ luyện, câu sai (đúng 2 lần thì rời), theo dạng, thống kê, ôn tập
+    ├── domain/                ✅ 3  srs, streak, quiz, today (chép từ frontend) + dates, streak quanh nửa đêm giờ VN, normalize;
+    │                                2.0: markup, exam (frontend chép)
     └── helpers/               ✅ 6  fixtures, globalSetup, db, api, testDbUrl, contract (schema zod của mọi response)
 ```

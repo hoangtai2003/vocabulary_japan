@@ -31,6 +31,14 @@ export const routes: RouteObject[] = [
       {
         element: <ProtectedRoute />,
         children: [
+          // Toàn màn hình, ẩn thanh điều hướng chính để tập trung (SRS 2.0, mục 5.1).
+          { path: 'de-thi/lam/:attemptId', lazy: page(() => import('./pages/ExamRunPage')) },
+          {
+            element: <AdminRoute />,
+            children: [
+              { path: 'quan-tri/de-thi/:examId/xem-truoc', lazy: page(() => import('./pages/AdminExamPreviewPage')) },
+            ],
+          },
           {
             element: <AppLayout />,
             children: [
@@ -38,6 +46,19 @@ export const routes: RouteObject[] = [
               { path: 'hoc', lazy: page(() => import('./pages/LearnPage')) },
               { path: 'on-tap', lazy: page(() => import('./pages/ReviewPage')) },
               { path: 'quiz', lazy: page(() => import('./pages/QuizPage')) },
+              // Luyện đề JLPT (SRS 2.0, mục 5.1)
+              { path: 'de-thi', lazy: page(() => import('./pages/ExamListPage')) },
+              { path: 'de-thi/lam-lai', lazy: page(() => import('./pages/WrongQuestionsPage')) },
+              {
+                path: 'de-thi/ket-qua/:attemptId',
+                lazy: page(() => import('./pages/ExamResultPage')),
+                handle: { wide: true } satisfies RouteHandle,
+              },
+              {
+                path: 'de-thi/:examId',
+                lazy: page(() => import('./pages/ExamDetailPage')),
+                handle: { wide: true } satisfies RouteHandle,
+              },
               {
                 path: 'tu-vung',
                 lazy: page(() => import('./pages/WordsPage')),
@@ -52,6 +73,21 @@ export const routes: RouteObject[] = [
                   {
                     path: 'quan-tri',
                     lazy: page(() => import('./pages/AdminPage')),
+                    handle: { wide: true } satisfies RouteHandle,
+                  },
+                  {
+                    path: 'quan-tri/de-thi',
+                    lazy: page(() => import('./pages/AdminExamsPage')),
+                    handle: { wide: true } satisfies RouteHandle,
+                  },
+                  {
+                    path: 'quan-tri/de-thi/nhap',
+                    lazy: page(() => import('./pages/AdminExamImportPage')),
+                    handle: { wide: true } satisfies RouteHandle,
+                  },
+                  {
+                    path: 'quan-tri/de-thi/:examId',
+                    lazy: page(() => import('./pages/AdminExamEditorPage')),
                     handle: { wide: true } satisfies RouteHandle,
                   },
                 ],

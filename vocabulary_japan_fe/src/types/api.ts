@@ -11,7 +11,14 @@ export type ErrorCode =
   | 'NOT_FOUND'
   | 'EMAIL_TAKEN'
   | 'RATE_LIMITED'
-  | 'INTERNAL_ERROR';
+  | 'INTERNAL_ERROR'
+  // Module luyện đề (SRS 2.0, mục 5.2)
+  | 'ATTEMPT_SUBMITTED'
+  | 'SECTION_TIME_UP'
+  | 'ATTEMPT_IN_PROGRESS'
+  | 'EXAM_HAS_ATTEMPTS'
+  | 'EXAM_INVALID'
+  | 'CONFIRM_REGRADE';
 
 /** Mã lỗi chỉ sinh ra ở phía client, không bao giờ do server trả về. */
 export type ClientErrorCode = 'NETWORK_ERROR' | 'TIMEOUT' | 'UNKNOWN';
@@ -21,6 +28,8 @@ export interface ApiErrorBody {
     code: ErrorCode;
     message: string;
     fields?: Record<string, string>;
+    /** Chỉ có ở lỗi của module luyện đề (danh sách lỗi của đề, mã lượt đang làm…). */
+    details?: Record<string, unknown>;
   };
 }
 

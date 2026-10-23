@@ -5,6 +5,8 @@ coverage
 .env.*
 !.env.example
 src/generated
+# Ảnh bài đọc tải lên khi chạy dev (UPLOAD_DIR mặc định)
+uploads
 
 # Test files (không đưa lên git)
 tests/

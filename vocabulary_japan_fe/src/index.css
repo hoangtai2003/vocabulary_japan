@@ -243,6 +243,26 @@
   letter-spacing: 0.05em;
 }
 
+/* ---------- Đề thi (SRS 2.0) ----------
+ * Chữ Nhật trong đề: tối thiểu 16px; giãn dòng 2.1 để furigana (rt) nằm gọn trong khoảng giữa hai
+ * dòng, không đè lên dòng trên (NFR-EX-06). Lời giải tiếng Việt chỉ dùng furigana trong ví dụ. */
+.exam-text {
+  font-size: max(1em, 16px);
+  line-height: 2.1;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.exam-text rt {
+  font-family: var(--font-jp);
+  font-size: 0.55em;
+  line-height: 1;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+.exam-text ruby {
+  ruby-align: center;
+}
+
 /* Giảm chuyển động: tắt mọi animation và transition dài, chỉ giữ mờ dần ngắn. */
 @media (prefers-reduced-motion: reduce) {
   *,
