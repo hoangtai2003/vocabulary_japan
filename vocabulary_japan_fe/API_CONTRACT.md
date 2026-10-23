@@ -1,6 +1,6 @@
 # Hợp đồng API – App học từ vựng tiếng Nhật
 
-Chép nguyên từ mục 4 của prompt frontend. Đây là nguồn sự thật duy nhất cho cả frontend (mock) và backend.
+Chép nguyên từ mục 4 của prompt frontend. Đây là nguồn sự thật duy nhất cho cả frontend và backend.
 Kiểu dữ liệu (`User`, `Word`, `WordWithState`, …) xem mục 3 của prompt, bản TypeScript ở `src/types/`.
 Các chi tiết đã chốt khi làm frontend nằm ở **Phụ lục** cuối file.
 
@@ -8,7 +8,6 @@ Các chi tiết đã chốt khi làm frontend nằm ở **Phụ lục** cuối f
 
 | Biến            | Giá trị                                          | Mặc định               |
 | --------------- | ------------------------------------------------ | ---------------------- |
-| `VITE_API_MODE` | `mock` hoặc `real`                               | `mock`                 |
 | `VITE_API_URL`  | URL gốc backend, ví dụ `https://api.example.com` | rỗng (gọi cùng domain) |
 
 ## 4.2 Client và cách tổ chức
@@ -20,13 +19,14 @@ Các chi tiết đã chốt khi làm frontend nằm ở **Phụ lục** cuối f
 - Custom hook bọc TanStack Query ở `src/hooks/queries/`. Component không bao giờ gọi fetch hay module API trực tiếp.
 - Query keys tập trung ở `src/api/queryKeys.ts`. Sau khi chấm điểm một thẻ, invalidate `reviews.due`, `words.today` và `stats.*`. Thao tác yêu thích và ghi chú dùng optimistic update.
 
-## 4.3 Chế độ mock
+## 4.3 API giả lập cho test
 
-- Dùng MSW v2: `src/mock/handlers/*.ts`, khởi động worker trong `main.tsx` chỉ khi `VITE_API_MODE=mock`. Code ở chế độ mock và real phải đi qua cùng một client.
-- Dữ liệu mock lưu trong localStorage với khóa có tiền tố `jpvocab:`, có hàm reset về dữ liệu gốc (nút ẩn ở trang Hồ sơ khi đang ở chế độ mock).
-- Mô phỏng độ trễ ngẫu nhiên 300–600 ms. Có thể bật giả lập lỗi bằng `?mockError=1` trên URL để kiểm tra giao diện lỗi.
+App chạy thật luôn gọi backend. API giả lập chỉ còn dùng trong test:
+
+- MSW v2 (node): `src/test/mock/handlers/*.ts`, bật trong `src/test/setup.ts`. Test đi qua cùng client với app thật.
+- Dữ liệu giả lưu trong localStorage (khóa tiền tố `jpvocab:`), xóa sau mỗi test.
 - Phiên đăng nhập giả: lưu id người dùng hiện tại trong localStorage, mật khẩu băm SHA-256 bằng Web Crypto.
-- SRS chạy trong handler mock bằng cùng hàm ở `src/utils/srs.ts` (mục 5), để có thể test riêng.
+- SRS chạy trong handler giả lập bằng cùng hàm ở `src/utils/srs.ts` (mục 5).
 
 ## 4.4 Mã lỗi
 
@@ -142,7 +142,7 @@ Import với `dry_run: true` chỉ kiểm tra, không ghi. Giao diện gọi dry
 
 ## Phụ lục: chi tiết đã chốt khi làm frontend
 
-Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) đã làm đúng như dưới đây; backend nên làm giống.
+Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/test/mock/handlers/`) đã làm đúng như dưới đây; backend nên làm giống.
 
 ### A. Phần mở rộng so với hợp đồng gốc
 
@@ -243,7 +243,7 @@ Những điểm hợp đồng gốc chưa nói rõ. Mock (`src/mock/handlers/`) 
 - Từ trùng cặp `kanji` + `kana` với dữ liệu sẵn có, hoặc với dòng trước trong cùng file, bị báo lỗi ở `field = "kana"`.
 - Nhập thật (`dry_run: false`) ghi các dòng hợp lệ và bỏ qua dòng lỗi. Khi đó `created_count = valid_count`.
 
-### I. Chỉ ở chế độ mock
+### I. Chỉ ở API giả lập (test)
 
 - `?mockError=1` trên URL trang làm mọi request trả 500, **trừ `/api/auth/*`**, để vẫn đăng nhập được khi kiểm tra giao diện lỗi.
 - Không có độ trễ giả lập khi chạy test.

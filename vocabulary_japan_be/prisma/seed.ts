@@ -6,7 +6,7 @@
  *   ghi đè, để không mất chỉnh sửa của admin trong DB.
  * - Khi NODE_ENV ≠ production: 2 tài khoản mẫu (mật khẩu 123456) và lịch sử học mẫu của
  *   user@example.com, mô phỏng bằng chính thuật toán SRS giống mock frontend
- *   (src/mock/seed.ts): ~25 từ N5 đã học, 20/30 ngày có học, streak hiện tại 4. Lịch sử tính
+ *   (src/test/mock/seed.ts): ~25 từ N5 đã học, 20/30 ngày có học, streak hiện tại 4. Lịch sử tính
  *   tương đối theo ngày chạy seed, nên mỗi lần chạy sẽ xóa và tạo lại lịch sử của riêng tài khoản này.
  */
 import { env } from '../src/config/env.ts';
@@ -21,7 +21,7 @@ import { seedVocabulary } from './vocabulary.ts';
 const SAMPLE_PASSWORD = '123456';
 const TZ = env.APP_TIMEZONE;
 
-// ---------- Lịch sử mẫu: cùng tham số với frontend (src/mock/seed.ts) ----------
+// ---------- Lịch sử mẫu: cùng tham số với frontend (src/test/mock/seed.ts) ----------
 
 /** Ngày (tính lùi từ hôm nay) KHÔNG học: còn 20/30 ngày; ngày 1–4 học, ngày 5 nghỉ → streak 4. */
 const SKIPPED_DAYS = new Set([5, 12, 13, 17, 20, 22, 23, 26, 28, 30]);

@@ -8,8 +8,8 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-# Chế độ real, VITE_API_URL rỗng: gọi /api trên chính domain của trang, Caddy chuyển vào API.
-RUN VITE_API_MODE=real VITE_API_URL= npm run build
+# VITE_API_URL rỗng: gọi /api trên chính domain của trang, Caddy chuyển vào API.
+RUN VITE_API_URL= npm run build
 
 FROM caddy:2.10-alpine
 COPY --from=build /app/dist /srv

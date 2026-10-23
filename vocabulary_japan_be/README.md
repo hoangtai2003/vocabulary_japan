@@ -71,12 +71,12 @@ Frontend ở thư mục bên cạnh (`../vocabulary_japan_fe`) đã có sẵn pr
 # Cửa sổ 1: backend
 npm run dev
 
-# Cửa sổ 2: frontend ở chế độ real
+# Cửa sổ 2: frontend
 cd ../vocabulary_japan_fe
-VITE_API_MODE=real npm run dev      # http://localhost:5173
+npm run dev                         # http://localhost:5173
 ```
 
-Đăng nhập bằng `user@example.com` / `123456` (ở chế độ real, hộp tài khoản mẫu trên trang đăng nhập không hiện).
+Đăng nhập bằng `user@example.com` / `123456`.
 
 Lưu ý:
 - Frontend phải chạy đúng cổng 5173, trùng `CORS_ORIGIN`. Cổng khác thì mọi thao tác lưu bị 403 do kiểm tra Origin. `vite.config.ts` đã bật `strictPort`, nên cổng 5173 bận thì Vite báo lỗi thay vì tự đổi cổng.
@@ -86,9 +86,9 @@ Lưu ý:
 
 **Trang Quản trị** (đăng nhập bằng tài khoản admin, mở `/quan-tri`): thêm, sửa, xóa từ trực tiếp trong DB. Từ mới tìm được ngay.
 
-**Dữ liệu gốc** (`prisma/seed-data/words.json`, `topics.json`): bộ từ chung với mock của frontend (`../vocabulary_japan_fe/src/mock/data/`). Khi thêm từ vào dữ liệu gốc:
-1. Sửa file trong frontend (`src/mock/data/words.json`), rồi chạy `npm test` ở frontend để kiểm tra dữ liệu hợp lệ.
-2. Chép sang backend: `cp ../vocabulary_japan_fe/src/mock/data/*.json prisma/seed-data/`.
+**Dữ liệu gốc** (`prisma/seed-data/words.json`, `topics.json`): nguồn duy nhất của bộ từ. Frontend giữ một bản sao chỉ để chạy test (`../vocabulary_japan_fe/src/test/mock/data/`). Khi thêm từ vào dữ liệu gốc:
+1. Sửa file ở `prisma/seed-data/`.
+2. Chép sang frontend rồi chạy `npm test` ở đó để kiểm tra dữ liệu hợp lệ: `cp prisma/seed-data/*.json ../vocabulary_japan_fe/src/test/mock/data/`.
 3. `npm run db:seed`. Seed chỉ **thêm** từ còn thiếu (theo id), không ghi đè từ đã có, nên không mất chỉnh sửa đã làm ở trang Quản trị. Muốn áp dụng lại toàn bộ dữ liệu gốc trên máy dev thì dùng `npm run db:reset`.
 
 ## Deploy

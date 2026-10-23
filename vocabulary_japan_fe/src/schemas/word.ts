@@ -13,7 +13,7 @@ const requiredText = (label: string, max: number) =>
 
 /**
  * Schema của một từ khi tạo/sửa (Word không có id). Dùng chung cho form ở trang Quản trị,
- * cho handler mock và cho kiểm tra file import.
+ * cho handler giả lập trong test và cho kiểm tra dữ liệu từ.
  */
 export const wordInputSchema = z.object({
   kanji: z

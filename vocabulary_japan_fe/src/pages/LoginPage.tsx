@@ -1,12 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useSearchParams } from 'react-router-dom';
 import type { z } from 'zod';
-import { isMockMode } from '@/api/env';
 import { AuthLayout } from '@/components/auth/AuthLayout';
 import { FormAlert } from '@/components/auth/FormAlert';
-import { SampleAccounts } from '@/components/auth/SampleAccounts';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { PasswordInput } from '@/components/ui/PasswordInput';
@@ -20,14 +18,11 @@ export default function LoginPage() {
   const { login } = useAuth();
   const [params] = useSearchParams();
   const [formError, setFormError] = useState<string | null>(null);
-  const submitRef = useRef<HTMLButtonElement>(null);
 
   const {
     register,
     handleSubmit,
     setError,
-    setValue,
-    clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues, unknown, z.output<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -43,14 +38,6 @@ export default function LoginPage() {
       setFormError(applyApiErrors(error, setError, ['email', 'password']));
     }
   });
-
-  const pickSample = (email: string, password: string) => {
-    setValue('email', email);
-    setValue('password', password);
-    clearErrors();
-    setFormError(null);
-    submitRef.current?.focus();
-  };
 
   const next = params.get('next');
   const registerHref = next ? `/dang-ky?next=${encodeURIComponent(next)}` : '/dang-ky';
@@ -88,7 +75,6 @@ export default function LoginPage() {
           {...register('password')}
         />
         <Button
-          ref={submitRef}
           type="submit"
           size="lg"
           block
@@ -98,7 +84,6 @@ export default function LoginPage() {
           {isSubmitting ? 'Đang đăng nhập…' : 'Đăng nhập'}
         </Button>
       </form>
-      {isMockMode && <SampleAccounts onPick={pickSample} />}
     </AuthLayout>
   );
 }

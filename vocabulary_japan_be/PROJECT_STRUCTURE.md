@@ -23,7 +23,7 @@ Cột "GĐ" là giai đoạn tạo file (prompt backend, mục 10). ✅ = đã c
 │   ├── migrations/            ✅ 5  …_init; …_daily_new_words_settings (thêm goal, level)
 │   ├── seed.ts                ✅ 2  Chủ đề + từ (qua vocabulary.ts); khi ≠ production: 2 tài khoản mẫu + lịch sử mẫu
 │   ├── vocabulary.ts          ✅ 5  Đọc seed-data, thêm chủ đề/từ còn thiếu — dùng chung cho seed và test
-│   └── seed-data/             ✅ 2  words.json (416 từ), topics.json (15 chủ đề) chép từ frontend
+│   └── seed-data/             ✅ 2  words.json (416 từ), topics.json (15 chủ đề), nguồn gốc của bộ từ
 ├── src/
 │   ├── app.ts                 ✅ 1  Tạo Express app: helmet, CORS, pino-http, JSON 1 MB, cookie, router /api, 404, error handler
 │   ├── server.ts              ✅ 5  listen PORT, dọn phiên + quiz hết hạn (lúc khởi động + mỗi 24 giờ), tắt êm

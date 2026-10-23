@@ -37,11 +37,6 @@ export function updateDb<T>(mutate: (db: MockDb) => T): T {
   return result;
 }
 
-/** Đưa dữ liệu mock về trạng thái gốc. Giữ phiên đăng nhập (id người dùng mẫu không đổi). */
-export function resetMockDb(now: Date = new Date()): void {
-  writeDb(buildSeed(now));
-}
-
 // ---------- Phiên đăng nhập giả ----------
 
 export function getSessionUserId(): string | null {

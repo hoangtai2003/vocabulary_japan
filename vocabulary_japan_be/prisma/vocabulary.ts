@@ -3,7 +3,7 @@ import { buildSearchText } from '../src/domain/normalize.ts';
 import type { Word } from '../src/domain/types.ts';
 import type { PrismaClient } from '../src/generated/prisma/client.ts';
 
-/** Bộ từ vựng gốc, chép từ frontend (src/mock/data/). Dùng cho seed và cho test. */
+/** Bộ từ vựng gốc (nguồn duy nhất; frontend chép sang src/test/mock/data/ để test). Dùng cho seed và cho test. */
 export interface SeedTopic {
   id: string;
   name_vi: string;

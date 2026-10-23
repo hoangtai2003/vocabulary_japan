@@ -1,8 +1,6 @@
-import { isMockMode } from '@/api/env';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { DataSection } from '@/components/profile/DataSection';
 import { DisplayNameForm } from '@/components/profile/DisplayNameForm';
-import { MockTools } from '@/components/profile/MockTools';
 import { PasswordForm } from '@/components/profile/PasswordForm';
 import { ProfileSection } from '@/components/profile/ProfileSection';
 import { StudySettingsForm } from '@/components/profile/StudySettingsForm';
@@ -46,7 +44,6 @@ export default function ProfilePage() {
         <ProfileSection title="Dữ liệu của bạn">
           <DataSection />
         </ProfileSection>
-        {isMockMode && <MockTools />}
       </div>
     </div>
   );

@@ -11,22 +11,21 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
 ├── tsconfig.app.json          ✅ 1  TS strict cho src/
 ├── tsconfig.node.json         ✅ 1  TS cho file cấu hình
 ├── .gitignore                 ✅ 1
-├── .env.example               ✅ 1  VITE_API_MODE, VITE_API_URL
+├── .env.example               ✅ 1  VITE_API_URL
 ├── API_CONTRACT.md            ✅ 2  Bản sao mục 4 + phụ lục chi tiết đã chốt, đầu vào cho backend
 ├── DESIGN.md                ✅ 3  Plan thiết kế: token, font, wireframe, tự phê bình
-├── README.md                  ✅ 5  Cách chạy, tài khoản mẫu, chuyển API thật, reset mock, biến môi trường,
+├── README.md                  ✅ 5  Cách chạy cùng backend, biến môi trường,
 │                                lệnh build và thư mục đầu ra dist/ (deploy theo ../DEPLOY.md)
 ├── public/
-│   ├── mockServiceWorker.js   ✅ 1  Worker MSW (sinh bằng `msw init`)
 │   └── favicon.svg            ✅ 2  Con dấu son 字
 └── src/
-    ├── main.tsx               ✅ 2  Điểm vào, khởi động MSW khi VITE_API_MODE=mock rồi mới render
+    ├── main.tsx               ✅ 2  Điểm vào, render App
     ├── App.tsx                ✅ 2  QueryClientProvider + AuthProvider; GĐ3 thêm RouterProvider
     ├── index.css              ✅ 1  Tailwind, biến thể dark; GĐ3 thêm token màu và font
     ├── vite-env.d.ts          ✅ 1  Kiểu cho import.meta.env
     ├── router.tsx (+ test)    ✅ 3  routes + createBrowserRouter, lazy load từng trang, future flag v7
     ├── api/
-    │   ├── env.ts             ✅ 2  Đọc VITE_API_MODE / VITE_API_URL
+    │   ├── env.ts             ✅ 2  Đọc VITE_API_URL
     │   ├── client.ts          ✅ 2  fetch wrapper: /api, credentials, timeout 15s, ApiError, xử lý 401
     │   ├── queryClient.ts     ✅ 2  QueryClient mặc định (không retry lỗi 4xx)
     │   ├── queryKeys.ts       ✅ 2  Query key tập trung
@@ -49,12 +48,11 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   │                            ChartCard, chartColors (màu đã kiểm bằng validator dataviz)
     │   ├── today/             ✅ 4  DailyProgress, DueCard, TodayWordList, TodaySkeleton
     │   ├── profile/           ✅ 4  ProfileSection, DisplayNameForm, StudySettingsForm (lưu ngay + toast),
-    │   │                            PasswordForm, DataSection (xóa tài khoản), DeleteAccountModal (mật khẩu + gõ XÓA),
-    │   │                            MockTools (nút ẩn đặt lại dữ liệu mock)
+    │   │                            PasswordForm, DataSection (xóa tài khoản), DeleteAccountModal (mật khẩu + gõ XÓA)
     │   ├── admin/             ✅ 4  AdminWordTable (sắp xếp theo cột, aria-sort), Pagination, AdminTableSkeleton,
     │   │                            WordFormModal (wordFormSchema), DeleteWordModal (xuất/nhập file: tạm hoãn)
     │   ├── auth/              ✅ 3  AuthGate, ProtectedRoute, GuestRoute (chuyển về ?next=), AdminRoute,
-    │   │                            ThemeSync, AuthLayout, FormAlert, SampleAccounts
+    │   │                            ThemeSync, AuthLayout, FormAlert
     │   └── layout/            ✅ 3  AppLayout, Sidebar, BottomNav, navItems, DueBadge, Brand, PageHeader, RouteError
     ├── context/
     │   ├── authContext.ts     ✅ 2  Kiểu và React context của phiên đăng nhập
@@ -70,18 +68,6 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── useLogout.ts       ✅ 3  Đăng xuất rồi về /dang-nhap
     │   ├── useLeaveGuard.ts   ✅ 4  Hỏi xác nhận khi rời trang (useBlocker + beforeunload)
     │   └── useWordFilters.ts  ✅ 4  Bộ lọc trang Từ vựng trên URL (?q=&level=&topic=&status=&fav=1&tu=)
-    ├── mock/
-    │   ├── browser.ts         ✅ 2  setupWorker
-    │   ├── server.ts          ✅ 2  setupServer cho test (MSW node)
-    │   ├── db.ts              ✅ 2  Đọc/ghi localStorage (jpvocab:mock-db, jpvocab:mock-session), reset
-    │   ├── seed.ts            ✅ 2  Tài khoản mẫu, mô phỏng 30 ngày học bằng chính hàm SRS
-    │   ├── sampleAccounts.ts  ✅ 3  2 tài khoản mẫu (file nhẹ cho trang đăng nhập)
-    │   ├── crypto.ts          ✅ 2  SHA-256 bằng Web Crypto, tạo id
-    │   ├── types.ts           ✅ 2  Kiểu của dữ liệu mock
-    │   ├── handlers.test.ts   ✅ 2  Test tích hợp: module API → client → MSW node
-    │   ├── handlers/          ✅ 2  http (độ trễ, ?mockError=1, lỗi chuẩn), shared, auth, words, reviews,
-    │   │                            quiz, stats, me, admin, index
-    │   └── data/              ✅ 2  words.json (99 N5, 317 N4), topics.json (15 chủ đề), words.test.ts
     ├── pages/             ✅ 3–4  Một file mỗi route. Xong: Forbidden, NotFound, More, Login, Register,
     │                                Today, Learn, Review, Quiz, Words, Progress, Profile, Admin
     │                                (đều có test)
@@ -90,7 +76,7 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
     │   ├── toastStore.ts      ✅ 3
     │   └── sessionStore.ts (+ test) ✅ 4  Hàng đợi phiên học, thẻ quay lại, đã lật, furigana
     ├── schemas/
-    │   ├── word.ts            ✅ 2  Schema Word không có id (mock, import) + wordFormSchema (form Quản trị,
+    │   ├── word.ts            ✅ 2  Schema Word không có id (API giả lập trong test) + wordFormSchema (form Quản trị,
     │   │                            nghĩa mỗi dòng một), kiểm tra khớp kiểu
     │   ├── auth.ts            ✅ 2  Đăng nhập, đăng ký (form + request)
     │   ├── account.ts         ✅ 2  Cài đặt, hồ sơ, đổi mật khẩu, ghi chú, xóa tài khoản
@@ -118,5 +104,14 @@ Cột "GĐ" là giai đoạn tạo file (mục 11 của prompt). ✅ = đã có.
         ├── setup.ts           ✅ 2  jest-dom, vòng đời MSW node, xóa localStorage sau mỗi test
         ├── fixtures.ts        ✅ 2  makeWord cho test
         ├── logout.test.tsx    ✅ 6  Đăng xuất về /dang-nhap không kèm next; đăng nhập lại vào Hôm nay
-        └── renderApp.tsx      ✅ 3  Render cả app (router thật + MSW node + Toaster) cho test
+        ├── renderApp.tsx      ✅ 3  Render cả app (router thật + MSW node + Toaster) cho test
+        └── mock/              API giả lập chỉ dùng trong test (app chạy thật luôn gọi backend)
+            ├── server.ts          setupServer (MSW node)
+            ├── db.ts              Đọc/ghi localStorage (jpvocab:mock-db, jpvocab:mock-session)
+            ├── seed.ts            Tài khoản mẫu, mô phỏng 30 ngày học bằng chính hàm SRS
+            ├── crypto.ts          SHA-256 bằng Web Crypto, tạo id
+            ├── types.ts           Kiểu của dữ liệu giả lập
+            ├── handlers.test.ts   Test tích hợp: module API → client → MSW node
+            ├── handlers/          http (lỗi chuẩn), shared, auth, words, reviews, quiz, stats, me, admin, index
+            └── data/              Bản sao seed-data của backend: words.json, topics.json, words.test.ts
 ```
