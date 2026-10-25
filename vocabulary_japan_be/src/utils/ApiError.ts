@@ -22,15 +22,26 @@ export type ErrorCode =
  * người dùng. details chỉ có ở lỗi của module luyện đề (danh sách lỗi của đề, mã lượt đang làm…).
  */
 export class ApiError extends Error {
+  // Khai báo field riêng, không dùng parameter property: seed và create-admin chạy thẳng file .ts
+  // bằng Node (chế độ chỉ xóa kiểu), mà chế độ này không hỗ trợ parameter property.
+  readonly status: number;
+  readonly code: ErrorCode;
+  readonly fields?: Record<string, string>;
+  readonly details?: Record<string, unknown>;
+
   constructor(
-    readonly status: number,
-    readonly code: ErrorCode,
+    status: number,
+    code: ErrorCode,
     message: string,
-    readonly fields?: Record<string, string>,
-    readonly details?: Record<string, unknown>,
+    fields?: Record<string, string>,
+    details?: Record<string, unknown>,
   ) {
     super(message);
     this.name = 'ApiError';
+    this.status = status;
+    this.code = code;
+    this.fields = fields;
+    this.details = details;
   }
 
   static validation(fields: Record<string, string>, message = 'Dữ liệu chưa hợp lệ') {
